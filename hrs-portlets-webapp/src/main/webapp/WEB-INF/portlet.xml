@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<portlet-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+    version="2.0">
+
+    <portlet>
+        <portlet-name>BusinessEmailAdmin</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/business-email-admin.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Campus Business Email Admin</title>
+            <short-title>Campus Business Email Admin</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <portlet-name>PayrollInformation</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/payroll-information.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Payroll Information</title>
+            <short-title>Payroll Information</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <portlet-name>BenefitInformation</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/benefit-information.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Benefit Information</title>
+            <short-title>Benefit Information</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <portlet-name>TimeAndAbsence</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/time-absence.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Time and Absence</title>
+            <short-title>Time and Absence</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <portlet-name>ContactInfo</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/contact-info.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Contact Information</title>
+            <short-title>Contact Information</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>businessEmailRoles</name>
+              <value>pags.uw-madison</value>
+              <value>pags.uw-sys-madison</value>
+            </preference>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <portlet-name>ManagerTimeApproval</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/manager-time-approval.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Manager Time and Approval</title>
+            <short-title>Manager Time and Approval</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <value>eduWisconsinHRSEmplID</value>
+              <value>eduWisconsinHRPersonID</value>
+              <value>wiscEduHRSEmplid</value>
+              <value>wisceduhrpersonid</value>
+              <value>legacywisceduhrpersonid</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+    
+    <user-attribute>
+        <name>eduWisconsinHRSEmplID</name>
+    </user-attribute>
+    <user-attribute>
+        <name>eduWisconsinHRPersonID</name>
+    </user-attribute>
+    <user-attribute>
+        <name>wiscEduHRSEmplid</name>
+    </user-attribute>
+    <user-attribute>
+        <name>wisceduhrpersonid</name>
+    </user-attribute>
+    <user-attribute>
+        <name>legacywisceduhrpersonid</name>
+    </user-attribute>
+    
+    <filter>
+        <filter-name>springSecurityPortletFilterChain</filter-name>
+        <filter-class>org.jasig.springframework.web.portlet.filter.DelegatingPortletFilterProxy</filter-class>
+        <lifecycle>ACTION_PHASE</lifecycle>
+        <lifecycle>EVENT_PHASE</lifecycle>
+        <lifecycle>RENDER_PHASE</lifecycle>
+        <lifecycle>RESOURCE_PHASE</lifecycle>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>springSecurityPortletFilterChain</filter-name>
+        <portlet-name>*</portlet-name>
+    </filter-mapping>
+</portlet-app>

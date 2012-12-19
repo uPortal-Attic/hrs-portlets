@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="edu.wisc.bnsemail.dao" />
+    
+    <context:property-override location="classpath:/bnsemail-override.properties" />
+    <context:property-placeholder location="classpath:/bnsemail-placeholder.properties" />
+
+    <tx:annotation-driven transaction-manager="emailUpdateTransactionManager"/>
+    
+    <bean id="updatePreferredEmailProcedure" class="edu.wisc.bnsemail.dao.UpdatePreferredEmailProcedure" >
+        <constructor-arg ref="emailUpdateDataSource" />
+    </bean>
+    
+    <bean id="namedParameterJdbcOperations" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <qualifier value="bnsemail" />
+        <constructor-arg ref="emailUpdateDataSource" />
+    </bean>
+
+    <bean id="emailUpdateTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <qualifier value="bnsemail" />
+        <property name="dataSource" ref="emailUpdateDataSource" />
+    </bean>
+
+    <bean id="emailUpdateDataSource" class="org.jasig.portlet.utils.jdbc.TomcatDataSourceFactory">
+        <qualifier value="bnsemail" />
+        
+        <property name="baseObjectName" value="HRSPortlets:section=DataSource,name=" />
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="75" />
+        <property name="maxIdle" value="50" />
+        <property name="maxWait" value="5000" /> <!-- 5 seconds -->
+        <property name="maxAge" value="3600000" /> <!-- 1 hour -->
+        <property name="minEvictableIdleTimeMillis" value="300000" /> <!-- 5 minutes -->
+        
+        <property name="abandonWhenPercentageFull" value="70" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="300" />
+        
+        <property name="jdbcInterceptors" value="ConnectionState(useEquals=true);ResetAbandonedTimer"/>
+        
+        <property name="validationQuery" value="SELECT 1 FROM DUAL" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="true" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
+
+        <property name="driverClassName" value="${emailUpdateJdbc.driverClassName}" />
+        <property name="url" value="${emailUpdateJdbc.url}" />
+        <property name="username" value="${emailUpdateJdbc.username}" />
+        <property name="password" value="${emailUpdateJdbc.password}" />
+    </bean>
+
+    <bean id="emailUpdateNotificationSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${emailUpdateNotificationSender.host}" />
+        <property name="port" value="${emailUpdateNotificationSender.port}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.connectiontimeout">10000</prop>
+                <prop key="mail.smtp.timeout">60000</prop>
+                <prop key="mail.smtp.sendpartial">true</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

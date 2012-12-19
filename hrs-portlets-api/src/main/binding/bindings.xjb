@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
+    jaxb:version="2.1"
+>
+
+    <jaxb:bindings>
+        <jaxb:globalBindings fixedAttributeAsConstantProperty="true" enableFailFastCheck="true">
+            <jaxb:javaType name="org.joda.time.DateTime" xmlType="xs:dateTime" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseDateTime" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printDateTime" />
+            <jaxb:javaType name="org.joda.time.DateMidnight" xmlType="xs:date" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseDate" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printDate" />
+            <jaxb:javaType name="org.joda.time.DateTime" xmlType="xs:time" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseTime" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printTime" />
+            <jaxb:serializable/>
+            <xjc:simple />
+        </jaxb:globalBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-misc-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-common-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.common" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-person-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.person" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:element[@name='PersonInformation']">
+            <jaxb:class/>
+            <inheritance:extends>edu.wisc.hr.dm.person.AbstractPersonInformation</inheritance:extends>
+        </jaxb:bindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-absbal-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.absbal" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-abshis-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.abshis" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-benstmt-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.benstmt" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-bnsemail-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.bnsemail" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-bnsumm-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.bnsumm" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-ernstmt-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.ernstmt" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-levstmt-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.levstmt" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-mssabs-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.mssabs" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-msstime-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.msstime" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-sabstmt-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.sabstmt" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-taxstmt-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.taxstmt" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs-portlet-tlpayable-1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hr.dm.tlpayable" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+  xmlns:p="http://www.springframework.org/schema/p"
+  default-autowire="byType" default-lazy-init="true"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="edu.wisc.cypress.dao" />
+    
+    <context:property-override location="classpath:/cypress-override.properties" />
+    <context:property-placeholder location="classpath:/cypress-placeholder.properties" />
+    
+    
+    <bean id="cypressJaxbContext" class="javax.xml.bind.JAXBContext" factory-method="newInstance">
+        <constructor-arg type="java.lang.String" value="edu.wisc.cypress.xdm.benstmt:edu.wisc.cypress.xdm.ernstmt:edu.wisc.cypress.xdm.levstmt:edu.wisc.cypress.xdm.taxstmt:edu.wisc.cypress.xdm.sabstmt"/>
+    </bean>
+
+    <bean id="cypressRestOperations" class="org.springframework.web.client.ExtendedRestTemplate">
+        <constructor-arg>
+            <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+                <constructor-arg ref="httpClient" />
+            </bean>
+        </constructor-arg>
+        <property name="messageConverters">
+            <bean class="edu.wisc.http.converter.xml.JaxbMarshallingHttpMessageConverter">
+                <constructor-arg ref="cypressJaxbContext" />
+                <property name="supportedMediaTypes">
+                    <!-- Needed because cypress can't be bothered to set correct content types for XML data -->
+                    <util:constant static-field="org.springframework.http.MediaType.ALL"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>

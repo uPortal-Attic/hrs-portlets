@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	   xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+            http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd"
+      default-autowire="byType">
+
+    <!-- 
+     | Defines message bundles (property files in the classpath) to use when resolving messages in views.
+     |
+     | http://static.springsource.org/spring/docs/3.1.x/reference/beans.html#context-functionality-messagesource
+     +-->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>										
+	</bean>
+    
+    <!-- 
+     | Resolves view names returned by MVC handlers to JSPs
+     |
+     | http://static.springsource.org/spring/docs/3.1.x/reference/view.html#view-jsp-resolver
+     +-->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="10"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    <bean id="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="order" value="0"/>
+    </bean>
+	
+    <!-- 
+     | Catches un-handled exceptions throw by the portlet to display a nicer error message. Specific exception types
+     | can be listed for more detailed error handling.
+     |
+     | http://static.springsource.org/spring/docs/3.1.x/reference/mvc.html#mvc-exceptionhandlers
+     +-->
+	<bean id="defaultPortletExceptionHandlerTemplate" class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver">
+        <property name="warnLogCategory" value="edu.wisc.web.portlet.handler.UnhandledException" />
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.security.AccessDeniedException">noEmplId</prop>
+            </props>
+        </property>
+		<property name="defaultErrorView" value="hrsUnavailable"/>
+	</bean>
+    
+    <bean id="resourcesElementsProvider" class="org.jasig.resourceserver.utils.aggr.ResourcesElementsProviderImpl">
+        <property name="resourcesDao" ref="resourcesDao" />
+    </bean>
+    
+    <bean id="resourcesDao" class="org.jasig.resourceserver.aggr.ResourcesDaoImpl" /> 
+    
+    <bean id="pageCachingFilter" class="org.jasig.resourceserver.utils.cache.ConfigurablePageCachingFilter">
+        <constructor-arg ref="cacheManager"/>
+        <property name="resourcesElementsProvider" ref="resourcesElementsProvider" />
+    </bean>
+    
+    <bean id="CacheExpiresFilter" class="org.jasig.resourceserver.utils.filter.PathBasedCacheExpirationFilter">
+        <property name="resourcesElementsProvider" ref="resourcesElementsProvider" />
+        <property name="cacheMaxAges">
+            <map value-type="long">
+                <entry key="/**/*.aggr.min.js" value="31536000"/>
+                <entry key="/**/*.aggr.min.css" value="31536000"/>
+                <entry key="/**/*.min.js" value="31536000"/>
+                <entry key="/**/*.min.css" value="31536000"/>
+            </map>
+        </property>
+    </bean>
+</beans>

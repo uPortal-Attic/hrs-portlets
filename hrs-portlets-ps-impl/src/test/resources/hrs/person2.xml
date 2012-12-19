@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<m65:Get__CompIntfc__UW_PORTAL1_PERSONResponse
+  xmlns:m65="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M599068.V1">
+  <m65:Email_Addr>NOTACTIVE@DONOTREPLY.COM</m65:Email_Addr>
+  <m65:Name>JANE SMITH</m65:Name>
+  <m65:Visa_Permit_Class />
+  <m65:Dept_Loc_Btn />
+  <m65:Uw_Rel_Home_Inf_Sw>Y</m65:Uw_Rel_Home_Inf_Sw>
+  <m65:Dept_Descr>WSH/DEANS OFFICE</m65:Dept_Descr>
+  <m65:Uw_Working_Title>CAMPUS DEAN/UWC</m65:Uw_Working_Title>
+  <m65:Emplid>12345678</m65:Emplid>
+  <m65:Uw_Address4_Vw>
+    <m65:Address_Type>BUSN</m65:Address_Type>
+    <m65:Country>USA</m65:Country>
+    <m65:Address1>100 S CAMP DR</m65:Address1>
+    <m65:Address2 />
+    <m65:Address3 />
+    <m65:Address4 />
+    <m65:City>WEST BEND</m65:City>
+    <m65:County>WASHINGTON</m65:County>
+    <m65:State>WI</m65:State>
+    <m65:Postal>53095-3619</m65:Postal>
+    <m65:Location>A2314</m65:Location>
+    <m65:Uw_Room_Nbr />
+    <m65:Uw_Mail_Drop_Id />
+  </m65:Uw_Address4_Vw>
+  <m65:Uw_Address4_Vw>
+    <m65:Address_Type>HOME</m65:Address_Type>
+    <m65:Country>USA</m65:Country>
+    <m65:Address1>12 N 412TH AVE</m65:Address1>
+    <m65:Address2 />
+    <m65:Address3 />
+    <m65:Address4 />
+    <m65:City>JAMESTOWN</m65:City>
+    <m65:County>WASHINGTON</m65:County>
+    <m65:State>WI</m65:State>
+    <m65:Postal>98765-4321</m65:Postal>
+    <m65:Location />
+    <m65:Uw_Room_Nbr />
+    <m65:Uw_Mail_Drop_Id />
+  </m65:Uw_Address4_Vw>
+  <m65:Uw_Hr_Phone_Vw>
+    <m65:Phone_Type>BUSN</m65:Phone_Type>
+    <m65:Phone>555/555-5555</m65:Phone>
+    <m65:Extension />
+    <m65:Pref_Phone_Flag>Y</m65:Pref_Phone_Flag>
+  </m65:Uw_Hr_Phone_Vw>
+  <m65:Uw_Hr_Phone_Vw>
+    <m65:Phone_Type>HOME</m65:Phone_Type>
+    <m65:Phone>555/555-5555</m65:Phone>
+    <m65:Extension />
+    <m65:Pref_Phone_Flag>N</m65:Pref_Phone_Flag>
+  </m65:Uw_Hr_Phone_Vw>
+  <m65:Uw_Hr_SecDpt_Vw>
+    <m65:Empl_Rcd>0</m65:Empl_Rcd>
+    <m65:Deptid>R123456</m65:Deptid>
+    <m65:Descr>GEOGRAPHY</m65:Descr>
+    <m65:Uw_Working_Title_1>ASSOCIATE PROFESSOR</m65:Uw_Working_Title_1>
+  </m65:Uw_Hr_SecDpt_Vw>
+  <m65:Uw_Hr_SecDpt_Vw>
+    <m65:Empl_Rcd>1</m65:Empl_Rcd>
+    <m65:Deptid>R654321</m65:Deptid>
+    <m65:Descr>WSH/DEANS OFFICE</m65:Descr>
+    <m65:Uw_Working_Title_1>CAMPUS DEAN/UWC</m65:Uw_Working_Title_1>
+  </m65:Uw_Hr_SecDpt_Vw>
+</m65:Get__CompIntfc__UW_PORTAL1_PERSONResponse>

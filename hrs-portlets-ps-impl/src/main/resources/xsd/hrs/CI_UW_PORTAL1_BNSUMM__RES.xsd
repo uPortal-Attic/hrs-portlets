@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M784834.V1" xmlns="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M784834.V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:element name="Get__CompIntfc__UW_PORTAL1_BNSUMMResponse" type="Get__CompIntfc__UW_PORTAL1_BNSUMMResponseTypeShape"/><xsd:complexType name="Get__CompIntfc__UW_PORTAL1_BNSUMMResponseTypeShape"><xsd:sequence><xsd:element name="Emplid" type="EmplidTypeShape"/><xsd:element minOccurs="0" name="Flag" type="FlagTypeShape"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Uw_Bn_BnSmry_Vw" type="Uw_Bn_BnSmry_VwTypeShape"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Uw_Bn_Dpndnt_Vw" type="Uw_Bn_Dpndnt_VwTypeShape"/></xsd:sequence></xsd:complexType><xsd:complexType name="EmplidTypeShape"><xsd:simpleContent><xsd:extension base="EmplidTypeDef"/></xsd:simpleContent></xsd:complexType><xsd:complexType name="FlagTypeShape"><xsd:simpleContent><xsd:extension base="FlagTypeDef"/></xsd:simpleContent></xsd:complexType><xsd:complexType name="Uw_Bn_BnSmry_VwTypeShape"><xsd:sequence><xsd:element minOccurs="0" name="XlatLongName" type="XlatLongNameTypeShape"/><xsd:element minOccurs="0" name="Descr3" type="Descr3TypeShape"/></xsd:sequence></xsd:complexType><xsd:complexType name="XlatLongNameTypeShape"><xsd:simpleContent><xsd:extension base="XlatLongNameTypeDef"/></xsd:simpleContent></xsd:complexType><xsd:complexType name="Descr3TypeShape"><xsd:simpleContent><xsd:extension base="Descr3TypeDef"/></xsd:simpleContent></xsd:complexType><xsd:complexType name="Uw_Bn_Dpndnt_VwTypeShape"><xsd:sequence><xsd:element minOccurs="0" name="Name" type="NameTypeShape"/><xsd:element minOccurs="0" name="XlatLongName_1" type="XlatLongName_1TypeShape"/></xsd:sequence></xsd:complexType><xsd:complexType name="NameTypeShape"><xsd:simpleContent><xsd:extension base="NameTypeDef"/></xsd:simpleContent></xsd:complexType><xsd:complexType name="XlatLongName_1TypeShape"><xsd:simpleContent><xsd:extension base="XlatLongName_1TypeDef"/></xsd:simpleContent></xsd:complexType><xsd:simpleType name="EmplidTypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="11"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="FlagTypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="1"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="XlatLongNameTypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="30"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="Descr3TypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="30"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NameTypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="50"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="XlatLongName_1TypeDef"><xsd:restriction base="xsd:string"><xsd:maxLength value="30"/><xsd:whiteSpace value="preserve"/></xsd:restriction></xsd:simpleType></xsd:schema>

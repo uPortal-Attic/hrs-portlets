@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" default-autowire="byType"
+    xmlns:sec="http://www.springframework.org/schema/security" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config />
+    
+    <!-- | Reads in properties files to provide setting of property placeholders in the application context + -->
+    <context:property-override location="classpath:/override.properties" />
+    <context:property-placeholder location="classpath:/placeholder.properties" />
+
+    <!-- 
+     | Default set of interceptors used by all portlets
+     +-->
+    <util:list id="defaultPortletInterceptors">
+        <bean class="edu.wisc.web.portlet.handler.MinimizedStateHandlerInterceptor"/>
+    </util:list>    
+    
+    <util:set id="ignoredProxyHeaders">
+        <value>Server</value>
+        <value>Set-Cookie</value>
+    </util:set>
+
+
+    <!-- ==================== CACHE CONFIGURATION ========================= -->
+    <!--
+     | EhCache is used for data caching, a cache manager instance and a spring-modules 
+     | cache provider instance are created below
+     + -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="cacheManagerName" value="HRSPortlets" />
+    </bean>
+
+    <!-- 
+     | Enable the @Cacheable and @TriggersRemove annotations 
+     | 
+     | See: http://code.google.com/p/ehcache-spring-annotations 
+     | 
+     | Evict expired elements from the caches every 5 minutes. This should have no runtime effect but does help 
+     | keep memory usage down on the server
+     + -->
+    <ehcache:annotation-driven default-cache-key-generator="cacheKeyGenerator" />
+    <ehcache:config>
+        <ehcache:evict-expired-elements interval="5" />
+    </ehcache:config>
+
+    <bean name="cacheKeyGenerator" class="com.googlecode.ehcache.annotations.key.ListCacheKeyGenerator">
+        <property name="includeMethod" value="false" />
+        <property name="includeParameterTypes" value="false" />
+    </bean>
+</beans>

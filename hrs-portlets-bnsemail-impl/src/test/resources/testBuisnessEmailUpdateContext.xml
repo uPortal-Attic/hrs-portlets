@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd"
+      default-autowire="byType" default-lazy-init="true">
+
+	<!--
+     | Enable annotation based configuration for this application. All classes with edu.wisc.portlet.isis as the base
+     | part of their package are scanned for annotations.
+     |
+     | http://static.springsource.org/spring/docs/2.5.x/reference/beans.html#beans-annotation-config
+     +-->
+	<context:annotation-config/>
+
+    <!--
+     | Reads in properties files to provide setting of property placeholders in the application context
+     +-->
+    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+        <property name="ignoreInvalidKeys" value="true" />
+        <property name="location" value="classpath:/override.properties" />
+    </bean>
+    <context:property-placeholder location="classpath:/placeholder.properties"/>
+    
+    <bean id="jdbcBusinessEmailUpdateDao" class="edu.wisc.bnsemail.dao.JdbcBusinessEmailUpdateDao">
+    </bean>
+    
+    
+    <!-- 
+     | Setup db connection pool for updating buisness email address
+     +-->
+    <bean id="emailUpdateDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="initialSize" value="1" />
+        <property name="maxActive" value="50" />
+        <property name="maxIdle" value="50" />
+        <property name="minIdle" value="1" />
+        <property name="maxWait" value="1000" />
+
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="numTestsPerEvictionRun" value="10" />
+        <property name="minEvictableIdleTimeMillis" value="150000" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
+        
+        <property name="driverClassName" value="${emailUpdateJdbc.driverClassName}" />
+        <property name="url" value="${emailUpdateJdbc.url}" />
+        <property name="username" value="${emailUpdateJdbc.username}" />
+        <property name="password" value="${emailUpdateJdbc.password}" />
+    </bean>
+</beans>

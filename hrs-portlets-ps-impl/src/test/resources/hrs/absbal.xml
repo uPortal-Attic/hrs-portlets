@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<m36:Get__CompIntfc__UW_PORTAL1_ABSBALResponse
+    xmlns:m36="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M969074.V1">
+    <m36:Emplid>12345678</m36:Emplid>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Furlough</m36:Descr>
+        <m36:Acm_From_Dt>2012-07-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2013-06-30</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>7.38456</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Legal Holiday</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>24</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Leg. Hol. Allocated</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>56</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Personal Holiday</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>36</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Sabbatical</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>0</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Sick Leave</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>490.075</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Sick Lv Threshold</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>470.075</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Vacation Carryover</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>0</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Vacation</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>10.330592</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Vacation Allocation</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>47.75</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Classified Furlough Allocated</m36:Descr>
+        <m36:Acm_From_Dt>2012-07-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2013-06-30</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>24.5</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+    <m36:Uw_Gp_AbsBal_Vw>
+        <m36:Empl_Rcd>0</m36:Empl_Rcd>
+        <m36:Descr>Comp Time Carryover</m36:Descr>
+        <m36:Acm_From_Dt>2012-01-01</m36:Acm_From_Dt>
+        <m36:Acm_Thru_Dt>2012-12-31</m36:Acm_Thru_Dt>
+        <m36:XlatLongName>Year to Date</m36:XlatLongName>
+        <m36:Calc_Rslt_Val>23</m36:Calc_Rslt_Val>
+        <m36:Unit_Type>H</m36:Unit_Type>
+    </m36:Uw_Gp_AbsBal_Vw>
+</m36:Get__CompIntfc__UW_PORTAL1_ABSBALResponse>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<m69:Get__CompIntfc__UW_PORTAL1_BNSUMMResponse
+    xmlns:m69="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M784834.V1">
+    <m69:Emplid>12345678</m69:Emplid>
+    <m69:Flag>Z</m69:Flag>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>State Group Health</m69:XlatLongName>
+        <m69:Descr3>Family</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Anthem DentalBlue Dental</m69:XlatLongName>
+        <m69:Descr3>Employee + 1</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>EPIC Benefits+</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Dental Wisconsin</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>VSP Vision Insurance</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Imputed Income</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Union Dental</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>State Group Life - Basic</m69:XlatLongName>
+        <m69:Descr3>Elect</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>State Group Life-Supplemental</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>State Group Life - Additional</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>State Group Life - Sp/DP &amp; Dep</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Ind &amp; Fam Life - Employee</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Ind &amp; Fam Life - Spouse/DP</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Ind &amp; Fam Life - Child(ren)</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>UW Employees Inc Life</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>AD&amp;D</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Income Continuation Insurance</m69:XlatLongName>
+        <m69:Descr3>Elect</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>ERA Medical</m69:XlatLongName>
+        <m69:Descr3>Waive</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_BnSmry_Vw>
+        <m69:XlatLongName>Wisconsin Retirement System</m69:XlatLongName>
+        <m69:Descr3>Elect</m69:Descr3>
+    </m69:Uw_Bn_BnSmry_Vw>
+    <m69:Uw_Bn_Dpndnt_Vw>
+        <m69:Name>DOE, JANE</m69:Name>
+        <m69:XlatLongName_1>Spouse</m69:XlatLongName_1>
+    </m69:Uw_Bn_Dpndnt_Vw>
+    <m69:Uw_Bn_Dpndnt_Vw>
+        <m69:Name>DOE, JIMMY</m69:Name>
+        <m69:XlatLongName_1>Child Tax Dependent</m69:XlatLongName_1>
+    </m69:Uw_Bn_Dpndnt_Vw>
+</m69:Get__CompIntfc__UW_PORTAL1_BNSUMMResponse>

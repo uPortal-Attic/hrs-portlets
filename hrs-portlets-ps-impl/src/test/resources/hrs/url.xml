@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<m90:Get__CompIntfc__UW_PORTAL1_URLResponse
+    xmlns:m90="http://devreports.hrtest.ps.wisconsin.edu:7022/Enterprise/Tools/schemas/M875260.V1">
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.GP_ABS_EESS_REQ.GBL</m90:Url>
+        <m90:Descr>Request Absence</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MSS_EE_SRCH_PRD.GBL</m90:Url>
+        <m90:Descr>Timesheet</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_SS_JOB_SRCH_CLK.GBL</m90:Url>
+        <m90:Descr>Web Clock</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MNG_PAY_VIEW_DT.GBL</m90:Url>
+        <m90:Descr>Payable time detail</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MNG_EX_PNL_GRP3.GBL</m90:Url>
+        <m90:Descr>Time Exceptions</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/s/WEBLIB_PTPP_SC.HOMEPAGE.FieldFormula.IScript_AppHP?pt_fname=HC_TIME_MANAGEMENT</m90:Url>
+        <m90:Descr>Time Management</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psp/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_MANAGER.GP_SS_ABS_APPR_L.GBL</m90:Url>
+        <m90:Descr>Approve Absence</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psp/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_MANAGER.TL_SRCH_APPRV_GRP.GBL</m90:Url>
+        <m90:Descr>Approve Payable time</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_PERS_DTA_SMRY.GBL</m90:Url>
+        <m90:Descr>Dependent Information</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_DEPBEN_SUM.GBL</m90:Url>
+        <m90:Descr>Dependent Coverage</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_GRID.GBL</m90:Url>
+        <m90:Descr>Benefits Summary</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_SAV_PICK.GBL</m90:Url>
+        <m90:Descr>Update TSA Deductions</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.HR_EE_PERS_INFO.GBL</m90:Url>
+        <m90:Descr>Personal Information</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL</m90:Url>
+        <m90:Descr>Open Enrollment/Hire Event</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+</m90:Get__CompIntfc__UW_PORTAL1_URLResponse>

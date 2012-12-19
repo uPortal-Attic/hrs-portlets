@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
+    jaxb:version="2.1"
+>
+
+    <jaxb:bindings>
+        <jaxb:globalBindings fixedAttributeAsConstantProperty="true" enableFailFastCheck="true">
+            <jaxb:javaType name="org.joda.time.DateTime" xmlType="xs:dateTime" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseDateTime" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printDateTime" />
+            <jaxb:javaType name="org.joda.time.DateMidnight" xmlType="xs:date" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseDate" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printDate" />
+            <jaxb:javaType name="org.joda.time.DateTime" xmlType="xs:time" parseMethod="edu.wisc.jaxb.util.JodaTypeConverter.parseTime" printMethod="edu.wisc.jaxb.util.JodaTypeConverter.printTime" />
+            <jaxb:serializable/>
+            <xjc:simple />
+        </jaxb:globalBindings>
+    </jaxb:bindings>
+
+
+    <!-- CI_UW_PORTAL1_ABSBAL.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSBAL__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.absbal.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSBAL__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.absbal.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSBAL__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.absbal.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_ABSHIS.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSHIS__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.abshis.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSHIS__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.abshis.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ABSHIS__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.abshis.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_BNSUMM.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_BNSUMM__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.bnsumm.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_BNSUMM__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.bnsumm.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_BNSUMM__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.bnsumm.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_MSSABS.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSABS__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.mssabs.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSABS__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.mssabs.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSABS__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.mssabs.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_MSSTIME.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSTIME__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.msstime.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSTIME__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.msstime.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_MSSTIME__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.msstime.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_PERSON.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_PERSON__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.person.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_PERSON__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.person.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_PERSON__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.person.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+    <!-- CI_UW_ROLES_GET.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ROLES__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.roles.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ROLES__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.roles.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_ROLES__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.roles.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_TLPAYABL.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.tlpaybl.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.tlpaybl.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.tlpaybl.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- CI_UW_PORTAL1_URL.1.wsdl -->
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_URL__REQ.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.url.req" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_URL__RES.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.url.res" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/hrs/CI_UW_PORTAL1_URL__ERR.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.hrs.xdm.url.fault" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

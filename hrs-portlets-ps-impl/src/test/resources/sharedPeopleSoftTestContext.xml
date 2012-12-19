@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to Jasig under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Jasig licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License. You may obtain a
+    copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+    default-autowire="byType" default-lazy-init="true" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    
+	<!--
+     | Enable annotation based configuration for this application. All classes with edu.wisc.portlet.isis as the base
+     | part of their package are scanned for annotations.
+     +-->
+	<context:annotation-config/>
+
+    <!--
+     | Reads in properties files to provide setting of property placeholders in the application context
+     +-->
+    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+        <property name="ignoreInvalidKeys" value="true" />
+        <property name="location" value="classpath:/ps-override.properties" />
+    </bean>
+    
+    <bean id="soapAbsenceBalanceDao" class="edu.wisc.hrs.dao.absbal.SoapAbsenceBalanceDao" />
+    <bean id="soapAbsenceHistoryDao" class="edu.wisc.hrs.dao.abshis.SoapAbsenceHistoryDao" />
+    <bean id="soapBenefitSummaryDao" class="edu.wisc.hrs.dao.bnsumm.SoapBenefitSummaryDao" />
+    <bean id="soapManagerAbsenceDao" class="edu.wisc.hrs.dao.mssabs.SoapManagerAbsenceDao" />
+    <bean id="soapManagerTimeDao" class="edu.wisc.hrs.dao.msstime.SoapManagerTimeDao" />
+    <bean id="soapContactInfoDao" class="edu.wisc.hrs.dao.person.SoapContactInfoDao" />
+    <bean id="soapHrsRolesDao" class="edu.wisc.hrs.dao.roles.SoapHrsRolesDao">
+        <property name="hrsRoleMappings">
+            <map>
+                <entry key="UW_UNV_AM_EMPLOYEE"             value="ROLE_VIEW_ABSENCE_HISTORIES" />
+                <entry key="UW_UNV_TL_WEB_CLOCK"            value="ROLE_VIEW_WEB_CLOCK" />
+                <entry key="UW_UNV_TL_EMPLOYEE_TIMECLOCK"   value="ROLE_VIEW_TIME_CLOCK" />
+                <entry key="UW_UNV_TL_EMPLOYEE_TIMESHEET"   value="ROLE_VIEW_TIME_SHEET" />
+                <entry key="UW_UNV_TL Supervisor">
+                    <set>
+                        <value>ROLE_VIEW_MANAGED_ABSENCES</value>
+                        <value>ROLE_VIEW_MANAGED_TIMES</value>
+                    </set>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="soapTimeLeavePayableDao" class="edu.wisc.hrs.dao.tlpayable.SoapTimeLeavePayableDao" />
+    <bean id="soapHrsUrlDao" class="edu.wisc.hrs.dao.url.SoapHrsUrlDao" />
+    
+    
+    <bean id="absenceBalanceDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="absenceBalanceWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="absenceBalanceDestinationProvider" />
+    </bean>
+    
+    <bean id="absenceHistoryDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="absenceHistoryWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="absenceHistoryDestinationProvider" />
+    </bean>
+    
+    <bean id="personDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="personWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="personDestinationProvider" />
+    </bean>
+    
+    <bean id="benefitSummaryDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="benefitSummaryWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="benefitSummaryDestinationProvider" />
+    </bean>
+    
+    <bean id="managerAbsenceDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="managerAbsenceWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="managerAbsenceDestinationProvider" />
+    </bean>
+    
+    <bean id="managerTimeDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="managerTimeWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="managerTimeDestinationProvider" />
+    </bean>
+    
+    <bean id="rolesDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="rolesWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="rolesDestinationProvider" />
+    </bean>
+    
+    <bean id="timeLeavePayableDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="timeLeavePayableWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="timeLeavePayableDestinationProvider" />
+    </bean>
+    
+    <bean id="urlDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="urlWebServiceTemplate" parent="baseHrsWebServiceTemplate">
+        <property name="destinationProvider" ref="urlDestinationProvider" />
+    </bean>
+
+    
+    <bean id="baseHrsWebServiceTemplate" class="edu.wisc.ws.client.support.DestinationOverridingWebServiceTemplate" abstract="true">
+        <property name="marshaller" ref="hrsMarshaller" />
+        <property name="unmarshaller" ref="hrsMarshaller" />
+        <property name="interceptors" ref="hrsWss4jSecurityInterceptor" />
+        <property name="messageSender" ref="hrsWebServiceMessageSender" />
+        <property name="checkConnectionForFault" value="false" />
+    </bean>
+    <bean id="hrsMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="schemas">
+            <list>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSBAL__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSBAL__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSBAL__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSHIS__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSHIS__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ABSHIS__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_BNSUMM__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_BNSUMM__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_BNSUMM__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSABS__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSABS__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSABS__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSTIME__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSTIME__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_MSSTIME__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_PERSON__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_PERSON__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_PERSON__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ROLES__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ROLES__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_ROLES__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_TLPAYBL__RES.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_URL__ERR.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_URL__REQ.xsd</value>
+                <value>classpath:/xsd/hrs/CI_UW_PORTAL1_URL__RES.xsd</value>
+            </list>
+        </property>
+        <property name="contextPaths">
+            <list>
+                <value>edu.wisc.hrs.xdm.absbal.fault</value>
+                <value>edu.wisc.hrs.xdm.absbal.req</value>
+                <value>edu.wisc.hrs.xdm.absbal.res</value>
+                <value>edu.wisc.hrs.xdm.abshis.fault</value>
+                <value>edu.wisc.hrs.xdm.abshis.req</value>
+                <value>edu.wisc.hrs.xdm.abshis.res</value>
+                <value>edu.wisc.hrs.xdm.bnsumm.fault</value>
+                <value>edu.wisc.hrs.xdm.bnsumm.req</value>
+                <value>edu.wisc.hrs.xdm.bnsumm.res</value>
+                <value>edu.wisc.hrs.xdm.mssabs.fault</value>
+                <value>edu.wisc.hrs.xdm.mssabs.req</value>
+                <value>edu.wisc.hrs.xdm.mssabs.res</value>
+                <value>edu.wisc.hrs.xdm.msstime.fault</value>
+                <value>edu.wisc.hrs.xdm.msstime.req</value>
+                <value>edu.wisc.hrs.xdm.msstime.res</value>
+                <value>edu.wisc.hrs.xdm.person.fault</value>
+                <value>edu.wisc.hrs.xdm.person.req</value>
+                <value>edu.wisc.hrs.xdm.person.res</value>
+                <value>edu.wisc.hrs.xdm.roles.fault</value>
+                <value>edu.wisc.hrs.xdm.roles.req</value>
+                <value>edu.wisc.hrs.xdm.roles.res</value>
+                <value>edu.wisc.hrs.xdm.tlpaybl.fault</value>
+                <value>edu.wisc.hrs.xdm.tlpaybl.req</value>
+                <value>edu.wisc.hrs.xdm.tlpaybl.res</value>
+                <value>edu.wisc.hrs.xdm.url.fault</value>
+                <value>edu.wisc.hrs.xdm.url.req</value>
+                <value>edu.wisc.hrs.xdm.url.res</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="hrsWss4jSecurityInterceptor" class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+        <property name="secureRequest" value="true" />
+        <property name="secureResponse" value="false" />
+        <property name="validateRequest" value="false" />
+        <property name="validateResponse" value="false" />
+        <property name="securementActions" value="UsernameToken" />
+        <property name="securementPasswordType" value="PasswordText" />
+    </bean>
+</beans>
