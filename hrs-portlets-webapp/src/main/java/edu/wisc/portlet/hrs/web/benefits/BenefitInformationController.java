@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.wisc.hr.dao.bnsumm.BenefitSummaryDao;
 import edu.wisc.hr.dm.bnsumm.BenefitSummary;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -47,7 +47,7 @@ public class BenefitInformationController extends HrsControllerBase {
 
     @RequestMapping
     public String viewContactInfo(ModelMap model, PortletRequest request) {
-        final String emplId = EmplIdUtils.getEmplId();
+        final String emplId = PrimaryAttributeUtils.getPrimaryId();
 
         final BenefitSummary benefitSummary = this.benefitSummaryDao.getBenefitSummary(emplId);
         model.addAttribute("enrollmentFlag", benefitSummary.getEnrollmentFlag());

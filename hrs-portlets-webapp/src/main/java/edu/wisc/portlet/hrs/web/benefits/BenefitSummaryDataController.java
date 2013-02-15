@@ -27,7 +27,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.bnsumm.BenefitSummaryDao;
 import edu.wisc.hr.dm.bnsumm.BenefitSummary;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -46,7 +46,7 @@ public class BenefitSummaryDataController {
     
     @ResourceMapping("benefitSummary")
     public String getBenefitSummary(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         
         final BenefitSummary benefitSummary = this.benefitSummaryDao.getBenefitSummary(emplid);
         modelMap.addAttribute("benefits", benefitSummary.getBenefits());

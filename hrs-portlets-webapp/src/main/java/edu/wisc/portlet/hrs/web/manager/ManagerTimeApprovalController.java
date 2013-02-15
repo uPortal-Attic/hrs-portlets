@@ -29,7 +29,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.wisc.hr.dao.roles.HrsRolesDao;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -48,7 +48,7 @@ public class ManagerTimeApprovalController extends HrsControllerBase {
 
     @RequestMapping
     public String viewContactInfo(ModelMap model, PortletRequest request) {
-        final String emplId = EmplIdUtils.getEmplId();
+        final String emplId = PrimaryAttributeUtils.getPrimaryId();
         
         final Set<String> hrsRoles = this.hrsRolesDao.getHrsRoles(emplId);
         model.addAttribute("hrsRoles", hrsRoles);

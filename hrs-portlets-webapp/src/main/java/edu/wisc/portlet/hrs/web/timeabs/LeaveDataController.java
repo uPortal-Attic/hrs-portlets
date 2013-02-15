@@ -36,7 +36,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.levstmt.LeaveStatementDao;
 import edu.wisc.hr.dao.levstmt.StatementType;
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -61,7 +61,7 @@ public class LeaveDataController {
     
     @ResourceMapping("leaveStatements")
     public String getLeaveStatements(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final Collection<SummarizedLeaveStatement> leaveStatements = this.leaveStatementDao.getLeaveStatements(emplid);
         
@@ -75,7 +75,7 @@ public class LeaveDataController {
             @RequestParam("docId") String docId,
             ResourceResponse response) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.LEAVE, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
     
@@ -84,7 +84,7 @@ public class LeaveDataController {
             @RequestParam("docId") String docId,
             ResourceResponse response) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.REPORT, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
     
@@ -93,7 +93,7 @@ public class LeaveDataController {
             @RequestParam("docId") String docId,
             ResourceResponse response) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.MISSING, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

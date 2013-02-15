@@ -36,7 +36,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.taxstmt.TaxStatementDao;
 import edu.wisc.hr.dm.taxstmt.TaxStatement;
 import edu.wisc.hr.dm.taxstmt.TaxStatements;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -61,7 +61,7 @@ public class TaxStatementDataController {
 
     @ResourceMapping("taxStatements")
     public String getTaxStatements(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         final TaxStatements taxStatements = this.taxStatementDao.getTaxStatements(emplid);
         
         final List<TaxStatement> statements = taxStatements.getTaxStatements();
@@ -75,7 +75,7 @@ public class TaxStatementDataController {
             @RequestParam("docId") String docId, 
             ResourceResponse response) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.taxStatementDao.getTaxStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

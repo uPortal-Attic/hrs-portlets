@@ -30,7 +30,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.abshis.AbsenceHistoryDao;
 import edu.wisc.hr.dm.abshis.AbsenceHistory;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -50,7 +50,7 @@ private AbsenceHistoryDao absenceHistoryDao;
     @Secured("ROLE_VIEW_ABSENCE_HISTORIES")
     @ResourceMapping("absenceHistories")
     public String getAbsenceHistories(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final List<AbsenceHistory> absenceHistories = this.absenceHistoryDao.getAbsenceHistory(emplid);
 

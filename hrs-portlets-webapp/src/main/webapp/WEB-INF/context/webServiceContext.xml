@@ -40,26 +40,22 @@
     <bean id="httpConnectionManager" class="edu.wisc.commons.httpclient.CleanShutdownPoolingClientConnectionManager" destroy-method="shutdown">
         <!-- Note this big SchemeRegistry block is just for testing to ignore certificate and hostname errors -->
         <constructor-arg>
-            <bean class="org.apache.http.conn.scheme.SchemeRegistry">
-                <property name="items">
-                    <map>
-                        <entry key="https">
-                            <bean class="org.apache.http.conn.scheme.Scheme">
-                                <constructor-arg value="https" />
-                                <constructor-arg value="443" />
+            <bean class="edu.wisc.commons.httpclient.SchemeRegistryFactoryBean">
+                <property name="schemes">
+                    <bean class="org.apache.http.conn.scheme.Scheme">
+                        <constructor-arg value="https" />
+                        <constructor-arg value="443" />
+                        <constructor-arg>
+                            <bean class="org.apache.http.conn.ssl.SSLSocketFactory">
                                 <constructor-arg>
-                                    <bean class="org.apache.http.conn.ssl.SSLSocketFactory">
-                                        <constructor-arg>
-                                            <bean class="edu.wisc.cypress.dm.TrustAllStrategy" />
-                                        </constructor-arg>
-                                        <constructor-arg>
-                                            <bean class="org.apache.http.conn.ssl.AllowAllHostnameVerifier" />
-                                        </constructor-arg>
-                                    </bean>
+                                    <bean class="edu.wisc.commons.httpclient.TrustAllStrategy" />
+                                </constructor-arg>
+                                <constructor-arg>
+                                    <bean class="org.apache.http.conn.ssl.AllowAllHostnameVerifier" />
                                 </constructor-arg>
                             </bean>
-                        </entry>
-                    </map>
+                        </constructor-arg>
+                    </bean>
                 </property>
             </bean>
         </constructor-arg>

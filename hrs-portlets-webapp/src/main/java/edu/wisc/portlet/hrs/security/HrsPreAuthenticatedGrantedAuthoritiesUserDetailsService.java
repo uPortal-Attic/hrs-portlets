@@ -30,6 +30,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService;
 
 import edu.wisc.hr.dao.roles.HrsRolesDao;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributePortletAuthenticationDetails;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource;
 
 /**
  * Uses the primary attribute retrieved by {@link PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource}

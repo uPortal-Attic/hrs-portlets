@@ -36,7 +36,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.ernstmt.EarningStatementDao;
 import edu.wisc.hr.dm.ernstmt.EarningStatement;
 import edu.wisc.hr.dm.ernstmt.EarningStatements;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -61,7 +61,7 @@ public class EarningStatementDataController {
 
     @ResourceMapping("earningStatements")
     public String getEarningStatements(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         final EarningStatements earningStatements = this.earningStatementDao.getEarningStatements(emplid);
         
         final List<EarningStatement> statements = earningStatements.getEarningStatements();
@@ -76,7 +76,7 @@ public class EarningStatementDataController {
             @RequestParam("docId") String docId, 
             ResourceResponse response) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.earningStatementDao.getEarningStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

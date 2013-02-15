@@ -49,7 +49,7 @@
                         <bean class="org.jasig.springframework.security.portlet.authentication.PortletAuthenticationProcessingFilter">
                             <property name="authenticationDetailsSource">
                                 <!-- Configurable - will be rare to change though as it implies something other than getRemoteUser is used to determine auth -->
-                                <bean class="edu.wisc.portlet.hrs.security.PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource">
+                                <bean class="edu.wisc.web.security.portlet.primaryattr.PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource">
                                     <property name="primaryUserAttributesPreference" value="emplidUserAttributes" />
                                     <property name="mappableRolesRetriever">
                                         <!-- Configurable - gets list of roles to check request.isUserInRole for. Default is to parse from portlet.xml -->

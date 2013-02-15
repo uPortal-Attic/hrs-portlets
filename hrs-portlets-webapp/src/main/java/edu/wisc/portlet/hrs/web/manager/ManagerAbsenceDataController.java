@@ -31,7 +31,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.mssabs.ManagerAbsenceDao;
 import edu.wisc.hr.dm.mssabs.ManagedAbsence;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class ManagerAbsenceDataController {
     @Secured("ROLE_VIEW_MANAGED_ABSENCES")
     @ResourceMapping("managedAbsences")
     public String getManagedAbsences(@RequestParam(value="refresh", required=false) Boolean refresh, ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         if (refresh != null && refresh) {
             this.managerAbsenceDao.refreshManagedAbsences(emplid);

@@ -36,7 +36,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.benstmt.BenefitStatementDao;
 import edu.wisc.hr.dm.benstmt.BenefitStatement;
 import edu.wisc.hr.dm.benstmt.BenefitStatements;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -61,7 +61,7 @@ public class BenefitStatementDataController {
     
     @ResourceMapping("benefitStatements")
     public String getBenefitStatements(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         final BenefitStatements benefitStatements = this.benefitStatementDao.getBenefitStatements(emplid);
 
         final List<BenefitStatement> statements = benefitStatements.getBenefitStatements();
@@ -77,7 +77,7 @@ public class BenefitStatementDataController {
             @RequestParam("year") int year,
             ResourceResponse response) {
 
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.benefitStatementDao.getBenefitStatement(emplid, year, docId, mode, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

@@ -30,7 +30,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.tlpayable.TimeSheetDao;
 import edu.wisc.hr.dm.tlpayable.TimeSheet;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class TimeSheetDataController {
     @Secured({"ROLE_VIEW_WEB_CLOCK", "ROLE_VIEW_TIME_CLOCK", "ROLE_VIEW_TIME_SHEET"})
     @ResourceMapping("timeSheets")
     public String getTimeSheets(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final List<TimeSheet> timeSheets = this.timeSheetDao.getTimeSheets(emplid);
 

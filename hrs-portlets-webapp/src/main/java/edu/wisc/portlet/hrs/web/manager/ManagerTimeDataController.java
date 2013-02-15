@@ -31,7 +31,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.msstime.ManagerTimeDao;
 import edu.wisc.hr.dm.msstime.ManagedTime;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class ManagerTimeDataController {
     @Secured("ROLE_VIEW_MANAGED_TIMES")
     @ResourceMapping("managedTimes")
     public String getManagedTimes(@RequestParam(value="refresh", required=false) Boolean refresh, ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         
         if (refresh != null && refresh) {
             this.managerTimeDao.refreshManagedTimes(emplid);

@@ -29,7 +29,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.absbal.AbsenceBalanceDao;
 import edu.wisc.hr.dm.absbal.AbsenceBalance;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -48,7 +48,7 @@ public class AbsenceBalanceDataController {
 
     @ResourceMapping("absenceBalances")
     public String getAbsenceBalances(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final List<AbsenceBalance> absenceBalances = this.absenceBalanceDao.getAbsenceBalance(emplid);
 

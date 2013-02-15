@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.wisc.hr.dao.person.ContactInfoDao;
 import edu.wisc.hr.dm.person.PersonInformation;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -48,7 +48,7 @@ public class TimeAbsenceController extends HrsControllerBase {
     
     @RequestMapping
     public String viewContactInfo(ModelMap model, PortletRequest request) {
-        final String emplId = EmplIdUtils.getEmplId();
+        final String emplId = PrimaryAttributeUtils.getPrimaryId();
         
         final PersonInformation personalData = this.contactInfoDao.getPersonalData(emplId);
         model.addAttribute("personalData", personalData);

@@ -40,7 +40,7 @@ import edu.wisc.hr.dao.bnsemail.BusinessEmailUpdateDao;
 import edu.wisc.hr.dao.person.ContactInfoDao;
 import edu.wisc.hr.dm.bnsemail.PreferredEmail;
 import edu.wisc.hr.dm.person.PersonInformation;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -72,7 +72,7 @@ public class ContactInfoController extends HrsControllerBase {
 
     @RenderMapping
     public String viewContactInfo(ModelMap model, PortletRequest request) {
-        final String emplId = EmplIdUtils.getEmplId();
+        final String emplId = PrimaryAttributeUtils.getPrimaryId();
         
         final PersonInformation contactInformation = this.contactInfoDao.getPersonalData(emplId);
         model.addAttribute("contactInformation", contactInformation);
@@ -116,7 +116,7 @@ public class ContactInfoController extends HrsControllerBase {
             throw new PortletRequestMethodNotSupportedException(request.getMethod(), new String[] { "POST" });
         }
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         
         email = email.trim();
         
@@ -134,7 +134,7 @@ public class ContactInfoController extends HrsControllerBase {
     
     protected String getBusinessEmailAddress( ModelMap modelMap) {
         
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         
         final PreferredEmail preferredEmail = this.businessEmailUpdateDao.getPreferedEmail(emplid);
         final String updatedEmail = preferredEmail.getEmail();

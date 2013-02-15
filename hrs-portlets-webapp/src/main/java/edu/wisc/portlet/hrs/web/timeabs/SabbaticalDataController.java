@@ -34,7 +34,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.sabstmt.SabbaticalStatementDao;
 import edu.wisc.hr.dm.sabstmt.SabbaticalReports;
-import edu.wisc.portlet.hrs.web.EmplIdUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 /**
  * 
@@ -60,7 +60,7 @@ public class SabbaticalDataController {
     
     @ResourceMapping("sabbaticalReports")
     public String getSabbaticalReports(ModelMap modelMap) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final SabbaticalReports sabbaticalReports = this.sabbaticalStatementDao.getSabbaticalReports(emplid);
         
@@ -71,7 +71,7 @@ public class SabbaticalDataController {
 
     @ResourceMapping("sabbatical_report.pdf")
     public void getSabbaticalReport(@RequestParam("docId") String docId, ResourceResponse response) {
-        final String emplid = EmplIdUtils.getEmplId();
+        final String emplid = PrimaryAttributeUtils.getPrimaryId();
         this.sabbaticalStatementDao.getSabbaticalReport(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }
