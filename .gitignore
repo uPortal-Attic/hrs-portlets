@@ -3,3 +3,7 @@
 /.settings
 /target
 /.springBeans
+.idea/
+*.iml
+*/*.iml
+hrs-portlets-webapp/overlays
