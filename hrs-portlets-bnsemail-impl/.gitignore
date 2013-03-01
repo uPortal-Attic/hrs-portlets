@@ -3,3 +3,6 @@
 /.project
 /.settings
 /target
+bnsemail-placeholder.properties
+smime-keystore.jks
+
