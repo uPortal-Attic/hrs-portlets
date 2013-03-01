@@ -22,20 +22,20 @@
 
 <configuration scan="true" scanPeriod="30 seconds">
     <appender name="R" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/my/up/logs/portlets/HRSPortlets/HRSPortlets.log</File>
+        <File>${catalina.base}/logs/portlets/HRSPortlets/HRSPortlets.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>/my/up/logs/portlets/HRSPortlets/HRSPortlets.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>${catalina.base}/logs/portlets/HRSPortlets/HRSPortlets.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <appender name="PERF" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/my/up/logs/portlets/HRSPortlets/HRSPortlets.performance.log</File>
+        <File>${catalina.base}/logs/portlets/HRSPortlets/HRSPortlets.performance.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>/my/up/logs/portlets/HRSPortlets/HRSPortlets.performance.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>${catalina.base}/logs/portlets/HRSPortlets/HRSPortlets.performance.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <pattern>%msg%n</pattern>

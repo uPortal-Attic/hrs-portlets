@@ -198,7 +198,7 @@
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="payPeriod"><a href="javascript:;">Pay Period</a></th>
                   <th class="flc-pager-sort-header" rsf:id="leaveStatementTitle"><a href="javascript:;">Leave Statement</a></th>
-                  <th class="flc-pager-sort-header" rsf:id="leaveFurloughReportLinks"><a href="javascript:;">Leave/Furlough Report</a></th>
+                  <th class="flc-pager-sort-header" rsf:id="leaveFurloughReportLinks"><a href="javascript:;">Leave Report</a></th>
                   <th class="flc-pager-sort-header" rsf:id="missingReportLinks"><a href="javascript:;">Missing Reports</a></th>
                 </tr>
               </thead>
@@ -520,7 +520,7 @@
             		
             		$("#${n}dl-sabbatical-reports").show();
             	}
-            },
+            },	
             dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
           }
         });
