@@ -190,6 +190,7 @@
         </div>
       </div>
       <div id="${n}dl-leave-statements">
+      	<a href="#" id="${n}oustandingMissingLeaveReports" target="_blank" style="display: none;">Outstanding Missing Leave Reports</a>
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">
@@ -199,7 +200,6 @@
                   <th class="flc-pager-sort-header" rsf:id="payPeriod"><a href="javascript:;">Pay Period</a></th>
                   <th class="flc-pager-sort-header" rsf:id="leaveStatementTitle"><a href="javascript:;">Leave Statement</a></th>
                   <th class="flc-pager-sort-header" rsf:id="leaveFurloughReportLinks"><a href="javascript:;">Leave Report</a></th>
-                  <th class="flc-pager-sort-header" rsf:id="missingReportLinks"><a href="javascript:;">Missing Reports</a></th>
                 </tr>
               </thead>
               <tbody>
@@ -207,7 +207,6 @@
                     <td class="dl-data-text" rsf:id="payPeriod"></td>
                     <td class="dl-data-text dl-clickable"><a href="#" target="_blank" rsf:id="leaveStatementTitle"></a></td>
                     <td class="dl-data-text" rsf:id="leaveFurloughReportLinks"></td>
-                    <td class="dl-data-text" rsf:id="missingReportLinks"></td>
                   </tr>
               </tbody>
             </table>
@@ -416,14 +415,7 @@
                  key: name, 
                  valuebinding: "*.leaveFurloughReportLinks", 
                  components: { 
-                     markup: "TMPLT_*.leaveFurloughReportLinks_TMPLT"
-                 }
-             },
-             {
-                 key: name, 
-                 valuebinding: "*.missingReportLinks", 
-                 components: { 
-                     markup: "TMPLT_*.missingReportLinks_TMPLT"
+                     markup: dl.util.templateUrl("TMPLT_*.leaveFurloughReportLinks_TMPLT")
                  }
              }
           ],
@@ -472,11 +464,9 @@
                     if (leaveStatement.missingReports && leaveStatement.missingReports.length > 0) {
                       leaveStatement.missingReportLinks = "";
                       $.each(leaveStatement.missingReports, function (index, missingReport) {
-                          if (index > 0) {
-                              leaveStatement.missingReportLinks += ", ";
-                          }
                           var reportLink = "${missingLeaveReportPdfUrl}".replace("missingLeaveReportDocId", missingReport.docId);
-                          leaveStatement.missingReportLinks += '<a href="' + reportLink + '" target="_blank">' + missingReport.title + '</a>';
+                          $("#${n}oustandingMissingLeaveReports").attr("href",reportLink);
+                          $("#${n}oustandingMissingLeaveReports").show();
                       });
                     }
                     else {
