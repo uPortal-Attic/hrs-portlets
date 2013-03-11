@@ -190,7 +190,9 @@
         </div>
       </div>
       <div id="${n}dl-leave-statements">
-      	<a href="#" id="${n}oustandingMissingLeaveReports" target="_blank" style="display: none;">Outstanding Missing Leave Reports</a>
+      	<p class="padded-paragraph">
+      		<a href="#" id="${n}oustandingMissingLeaveReports" target="_blank" style="display: none;">Outstanding Missing Leave Reports</a>
+      	</p>
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">

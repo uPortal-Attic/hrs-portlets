@@ -22,6 +22,8 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.jasig.org/uportal/web/skin https://source.jasig.org/schemas/resource-server/skin-configuration/skin-configuration-v1.2.xsd">
 
+  <css>css/HRSPortlet.css</css>
+
   <css import="true">common-resources.xml</css>
     
   <js import="true">common-resources.xml</js>
