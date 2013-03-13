@@ -29,7 +29,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="payPeriod" type="xs:string" />
-                <xs:element name="leaveStatementTitle" type="xs:string" />
+                <xs:element name="leaveStatementTitle" type="xs:string" default="" />
                 <xs:element name="leaveStatementDocId" type="xs:positiveInteger" />
                 <xs:element name="leaveFurloughReports" type="Report" minOccurs="0" maxOccurs="unbounded" />
                 <xs:element name="missingReports" type="Report" minOccurs="0" maxOccurs="unbounded" />

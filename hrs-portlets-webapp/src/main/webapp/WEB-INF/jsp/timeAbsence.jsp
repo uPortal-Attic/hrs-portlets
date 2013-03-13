@@ -200,14 +200,14 @@
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="payPeriod"><a href="javascript:;">Pay Period</a></th>
-                  <th class="flc-pager-sort-header" rsf:id="leaveStatementTitle"><a href="javascript:;">Leave Statement</a></th>
+                  <th class="flc-pager-sort-header" rsf:id="leaveStatementLink"><a href="javascript:;">Leave Statement</a></th>
                   <th class="flc-pager-sort-header" rsf:id="leaveFurloughReportLinks"><a href="javascript:;">Leave Report</a></th>
                 </tr>
               </thead>
               <tbody>
                   <tr rsf:id="row:">
                     <td class="dl-data-text" rsf:id="payPeriod"></td>
-                    <td class="dl-data-text dl-clickable"><a href="#" target="_blank" rsf:id="leaveStatementTitle"></a></td>
+                    <td class="dl-data-text" rsf:id="leaveStatementLink"></td>
                     <td class="dl-data-text" rsf:id="leaveFurloughReportLinks"></td>
                   </tr>
               </tbody>
@@ -269,7 +269,7 @@
 
 <portlet:resourceURL var="leaveStatementsUrl" id="leaveStatements" escapeXml="false" />
 <portlet:resourceURL var="leaveStatementPdfUrl" id="leave_statement.pdf" escapeXml="false">
-    <portlet:param name="docId" value="TMPLT_*.leaveStatementDocId_TMPLT"/>
+    <portlet:param name="docId" value="leaveStatementDocId"/>
 </portlet:resourceURL>
 <portlet:resourceURL var="leaveFurloughReportPdfUrl" id="leave_furlough_report.pdf" escapeXml="false">
     <portlet:param name="docId" value="leaveFurloughReportDocId"/>
@@ -284,7 +284,7 @@
 </portlet:resourceURL>
 
 <script type="text/javascript" language="javascript">
-<rs:compressJs>
+
 (function($, fluid, dl) {
     $(function() {
         <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
@@ -412,7 +412,14 @@
           },
           columnDefs: [ 
              dl.pager.colDef("payPeriod", {sortable: true, sortValueExtractor: dl.pager.mmyyyyDateExtractor}),
-             dl.pager.linkColDef("leaveStatementTitle", dl.util.templateUrl("${leaveStatementPdfUrl}"), {sortable: true, sortValueExtractor: dl.pager.MMMMyyyyDateExtractor}),
+             //dl.pager.linkColDef("leaveStatementTitle", dl.util.templateUrl("${leaveStatementPdfUrl}"), {sortable: true, sortValueExtractor: dl.pager.MMMMyyyyDateExtractor}),
+             {
+                 key: name, 
+                 valuebinding: "*.leaveStatementLink", 
+                 components: { 
+                     markup: dl.util.templateUrl("TMPLT_*.leaveStatementLink_TMPLT")
+                 }
+             },
              {
                  key: name, 
                  valuebinding: "*.leaveFurloughReportLinks", 
@@ -449,7 +456,26 @@
                 data = data.report;
                 $.each(data, function(index, leaveStatement) {
                     
-                    if (leaveStatement.leaveFurloughReports && leaveStatement.leaveFurloughReports.length > 0) {
+                	//Leave Statements
+                	
+                	if (leaveStatement.leaveStatementDocId != null 
+                			&& (leaveStatement.leaveStatementTitle != null 
+                					|| leaveStatement.leaveStatementTitle != ""
+                				)
+                		) {
+                      leaveStatement.leaveStatementLink = "";
+                      
+                      var reportLink = "${leaveStatementPdfUrl}".replace("leaveStatementDocId", leaveStatement.leaveStatementDocId);
+                      leaveStatement.leaveStatementLink += '<a href="' + reportLink + '" target="_blank">' + leaveStatement.leaveStatementTitle + '</a>';
+                      
+                    }
+                    else {
+                        leaveStatement.leaveStatementLink = "&nbsp;";
+                    }
+                    
+                	//leave Reports
+                	
+                	if (leaveStatement.leaveFurloughReports && leaveStatement.leaveFurloughReports.length > 0) {
                       leaveStatement.leaveFurloughReportLinks = "";
                       $.each(leaveStatement.leaveFurloughReports, function (index, leaveFurloughReport) {
                           if (index > 0) {
@@ -462,6 +488,8 @@
                     else {
                         leaveStatement.leaveFurloughReportLinks = "&nbsp;";
                     }
+                	
+                	//Missing Report (there can be only one, so we moved the link to the top)
                     
                     if (leaveStatement.missingReports && leaveStatement.missingReports.length > 0) {
                       leaveStatement.missingReportLinks = "";
@@ -522,5 +550,5 @@
         dl.util.clickableContainer("#${n}dl-time-absence");
     });    
 })(dl_v1.jQuery, dl_v1.fluid, dl_v1);
-</rs:compressJs>
+
 </script>
