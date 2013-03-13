@@ -284,7 +284,7 @@
 </portlet:resourceURL>
 
 <script type="text/javascript" language="javascript">
-
+<rs:compressJs>
 (function($, fluid, dl) {
     $(function() {
         <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
@@ -550,5 +550,5 @@
         dl.util.clickableContainer("#${n}dl-time-absence");
     });    
 })(dl_v1.jQuery, dl_v1.fluid, dl_v1);
-
+</rs:compressJs>
 </script>
