@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.wisc.my.portlet.hrs</groupId>
     <artifactId>hrs-portlets-parent</artifactId>
-    <version>1.0.0.0-SNAPSHOT</version>
+    <version>1.0.0.0</version>
     <packaging>pom</packaging>
     
     <repositories>
@@ -29,7 +29,8 @@
         <connection>scm:git:git://github.com/UW-Madison-DoIT/hrs-portlets.git</connection>
         <developerConnection>scm:git:git@github.com:UW-Madison-DoIT/hrs-portlets.git</developerConnection>
         <url>https://github.com/UW-Madison-DoIT/hrs-portlets</url>
-    </scm>
+      <tag>hrs-1.0.0.0</tag>
+  </scm>
     
     <!-- Dependency Version Properties -->
     <properties>
