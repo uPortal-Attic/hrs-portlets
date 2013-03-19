@@ -76,6 +76,7 @@ public class LeaveDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=leave_statement.pdf");
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.LEAVE, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
     
@@ -85,6 +86,7 @@ public class LeaveDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=leave_furlough_report.pdf");
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.REPORT, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
     
@@ -94,6 +96,7 @@ public class LeaveDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=missing_leave_report.pdf");
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.MISSING, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

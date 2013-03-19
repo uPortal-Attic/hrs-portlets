@@ -72,6 +72,7 @@ public class SabbaticalDataController {
     @ResourceMapping("sabbatical_report.pdf")
     public void getSabbaticalReport(@RequestParam("docId") String docId, ResourceResponse response) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=sabbatical_report.pdf");
         this.sabbaticalStatementDao.getSabbaticalReport(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

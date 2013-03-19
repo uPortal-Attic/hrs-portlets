@@ -76,6 +76,7 @@ public class TaxStatementDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=irs_statement.pdf");
         this.taxStatementDao.getTaxStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

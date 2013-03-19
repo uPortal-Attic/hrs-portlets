@@ -48,6 +48,7 @@
     <util:set id="ignoredProxyHeaders">
         <value>Server</value>
         <value>Set-Cookie</value>
+        <value>Content-Disposition</value>
     </util:set>
 
 

@@ -77,6 +77,7 @@ public class EarningStatementDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
+        response.setProperty("Content-Disposition", "inline; filename=earning_statement.pdf");
         this.earningStatementDao.getEarningStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }
