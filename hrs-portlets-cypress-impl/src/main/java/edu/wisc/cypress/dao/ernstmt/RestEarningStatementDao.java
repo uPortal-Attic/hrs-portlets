@@ -79,7 +79,7 @@ public class RestEarningStatementDao implements EarningStatementDao {
     public void getEarningStatement(String emplid, String docId, ProxyResponse proxyResponse) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("HRID", emplid);
-        this.restOperations.proxyRequest(proxyResponse, this.statementUrl, HttpMethod.GET, httpHeaders, docId);
+        this.restOperations.proxyRequest(proxyResponse, this.statementUrl, HttpMethod.GET, httpHeaders, docId, emplid);
     }
     
     protected EarningStatements mapEarningStatements(XmlEarningStatements xmlEarningStatements) {
