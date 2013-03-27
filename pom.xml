@@ -54,6 +54,7 @@
         <jstl.version>1.2</jstl.version>
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <jackson.version>2.1.2</jackson.version>
+        <jasig-spring-security.version>1.0.1</jasig-spring-security.version>
         <jaxb2basics.version>0.6.4</jaxb2basics.version>
         <joda-time.version>2.1</joda-time.version>
         <jsp-api.version>2.1</jsp-api.version>
@@ -63,7 +64,7 @@
         <mockito.version>1.9.5</mockito.version>
         <pluto.version>2.1.0-M3</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
-        <portlet-utils.version>1.0.0</portlet-utils.version>
+        <portlet-utils.version>1.1.0</portlet-utils.version>
         <resource-server.version>1.0.27</resource-server.version>
         <servlet-api.version>2.5</servlet-api.version>
         <spring.version>3.1.3.RELEASE</spring.version>
@@ -228,14 +229,29 @@
                 <type>war</type>
             </dependency>
             <dependency>
-                <groupId>org.jasig.portlet.datalist</groupId>
-                <artifactId>datalist-portlet-utils</artifactId>
-                <version>${datalist-portlet.version}</version>
+            	<groupId>org.jasig.springframework</groupId>
+            	<artifactId>spring-security-portlet-contrib</artifactId>
+            	<version>${jasig-spring-security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jasig.portlet.utils</groupId>
                 <artifactId>portlet-jdbc-util</artifactId>
                 <version>${portlet-utils.version}</version>
+            </dependency>
+            <dependency>
+            	<groupId>org.jasig.portlet.utils</groupId>
+            	<artifactId>portlet-security-util</artifactId>
+            	<version>${portlet-utils.version}</version>
+            </dependency>
+            <dependency>
+            	<groupId>org.jasig.portlet.utils</groupId>
+            	<artifactId>portlet-ws-util</artifactId>
+            	<version>${portlet-utils.version}</version>
+            </dependency>
+            <dependency>
+            	<groupId>org.jasig.portlet.utils</groupId>
+            	<artifactId>portlet-mvc-util</artifactId>
+            	<version>${portlet-utils.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jasig.resourceserver</groupId>

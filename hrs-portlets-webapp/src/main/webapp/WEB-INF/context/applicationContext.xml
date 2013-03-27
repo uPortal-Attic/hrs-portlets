@@ -42,7 +42,7 @@
      | Default set of interceptors used by all portlets
      +-->
     <util:list id="defaultPortletInterceptors">
-        <bean class="edu.wisc.web.portlet.handler.MinimizedStateHandlerInterceptor"/>
+        <bean class="org.jasig.web.portlet.handler.MinimizedStateHandlerInterceptor"/>
     </util:list>    
     
     <util:set id="ignoredProxyHeaders">

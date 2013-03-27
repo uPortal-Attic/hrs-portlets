@@ -24,7 +24,7 @@ import java.io.OutputStream;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.client.ExtendedRestOperations.ProxyResponse;
+import org.jasig.springframework.web.client.ExtendedRestOperations.ProxyResponse;
 
 public class MockProxyResponse implements ProxyResponse {
     private HttpStatus httpStatus;

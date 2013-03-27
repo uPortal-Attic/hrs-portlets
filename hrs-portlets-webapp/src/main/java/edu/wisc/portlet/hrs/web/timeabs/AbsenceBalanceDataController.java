@@ -29,7 +29,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.absbal.AbsenceBalanceDao;
 import edu.wisc.hr.dm.absbal.AbsenceBalance;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
  * 

@@ -35,6 +35,14 @@
     <aop:config proxy-target-class="true" />
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" proxy-target-class="true"/>
     
+    <bean id="primaryAttributePortletPreAuthenticatedAuthenticationDetailsSource" class="org.jasig.springframework.security.portlet.authentication.PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource">
+        <property name="primaryUserAttributesPreference" value="emplidUserAttributes" />
+        <property name="mappableRolesRetriever">
+            <!-- Configurable - gets list of roles to check request.isUserInRole for. Default is to parse from portlet.xml -->
+            <bean class="org.jasig.springframework.security.portlet.authentication.PortletXmlMappableAttributesRetriever" />
+        </property>
+    </bean>
+    
     <bean id="springSecurityPortletFilterChain" class="org.jasig.springframework.security.portlet.PortletFilterChainProxy">
         <constructor-arg>
             <bean class="org.jasig.springframework.security.portlet.DefaultPortletSecurityFilterChain">
@@ -47,16 +55,7 @@
                         <!-- TODO filter to catch id & attr swapper behavior -->
                         <bean class="org.jasig.springframework.security.portlet.context.PortletSecurityContextPersistenceFilter" />
                         <bean class="org.jasig.springframework.security.portlet.authentication.PortletAuthenticationProcessingFilter">
-                            <property name="authenticationDetailsSource">
-                                <!-- Configurable - will be rare to change though as it implies something other than getRemoteUser is used to determine auth -->
-                                <bean class="edu.wisc.web.security.portlet.primaryattr.PrimaryAttributePortletPreAuthenticatedAuthenticationDetailsSource">
-                                    <property name="primaryUserAttributesPreference" value="emplidUserAttributes" />
-                                    <property name="mappableRolesRetriever">
-                                        <!-- Configurable - gets list of roles to check request.isUserInRole for. Default is to parse from portlet.xml -->
-                                        <bean class="org.jasig.springframework.security.portlet.authentication.PortletXmlMappableAttributesRetriever" />
-                                    </property>
-                                </bean>
-                            </property>
+                            <property name="authenticationDetailsSource" ref="primaryAttributePortletPreAuthenticatedAuthenticationDetailsSource" />
                             <property name="authenticationManager">
                                 <bean class="org.springframework.security.authentication.ProviderManager">
                                     <constructor-arg>
@@ -70,6 +69,12 @@
                                     </constructor-arg>
                                 </bean>
                             </property>
+                            <property name="authenticationValidator">
+                            	<bean class="org.jasig.springframework.security.portlet.authentication.PrimaryAttributePortletAuthenticationValidator">
+                            		<property name="preAuthenticationDetailsSource" ref="primaryAttributePortletPreAuthenticatedAuthenticationDetailsSource" />
+                            	</bean>
+                            </property>
+                            <property name="checkForPrincipalChanges" value="true" />
                         </bean>
                     </list>
                 </constructor-arg>

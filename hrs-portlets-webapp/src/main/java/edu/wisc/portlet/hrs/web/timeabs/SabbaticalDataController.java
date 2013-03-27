@@ -29,12 +29,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.PortletResourceProxyResponse;
+import org.jasig.springframework.web.client.PortletResourceProxyResponse;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.sabstmt.SabbaticalStatementDao;
 import edu.wisc.hr.dm.sabstmt.SabbaticalReports;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
  * 

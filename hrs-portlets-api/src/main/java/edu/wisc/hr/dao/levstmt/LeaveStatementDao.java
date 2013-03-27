@@ -21,7 +21,7 @@ package edu.wisc.hr.dao.levstmt;
 
 import java.util.Collection;
 
-import org.springframework.web.client.ExtendedRestOperations.ProxyResponse;
+import org.jasig.springframework.web.client.ExtendedRestOperations.ProxyResponse;
 
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
 

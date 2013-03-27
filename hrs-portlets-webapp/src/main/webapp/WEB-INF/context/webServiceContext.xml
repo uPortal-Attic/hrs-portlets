@@ -33,14 +33,14 @@
      | HttpClient used by the various api impls
      +-->      
 
-    <bean id="httpClient" class="edu.wisc.commons.httpclient.HrsDefaultHttpClient" depends-on="httpConnectionParamBean">
+    <bean id="httpClient" class="org.jasig.apache.http.impl.client.ResponseHeaderHandlingHttpClient" depends-on="httpConnectionParamBean">
         <constructor-arg ref="httpConnectionManager" />
         <constructor-arg ref="httpParams"/>
     </bean>
-    <bean id="httpConnectionManager" class="edu.wisc.commons.httpclient.CleanShutdownPoolingClientConnectionManager" destroy-method="shutdown">
+    <bean id="httpConnectionManager" class="org.jasig.apache.http.impl.conn.CleanShutdownPoolingClientConnectionManager" destroy-method="shutdown">
         <!-- Note this big SchemeRegistry block is just for testing to ignore certificate and hostname errors -->
         <constructor-arg>
-            <bean class="edu.wisc.commons.httpclient.SchemeRegistryFactoryBean">
+            <bean class="org.jasig.apache.http.conn.scheme.SchemeRegistryFactoryBean">
                 <property name="schemes">
                     <bean class="org.apache.http.conn.scheme.Scheme">
                         <constructor-arg value="https" />
@@ -48,7 +48,7 @@
                         <constructor-arg>
                             <bean class="org.apache.http.conn.ssl.SSLSocketFactory">
                                 <constructor-arg>
-                                    <bean class="edu.wisc.commons.httpclient.TrustAllStrategy" />
+                                    <bean class="org.jasig.apache.http.conn.ssl.TrustAllStrategy" />
                                 </constructor-arg>
                                 <constructor-arg>
                                     <bean class="org.apache.http.conn.ssl.AllowAllHostnameVerifier" />

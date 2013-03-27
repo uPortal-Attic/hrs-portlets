@@ -45,7 +45,7 @@ import org.springframework.ws.soap.SoapFaultDetailElement;
 import org.springframework.ws.soap.client.SoapFaultClientException;
 import org.w3c.dom.Node;
 
-import edu.wisc.ws.client.support.SetSoapActionCallback;
+import org.jasig.springframework.ws.client.core.SetSoapActionCallback;
 
 /**
  * Base class for HRS Web Services. Provides common invocation and error handling logic

@@ -34,7 +34,7 @@
      +-->
     <context:mbean-server id="mbeanServer"/> 
     
-    <bean id="connPoolControlData" class="edu.wisc.commons.httpclient.ConnPoolControlData" />
+    <bean id="connPoolControlData" class="org.jasig.apache.http.impl.conn.jmx.ConnPoolControlData" />
 
     <!--
      | Exporter used to register beans with the mbean server

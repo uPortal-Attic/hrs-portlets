@@ -19,7 +19,7 @@
 
 package edu.wisc.hr.dao.taxstmt;
 
-import org.springframework.web.client.ExtendedRestOperations.ProxyResponse;
+import org.jasig.springframework.web.client.ExtendedRestOperations.ProxyResponse;
 
 import edu.wisc.hr.dm.taxstmt.TaxStatements;
 

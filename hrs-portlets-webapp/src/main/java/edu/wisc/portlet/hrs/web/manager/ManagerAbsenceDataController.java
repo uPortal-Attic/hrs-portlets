@@ -31,7 +31,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.mssabs.ManagerAbsenceDao;
 import edu.wisc.hr.dm.mssabs.ManagedAbsence;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
  * 

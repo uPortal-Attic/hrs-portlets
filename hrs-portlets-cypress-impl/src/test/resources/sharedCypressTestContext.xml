@@ -44,14 +44,14 @@
     <bean id="restTaxStatementDao" class="edu.wisc.cypress.dao.taxstmt.RestTaxStatementDao" />
     <bean id="restSabbaticalStatementDao" class="edu.wisc.cypress.dao.sabstmt.RestSabbaticalStatementDao" />
     
-    <bean id="cypressRestOperations" class="org.springframework.web.client.ExtendedRestTemplate">
+    <bean id="cypressRestOperations" class="org.jasig.springframework.web.client.ExtendedRestTemplate">
         <constructor-arg>
             <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
                 <constructor-arg ref="httpClient" />
             </bean>
         </constructor-arg>
         <property name="messageConverters">
-            <bean class="edu.wisc.http.converter.xml.JaxbMarshallingHttpMessageConverter">
+            <bean class="org.jasig.springframework.http.converter.xml.JaxbMarshallingHttpMessageConverter">
                 <constructor-arg ref="cypressJaxbContext" />
                 <property name="supportedMediaTypes">
                     <!-- Needed because cypress can't be bothered to set correct content types for XML data -->

@@ -73,53 +73,53 @@
         </entry>
     </util:map>
     
-    <bean id="absenceBalanceDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="absenceBalanceDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="absenceBalanceWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="absenceBalanceDestinationProvider" />
     </bean>
     
-    <bean id="absenceHistoryDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="absenceHistoryDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="absenceHistoryWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="absenceHistoryDestinationProvider" />
     </bean>
     
-    <bean id="personDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="personDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="personWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="personDestinationProvider" />
     </bean>
     
-    <bean id="benefitSummaryDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="benefitSummaryDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="benefitSummaryWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="benefitSummaryDestinationProvider" />
     </bean>
     
-    <bean id="managerAbsenceDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="managerAbsenceDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="managerAbsenceWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="managerAbsenceDestinationProvider" />
     </bean>
     
-    <bean id="managerTimeDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="managerTimeDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="managerTimeWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="managerTimeDestinationProvider" />
     </bean>
     
-    <bean id="rolesDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="rolesDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="rolesWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="rolesDestinationProvider" />
     </bean>
     
-    <bean id="timeLeavePayableDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="timeLeavePayableDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="timeLeavePayableWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="timeLeavePayableDestinationProvider" />
     </bean>
     
-    <bean id="urlDestinationProvider" class="edu.wisc.ws.client.support.FailSafeWsdl11DestinationProvider" />
+    <bean id="urlDestinationProvider" class="org.jasig.springframework.ws.client.support.destination.FailSafeWsdl11DestinationProvider" />
     <bean id="urlWebServiceTemplate" parent="baseHrsWebServiceTemplate">
         <property name="destinationProvider" ref="urlDestinationProvider" />
     </bean>
     
     
-    <bean id="baseHrsWebServiceTemplate" class="edu.wisc.ws.client.support.DestinationOverridingWebServiceTemplate" abstract="true">
+    <bean id="baseHrsWebServiceTemplate" class="org.jasig.springframework.ws.client.core.DestinationOverridingWebServiceTemplate" abstract="true">
         <property name="marshaller" ref="hrsMarshaller" />
         <property name="unmarshaller" ref="hrsMarshaller" />
         <property name="interceptors" ref="hrsWss4jSecurityInterceptor" />

@@ -29,7 +29,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.wisc.hr.dao.roles.HrsRolesDao;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**

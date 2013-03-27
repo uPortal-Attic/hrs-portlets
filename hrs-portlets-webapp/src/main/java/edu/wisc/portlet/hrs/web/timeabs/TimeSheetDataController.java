@@ -30,7 +30,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.tlpayable.TimeSheetDao;
 import edu.wisc.hr.dm.tlpayable.TimeSheet;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
  * 

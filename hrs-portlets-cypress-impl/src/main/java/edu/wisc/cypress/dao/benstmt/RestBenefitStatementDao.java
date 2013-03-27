@@ -30,8 +30,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.client.ExtendedRestOperations;
-import org.springframework.web.client.ExtendedRestOperations.ProxyResponse;
+import org.jasig.springframework.web.client.ExtendedRestOperations;
+import org.jasig.springframework.web.client.ExtendedRestOperations.ProxyResponse;
 
 import com.googlecode.ehcache.annotations.Cacheable;
 
