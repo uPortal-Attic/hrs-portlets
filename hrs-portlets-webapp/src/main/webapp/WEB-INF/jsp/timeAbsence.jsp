@@ -534,5 +534,5 @@
         dl.util.clickableContainer("#${n}dl-time-absence");
     });    
 })(dl_v1.jQuery, dl_v1.fluid, dl_v1);
-</rs:compressjs>
+</rs:compressJs>
 </script>
