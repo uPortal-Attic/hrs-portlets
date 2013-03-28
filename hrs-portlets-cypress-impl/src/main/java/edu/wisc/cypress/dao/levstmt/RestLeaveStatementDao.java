@@ -76,11 +76,6 @@ public class RestLeaveStatementDao implements LeaveStatementDao {
         return this.summarizeLeaveStatements(leaveStatements);
     }
     
-    public Report getMissingReport(String emplid) {
-    	SummarizedLeaveStatement summary = getLeaveStatements(emplid);
-    	return summary.getMissingReport();
-    }
-    
     @Override
     public void getLeaveStatement(String emplid, String docId, StatementType type, ProxyResponse proxyResponse) {
         final HttpHeaders httpHeaders = new HttpHeaders();

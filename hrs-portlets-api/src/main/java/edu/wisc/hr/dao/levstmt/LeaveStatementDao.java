@@ -34,7 +34,5 @@ public interface LeaveStatementDao {
      */
     public SummarizedLeaveStatement getLeaveStatements(String emplid);
     
-    public Report getMissingReport(String emplid);
-
     public void getLeaveStatement(String emplid, String docId, StatementType type, ProxyResponse proxyResponse);
 }

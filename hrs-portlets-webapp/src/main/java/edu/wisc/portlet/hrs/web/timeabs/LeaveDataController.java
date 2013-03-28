@@ -74,9 +74,13 @@ public class LeaveDataController {
     public String getMissingReport(ModelMap modelMap) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
-        final Report missingReport = this.leaveStatementDao.getMissingReport(emplid);
+        final SummarizedLeaveStatement leaveStatements = this.leaveStatementDao.getLeaveStatements(emplid);
         
-        modelMap.addAttribute("report", missingReport);
+        if(leaveStatements != null) {
+        	modelMap.addAttribute("report",leaveStatements.getMissingReport());
+        } else {
+        	modelMap.addAttribute("report",null);
+        }
         
         return "reportAttrJsonView";
     }
