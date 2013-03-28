@@ -21,8 +21,6 @@ package edu.wisc.cypress.dao.levstmt;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,30 +53,30 @@ public class RestLeaveStatementDaoIT {
     
     @Test
     public void testGetStatements() throws Exception {
-        final Collection<SummarizedLeaveStatement> leaveStatements = client.getLeaveStatements("00282835");
+        final SummarizedLeaveStatement leaveStatements = client.getLeaveStatements("00282835");
         assertNotNull(leaveStatements);
-        assertEquals(4, leaveStatements.size());
+        assertEquals(3, leaveStatements.getLeavePayPeriodReports().size());
     }
     
     @Test
     public void testGetMultipleStatements() throws Exception {
-        final Collection<SummarizedLeaveStatement> leaveStatements = client.getLeaveStatements("12345678");
+        final SummarizedLeaveStatement leaveStatements = client.getLeaveStatements("12345678");
         assertNotNull(leaveStatements);
-        assertEquals(9, leaveStatements.size());
+        assertEquals(8, leaveStatements.getLeavePayPeriodReports().size());
     }
     
     @Test
     public void testNoStatements() throws Exception {
-        final Collection<SummarizedLeaveStatement> leaveStatements = client.getLeaveStatements("00000000");
+        final SummarizedLeaveStatement leaveStatements = client.getLeaveStatements("00000000");
         assertNotNull(leaveStatements);
-        assertEquals(0, leaveStatements.size());
+        assertEquals(0, leaveStatements.getLeavePayPeriodReports().size());
     }
     
     @Test
     public void testBadEmplId() throws Exception {
-        final Collection<SummarizedLeaveStatement> leaveStatements = client.getLeaveStatements("");
+        final SummarizedLeaveStatement leaveStatements = client.getLeaveStatements("");
         assertNotNull(leaveStatements);
-        assertEquals(0, leaveStatements.size());
+        assertEquals(0, leaveStatements.getLeavePayPeriodReports().size());
     }
 //    
 //    @Test

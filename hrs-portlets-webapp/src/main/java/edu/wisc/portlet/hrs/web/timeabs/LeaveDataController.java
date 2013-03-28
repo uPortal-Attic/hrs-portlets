@@ -19,7 +19,6 @@
 
 package edu.wisc.portlet.hrs.web.timeabs;
 
-import java.util.Collection;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -35,6 +34,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.levstmt.LeaveStatementDao;
 import edu.wisc.hr.dao.levstmt.StatementType;
+import edu.wisc.hr.dm.levstmt.Report;
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
@@ -63,21 +63,22 @@ public class LeaveDataController {
     public String getLeaveStatements(ModelMap modelMap) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
-        final Collection<SummarizedLeaveStatement> leaveStatements = this.leaveStatementDao.getLeaveStatements(emplid);
+        final SummarizedLeaveStatement leaveStatements = this.leaveStatementDao.getLeaveStatements(emplid);
         
-        modelMap.addAttribute("report", leaveStatements);
+        modelMap.addAttribute("report", leaveStatements.getLeavePayPeriodReports());
         
         return "reportAttrJsonView";
     }
-
-    @ResourceMapping("leave_statement.pdf")
-    public void getLeaveStatement(
-            @RequestParam("docId") String docId,
-            ResourceResponse response) {
-        
+    
+    @ResourceMapping("missingReport")
+    public String getMissingReport(ModelMap modelMap) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=leave_statement.pdf");
-        this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.LEAVE, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
+
+        final Report missingReport = this.leaveStatementDao.getMissingReport(emplid);
+        
+        modelMap.addAttribute("report", missingReport);
+        
+        return "reportAttrJsonView";
     }
     
     @ResourceMapping("leave_furlough_report.pdf")

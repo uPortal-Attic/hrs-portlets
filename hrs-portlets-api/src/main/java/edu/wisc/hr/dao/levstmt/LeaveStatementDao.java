@@ -19,10 +19,9 @@
 
 package edu.wisc.hr.dao.levstmt;
 
-import java.util.Collection;
-
 import org.jasig.springframework.web.client.ExtendedRestOperations.ProxyResponse;
 
+import edu.wisc.hr.dm.levstmt.Report;
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
 
 /**
@@ -33,7 +32,9 @@ public interface LeaveStatementDao {
     /**
      * Get the leave statements for the specified emplid
      */
-    public Collection<SummarizedLeaveStatement> getLeaveStatements(String emplid);
+    public SummarizedLeaveStatement getLeaveStatements(String emplid);
+    
+    public Report getMissingReport(String emplid);
 
     public void getLeaveStatement(String emplid, String docId, StatementType type, ProxyResponse proxyResponse);
 }

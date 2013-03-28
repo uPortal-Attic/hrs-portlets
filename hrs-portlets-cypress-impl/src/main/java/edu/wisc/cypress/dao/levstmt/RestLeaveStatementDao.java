@@ -21,7 +21,6 @@ package edu.wisc.cypress.dao.levstmt;
 
 
 
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -40,6 +39,7 @@ import edu.wisc.cypress.xdm.levstmt.XmlLeaveStatement;
 import edu.wisc.cypress.xdm.levstmt.XmlLeaveStatements;
 import edu.wisc.hr.dao.levstmt.LeaveStatementDao;
 import edu.wisc.hr.dao.levstmt.StatementType;
+import edu.wisc.hr.dm.levstmt.PayPeriodLeaveReport;
 import edu.wisc.hr.dm.levstmt.Report;
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
 
@@ -69,11 +69,16 @@ public class RestLeaveStatementDao implements LeaveStatementDao {
     
     @Cacheable(cacheName="leaveStatement", exceptionCacheName="cypressUnknownExceptionCache")
     @Override
-    public Collection<SummarizedLeaveStatement> getLeaveStatements(String emplid) {
+    public SummarizedLeaveStatement getLeaveStatements(String emplid) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("HRID", emplid);
         final XmlLeaveStatements leaveStatements = this.restOperations.getForObject(this.statementsUrl, XmlLeaveStatements.class, httpHeaders, emplid);
         return this.summarizeLeaveStatements(leaveStatements);
+    }
+    
+    public Report getMissingReport(String emplid) {
+    	SummarizedLeaveStatement summary = getLeaveStatements(emplid);
+    	return summary.getMissingReport();
     }
     
     @Override
@@ -83,31 +88,32 @@ public class RestLeaveStatementDao implements LeaveStatementDao {
         this.restOperations.proxyRequest(proxyResponse, this.statementUrl, HttpMethod.GET, httpHeaders, docId, type.getKey());
     }
     
-    protected Collection<SummarizedLeaveStatement> summarizeLeaveStatements(XmlLeaveStatements leaveStatements) {
-        final Map<String, SummarizedLeaveStatement> summarizedLeaveStatements = new LinkedHashMap<String, SummarizedLeaveStatement>();
+    protected SummarizedLeaveStatement summarizeLeaveStatements(XmlLeaveStatements leaveStatements) {
+
+    	SummarizedLeaveStatement summary = new SummarizedLeaveStatement();
+        final Map<String, PayPeriodLeaveReport> payPeriodLeaveReports = new LinkedHashMap<String, PayPeriodLeaveReport>();
         
         for (final XmlLeaveStatement statement : leaveStatements.getLeaveStatements()) {
-            final String payPeriod = statement.getPayPeriod();
-            SummarizedLeaveStatement summarizedLeaveStatement = summarizedLeaveStatements.get(payPeriod);
-            if (summarizedLeaveStatement == null) {
-                summarizedLeaveStatement = new SummarizedLeaveStatement();
-                summarizedLeaveStatement.setPayPeriod(payPeriod);
-                summarizedLeaveStatements.put(payPeriod, summarizedLeaveStatement);
-            }
-            
             final String type = statement.getType();
             final StatementType statmentType = StatementType.getStatmentTypeByName(type);
             switch (statmentType) {
                 case LEAVE: {
-                    summarizedLeaveStatement.setLeaveStatementTitle(statement.getReportTitle());
-                    summarizedLeaveStatement.setLeaveStatementDocId(statement.getDocId());
+                    //Not needed anymore, should tell cypress to stop sending them eventually
                     break;
                 }
                 case REPORT: {
-                    final Report report = new Report();
+                    String payPeriod = statement.getPayPeriod();
+                    PayPeriodLeaveReport pplr = payPeriodLeaveReports.get(payPeriod);
+                	if(pplr == null) {
+                		pplr = new PayPeriodLeaveReport();
+                		pplr.setPayPeriod(payPeriod);
+                		payPeriodLeaveReports.put(payPeriod,pplr);
+                	}
+                	final Report report = new Report();
                     report.setTitle(statement.getReportTitle());
                     report.setDocId(statement.getDocId());
-                    summarizedLeaveStatement.getLeaveFurloughReports().add(report);
+                    
+                    pplr.getLeaveReports().add(report);
                     break;
                 }
                 case MISSING: {
@@ -115,7 +121,7 @@ public class RestLeaveStatementDao implements LeaveStatementDao {
                     report.setTitle(statement.getReportTitle());
                     report.setDocId(statement.getDocId());
                     
-                    summarizedLeaveStatement.getMissingReports().add(report);
+                    summary.setMissingReport(report);
                     break;
                 }
                 default: {
@@ -123,7 +129,8 @@ public class RestLeaveStatementDao implements LeaveStatementDao {
                 }
             }
         }
+        summary.getLeavePayPeriodReports().addAll(payPeriodLeaveReports.values());
         
-        return summarizedLeaveStatements.values();
+        return summary;
     }
 }

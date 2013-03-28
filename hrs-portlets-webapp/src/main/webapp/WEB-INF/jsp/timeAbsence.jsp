@@ -268,6 +268,9 @@
 <portlet:resourceURL var="timeSheetsUrl" id="timeSheets" escapeXml="false" />
 
 <portlet:resourceURL var="leaveStatementsUrl" id="leaveStatements" escapeXml="false" />
+
+<portlet:resourceURL var="missingReportUrl" id="missingReport" escapeXml="false" />
+
 <portlet:resourceURL var="leaveStatementPdfUrl" id="leave_statement.pdf" escapeXml="false">
     <portlet:param name="docId" value="leaveStatementDocId"/>
 </portlet:resourceURL>
@@ -412,14 +415,6 @@
           },
           columnDefs: [ 
              dl.pager.colDef("payPeriod", {sortable: true, sortValueExtractor: dl.pager.mmyyyyDateExtractor}),
-             //dl.pager.linkColDef("leaveStatementTitle", dl.util.templateUrl("${leaveStatementPdfUrl}"), {sortable: true, sortValueExtractor: dl.pager.MMMMyyyyDateExtractor}),
-             {
-                 key: name, 
-                 valuebinding: "*.leaveStatementLink", 
-                 components: { 
-                     markup: dl.util.templateUrl("TMPLT_*.leaveStatementLink_TMPLT")
-                 }
-             },
              {
                  key: name, 
                  valuebinding: "*.leaveFurloughReportLinks", 
@@ -433,7 +428,7 @@
             dataKey: "report",
             dataLoadCallback: function (data) {
                 if (data == undefined || data.length == 0) {
-                    //Hide the sabbatical reports block
+                    //Hide the leave reports block
                     $("#${n}dl-leave-statements").hide();
                     
                     //Increment the show count on the no statements block, if result is 2 show the no statements block
@@ -455,29 +450,11 @@
             dataExtractor: function (dataKey, data) {
                 data = data.report;
                 $.each(data, function(index, leaveStatement) {
-                    
-                	//Leave Statements
+                    //leave / furlough Reports 
                 	
-                	if (leaveStatement.leaveStatementDocId != null 
-                			&& (leaveStatement.leaveStatementTitle != null 
-                					|| leaveStatement.leaveStatementTitle != ""
-                				)
-                		) {
-                      leaveStatement.leaveStatementLink = "";
-                      
-                      var reportLink = "${leaveStatementPdfUrl}".replace("leaveStatementDocId", leaveStatement.leaveStatementDocId);
-                      leaveStatement.leaveStatementLink += '<a href="' + reportLink + '" target="_blank">' + leaveStatement.leaveStatementTitle + '</a>';
-                      
-                    }
-                    else {
-                        leaveStatement.leaveStatementLink = "&nbsp;";
-                    }
-                    
-                	//leave Reports
-                	
-                	if (leaveStatement.leaveFurloughReports && leaveStatement.leaveFurloughReports.length > 0) {
+                	if (leaveStatement.leaveReports && leaveStatement.leaveReports.length > 0) {
                       leaveStatement.leaveFurloughReportLinks = "";
-                      $.each(leaveStatement.leaveFurloughReports, function (index, leaveFurloughReport) {
+                      $.each(leaveStatement.leaveReports, function (index, leaveFurloughReport) {
                           if (index > 0) {
                               leaveStatement.leaveFurloughReportLinks += ", ";
                           }
@@ -488,22 +465,29 @@
                     else {
                         leaveStatement.leaveFurloughReportLinks = "&nbsp;";
                     }
-                	
-                	//Missing Report (there can be only one, so we moved the link to the top)
                     
-                    if (leaveStatement.missingReports && leaveStatement.missingReports.length > 0) {
-                      leaveStatement.missingReportLinks = "";
-                      $.each(leaveStatement.missingReports, function (index, missingReport) {
-                          var reportLink = "${missingLeaveReportPdfUrl}".replace("missingLeaveReportDocId", missingReport.docId);
-                          $("#${n}oustandingMissingLeaveReports").attr("href",reportLink);
-                          $("#${n}oustandingMissingLeaveReports").show();
-                      });
-                    }
-                    else {
-                        leaveStatement.missingReportLinks = "&nbsp;";
-                    }
                     
                 });
+                
+              //missing report ajax call (doing it here so it uses the cached from call in leave report collection)
+                
+            	$.ajax({
+  		          type: "POST",
+  		          url: "${missingReportUrl}",
+  		          data: "",
+  		          success: function(response){
+  		        	var missingReport = response.report;
+  		        	if(missingReport != null || missingReport != undefined) {
+      		        	var reportLink = "${missingLeaveReportPdfUrl}".replace("missingLeaveReportDocId", missingReport.docId);
+                        $("#${n}oustandingMissingLeaveReports").attr("href",reportLink);
+                        $("#${n}oustandingMissingLeaveReports").show();
+  		        	}
+  		          },
+  		          error: function(e){
+  		       	  	var response = jQuery.parseJSON(e.responseText);
+  		          }
+  		        });
+                
                 return data;
             }
           }
@@ -550,5 +534,5 @@
         dl.util.clickableContainer("#${n}dl-time-absence");
     });    
 })(dl_v1.jQuery, dl_v1.fluid, dl_v1);
-</rs:compressJs>
+</rs:compressjs>
 </script>
