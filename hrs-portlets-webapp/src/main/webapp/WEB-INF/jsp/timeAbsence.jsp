@@ -289,7 +289,23 @@
 <script type="text/javascript" language="javascript">
 <rs:compressJs>
 (function($, fluid, dl) {
-    $(function() {
+   $(function() {
+
+        var formatDataArray = function(dataArray) {
+            var startYear = dataArray[0];
+            var startMonth = dataArray[1];
+            var startDate = dataArray[2];
+            if (parseInt(startMonth) < 10)
+            {
+                startMonth = "0" + startMonth;
+            }
+            if (parseInt(startDate) < 10)
+            {
+                startDate = "0" + startDate;
+            }
+            return startMonth + "/" + startDate + "/" + startYear;
+        }
+
         <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
           dl.pager.init("#${n}dl-absence", {
             model: {
@@ -323,8 +339,8 @@
                       else {
                           absence.title = "";
                       }
-                      absence.start = new Date(absence.start).dlFormat("mm/dd/yyyy");
-                      absence.end = new Date(absence.end).dlFormat("mm/dd/yyyy");
+                      absence.start = formatDataArray(absence.start);
+                      absence.end = formatDataArray(absence.end);
                   });
                   return data;
               }
@@ -395,7 +411,7 @@
                         else {
                             timesheet.title = "";
                         }
-                        timesheet.date = new Date(timesheet.date).dlFormat("mm/dd/yyyy");
+                        timesheet.date = formatDataArray(timesheet.date);
                         timesheet.total = new Number(timesheet.total).toFixed(2);
                     });
                     return data;
