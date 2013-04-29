@@ -57,5 +57,8 @@
                 </property>
             </bean>
         </property>
+        <property name="errorHandler">
+        	<bean class="edu.wisc.cypress.util.CypressResponseErrorHandler"/>
+        </property>
     </bean>
 </beans>
