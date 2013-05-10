@@ -100,10 +100,10 @@
   </div>
   <div class="dl-payroll-links">
     <div class="dl-link">
-      <a href="https://uwservice.wisc.edu/docs/forms/pay-employee-withholding.pdf" target="_blank">Update your W4</a> / <a href="https://uwservice.wisc.edu/docs/forms/pay-direct-deposit.pdf" target="_blank">Update your Direct Deposit</a>
+      <a href="https://uwservice.wisc.edu/docs/forms/pay-employee-withholding.pdf" target="_blank">Update your W4</a> | <a href="https://uwservice.wisc.edu/docs/forms/pay-direct-deposit.pdf" target="_blank">Update your Direct Deposit</a>
     </div>
     <div class="dl-link">
-      <a href="https://uwservice.wisc.edu/docs/publications/tax-w2-explanation.pdf" target="_blank">W-2 Explanation</a> / <a href="https://uwservice.wisc.edu/docs/publications/itx-1042s-explanation.pdf" target="_blank">1042-S Explanation</a>
+      <a href="https://uwservice.wisc.edu/docs/publications/tax-w2-explanation.pdf" target="_blank">W-2 Explanation</a> | <a href="https://uwservice.wisc.edu/docs/publications/itx-1042s-explanation.pdf" target="_blank">1042-S Explanation</a>
     </div>
     <c:if test="${personalDataError or personalData.onVisa}">
       <div class="dl-link">
