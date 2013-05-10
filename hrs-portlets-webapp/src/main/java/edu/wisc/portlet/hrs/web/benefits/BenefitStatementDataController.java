@@ -36,6 +36,8 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.benstmt.BenefitStatementDao;
 import edu.wisc.hr.dm.benstmt.BenefitStatement;
 import edu.wisc.hr.dm.benstmt.BenefitStatements;
+import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -78,7 +80,7 @@ public class BenefitStatementDataController {
             ResourceResponse response) {
 
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "attachment; filename=\"benefits.PDF\"");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "benefits", "PDF");
         this.benefitStatementDao.getBenefitStatement(emplid, year, docId, mode, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

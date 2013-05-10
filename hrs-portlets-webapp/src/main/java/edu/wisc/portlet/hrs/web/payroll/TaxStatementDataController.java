@@ -36,6 +36,8 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.taxstmt.TaxStatementDao;
 import edu.wisc.hr.dm.taxstmt.TaxStatement;
 import edu.wisc.hr.dm.taxstmt.TaxStatements;
+import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -76,7 +78,7 @@ public class TaxStatementDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=irs_statement.pdf");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "irs_statement", "PDF");
         this.taxStatementDao.getTaxStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

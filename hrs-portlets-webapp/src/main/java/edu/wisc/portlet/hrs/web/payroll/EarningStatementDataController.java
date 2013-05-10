@@ -36,6 +36,8 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import edu.wisc.hr.dao.ernstmt.EarningStatementDao;
 import edu.wisc.hr.dm.ernstmt.EarningStatement;
 import edu.wisc.hr.dm.ernstmt.EarningStatements;
+import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -77,7 +79,7 @@ public class EarningStatementDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=earning_statement.pdf");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "earning_statement", "PDF");
         this.earningStatementDao.getEarningStatement(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

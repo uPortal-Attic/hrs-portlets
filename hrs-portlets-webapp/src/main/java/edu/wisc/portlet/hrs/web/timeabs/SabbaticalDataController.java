@@ -34,6 +34,8 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.sabstmt.SabbaticalStatementDao;
 import edu.wisc.hr.dm.sabstmt.SabbaticalReports;
+import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -72,7 +74,7 @@ public class SabbaticalDataController {
     @ResourceMapping("sabbatical_report.pdf")
     public void getSabbaticalReport(@RequestParam("docId") String docId, ResourceResponse response) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=sabbatical_report.pdf");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "sabbatical_report", "PDF");
         this.sabbaticalStatementDao.getSabbaticalReport(emplid, docId, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }

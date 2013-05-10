@@ -36,6 +36,8 @@ import edu.wisc.hr.dao.levstmt.LeaveStatementDao;
 import edu.wisc.hr.dao.levstmt.StatementType;
 import edu.wisc.hr.dm.levstmt.Report;
 import edu.wisc.hr.dm.levstmt.SummarizedLeaveStatement;
+import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -91,7 +93,7 @@ public class LeaveDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=leave_furlough_report.pdf");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "leave_furlough_report", "PDF");
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.REPORT, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
     
@@ -101,7 +103,8 @@ public class LeaveDataController {
             ResourceResponse response) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=missing_leave_report.pdf");
+        HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "missing_leave_report", "PDF");
+
         this.leaveStatementDao.getLeaveStatement(emplid, docId, StatementType.MISSING, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }
