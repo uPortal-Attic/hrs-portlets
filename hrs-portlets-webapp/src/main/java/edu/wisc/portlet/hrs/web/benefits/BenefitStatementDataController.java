@@ -78,7 +78,7 @@ public class BenefitStatementDataController {
             ResourceResponse response) {
 
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        response.setProperty("Content-Disposition", "inline; filename=benefits.pdf");
+        response.setProperty("Content-Disposition", "attachment; filename=\"benefits.PDF\"");
         this.benefitStatementDao.getBenefitStatement(emplid, year, docId, mode, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
     }
 }
