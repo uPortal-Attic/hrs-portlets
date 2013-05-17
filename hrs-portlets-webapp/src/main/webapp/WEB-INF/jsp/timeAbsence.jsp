@@ -256,7 +256,7 @@
     </div>
      --%>
     <div class="dl-link">
-      <a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a><c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">&nbsp;|&nbsp;<a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Leave Report for the Summer</a></c:if>
+      <a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a><c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">&nbsp;|&nbsp;<a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></c:if>
     </div>
   </div>
 </div>
