@@ -20,9 +20,11 @@
 package edu.wisc.portlet.hrs.web.contactinfo;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
+import javax.portlet.RenderRequest;
 import javax.portlet.ResourceRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -38,9 +40,14 @@ import org.springframework.web.portlet.handler.PortletRequestMethodNotSupportedE
 
 import edu.wisc.hr.dao.bnsemail.BusinessEmailUpdateDao;
 import edu.wisc.hr.dao.person.ContactInfoDao;
+import edu.wisc.hr.dao.prefname.PreferredNameDao;
 import edu.wisc.hr.dm.bnsemail.PreferredEmail;
 import edu.wisc.hr.dm.person.PersonInformation;
+import edu.wisc.hr.dm.prefname.PreferredName;
+import edu.wisc.hr.service.PreferredNameService;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
+
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -55,6 +62,7 @@ public class ContactInfoController extends HrsControllerBase {
     private String businessEmailRolesPreferences = "businessEmailRoles";
     private ContactInfoDao contactInfoDao;
     private BusinessEmailUpdateDao businessEmailUpdateDao;
+    private PreferredNameService preferredNameService;
     
     public void setBusinessEmailRolesPreferences(String businessEmailRolesPreferences) {
         this.businessEmailRolesPreferences = businessEmailRolesPreferences;
@@ -63,6 +71,11 @@ public class ContactInfoController extends HrsControllerBase {
     @Autowired
     public void setBusinessEmailUpdateDao(BusinessEmailUpdateDao businessEmailUpdateDao) {
         this.businessEmailUpdateDao = businessEmailUpdateDao;
+    }
+    
+    @Autowired
+    public void setPreferredNameService(PreferredNameService service) {
+    	this.preferredNameService = service;
     }
 
     @Autowired
@@ -84,8 +97,31 @@ public class ContactInfoController extends HrsControllerBase {
             model.addAttribute("preferredEmail", preferredEmail);
         }
         
+        setupPreferredName(model, request);
+        
+        
+        
         return "contactInfo";
     }
+    
+    private void setupPreferredName(ModelMap modelMap, PortletRequest request) {
+		@SuppressWarnings("unchecked")
+		Map<String, String> userInfo = (Map <String, String>) request.getAttribute(PortletRequest.USER_INFO);
+
+		final String pvi = userInfo.get("pviUserAttributes");
+		
+		PreferredName preferredName = preferredNameService.getPreferredName(pvi);
+		
+		String currentFirstName = userInfo.get("wiscedupreferredfirstname");
+		String currentMiddleName = userInfo.get("wiscedupreferredmiddlename");
+		
+		if(preferredName != null) {
+			modelMap.addAttribute("firstName", preferredName.getFirstName());
+			modelMap.addAttribute("middleName", preferredName.getMiddleName());
+			modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,pvi)));
+		}
+		modelMap.addAttribute("displayName",userInfo.get("displayName"));
+	}
 
     //TODO switch to spring-sec role check?
     protected boolean showBusinessEmail(PortletRequest request) {

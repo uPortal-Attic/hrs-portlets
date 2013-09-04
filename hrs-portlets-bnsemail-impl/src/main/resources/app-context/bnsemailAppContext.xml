@@ -28,6 +28,7 @@
 
     <context:annotation-config />
     <context:component-scan base-package="edu.wisc.bnsemail.dao" />
+    <context:component-scan base-package="edu.wisc.prefname.dao" />
     
     <context:property-override location="classpath:/bnsemail-override.properties" />
     <context:property-placeholder location="classpath:/bnsemail-placeholder.properties" />
@@ -76,7 +77,7 @@
         <property name="username" value="${emailUpdateJdbc.username}" />
         <property name="password" value="${emailUpdateJdbc.password}" />
     </bean>
-
+    
     <bean id="emailUpdateNotificationSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="${emailUpdateNotificationSender.host}" />
         <property name="port" value="${emailUpdateNotificationSender.port}" />
@@ -87,5 +88,52 @@
                 <prop key="mail.smtp.sendpartial">true</prop>
             </props>
         </property>
+    </bean>    
+    
+    <!-- preferred name beans -->
+    
+    <tx:annotation-driven transaction-manager="prefNameTransactionManager"/>
+    
+    <bean id="updatePreferredNameProcedure" class="edu.wisc.prefname.dao.UpdatePreferredNameProcedure" >
+        <constructor-arg ref="prefnameDataSource" />
+    </bean>
+    
+    <bean id="prefnameNamedParameterJdbcOperations" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <qualifier value="prefname" />
+        <constructor-arg ref="prefnameDataSource" />
+    </bean>
+
+    <bean id="prefnameTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <qualifier value="prefname" />
+        <property name="dataSource" ref="prefnameDataSource" />
+    </bean>
+    
+    <bean id="prefnameDataSource" class="org.jasig.portlet.utils.jdbc.TomcatDataSourceFactory">
+        <qualifier value="prefname" />
+        
+        <property name="baseObjectName" value="PrefName:section=DataSource,name=" />
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="75" />
+        <property name="maxIdle" value="50" />
+        <property name="maxWait" value="5000" /> <!-- 5 seconds -->
+        <property name="maxAge" value="3600000" /> <!-- 1 hour -->
+        <property name="minEvictableIdleTimeMillis" value="300000" /> <!-- 5 minutes -->
+        
+        <property name="abandonWhenPercentageFull" value="70" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="300" />
+        
+        <property name="jdbcInterceptors" value="ConnectionState(useEquals=true);ResetAbandonedTimer"/>
+        
+        <property name="validationQuery" value="SELECT 1 FROM DUAL" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="true" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
+
+        <property name="driverClassName" value="${prefnameJdbc.driverClassName}" />
+        <property name="url" value="${prefnameJdbc.url}" />
+        <property name="username" value="${prefnameJdbc.username}" />
+        <property name="password" value="${prefnameJdbc.password}" />
     </bean>
 </beans>

@@ -34,6 +34,7 @@
     <context:annotation-config />
     <aop:config proxy-target-class="true" />
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" proxy-target-class="true"/>
+    <context:component-scan base-package="edu.wisc.portlet.hrs.service"/>
     <context:component-scan base-package="edu.wisc.portlet.hrs.web.contactinfo"/>
     
     <bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">

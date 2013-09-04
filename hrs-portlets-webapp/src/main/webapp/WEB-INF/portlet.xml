@@ -166,6 +166,14 @@
               <value>wisceduhrpersonid</value>
               <value>legacywisceduhrpersonid</value>
             </preference>
+            <preference>
+              <name>displayName</name>
+              <value>displayName</value>
+            </preference>
+            <preference>
+            	<name>pviUserAttributes</name>
+            	<value>wiscedupvi</value>
+            </preference>
         </portlet-preferences>
     </portlet>
 
@@ -211,6 +219,21 @@
     </user-attribute>
     <user-attribute>
         <name>legacywisceduhrpersonid</name>
+    </user-attribute>
+    <user-attribute>
+        <name>displayName</name>
+    </user-attribute>
+    <user-attribute>
+    	<name>wiscedupvi</name>
+    </user-attribute>
+    <user-attribute>
+    	<name>wiscedupreferredname</name>
+    </user-attribute>
+    <user-attribute>
+    	<name>wiscedupreferredmiddlename</name>
+    </user-attribute>
+    <user-attribute>
+    	<name>wiscedupreferredfirstname</name>
     </user-attribute>
     
     <filter>
