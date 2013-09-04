@@ -29,7 +29,41 @@
     </div>
   </div>
   <hrs:notification/>
-  <div class="contact-info-name">${fn:escapeXml(contactInformation.name)}</div>
+  <div class="contact-info-name">${displayName}</div>
+  <div>
+  	<form action="${savePreferredNameURL}" method="post">
+	<spring:nestedPath path="preferredName">
+	  <table>
+	  	<tr class='${n}view'>
+	  		<td>${firstName}
+	  		    <c:if test="${!empty middleName }">
+	  		    	&nbsp;${middleName}
+	  		    </c:if>
+	  		    <c:if test="${!empty firstName }">
+	  		    	&nbsp;${sirName}
+	  		    </c:if>
+	  		    &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
+	  		    &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
+	  		</td>
+	  	</tr>
+	  	<tr class='${n}edit-error' style="display: none;">
+	  	<td style='padding: .5em;'><form:errors path="firstName" cssClass="portlet-msg-error"/>&nbsp;<form:errors path="middleName" cssClass="portlet-msg-error"/></td>
+	  	</tr>
+	  	<tr class='${n}edit' style="display: none;">
+	  		<td>
+	  			<form:input path="firstName" class="uportal-input-text" maxlength="30" />
+	  			&nbsp;<form:input path="middleName" class="uportal-input-text" maxlength="30" />
+	  			&nbsp;${sirName}
+	  			&nbsp;<a href="#" onclick='studentPreferredNamePortlet.displayEdit(false);' class="uportal-button fancy-cancel"><spring:message code="button.cancel" text="Cancel"/></a>
+	  			&nbsp;<input class="uportal-button fancy-button" value="${savePreferredName}" type="submit">
+	  		</td>
+	  	</tr>
+	  	
+	  </table>
+	</spring:nestedPath>
+</form>
+  	
+  </div>
   <div class="contact-info-job">
     <div class="contact-info-dept">
       <span class="label"><spring:message code="departmentLabel"/></span>
@@ -269,4 +303,35 @@
 })(dl_v1.jQuery);
 </rs:compressJs>
 </script>
+<script type="text/javascript">
+(function($) {
+   $(document).ready(function() {
+      $(".${n}edit").hide();
+      $(".${n}edit-error").hide();
+      
+      dl_v1.displayEdit = function (enable) {
+    	  if(enable) {
+    		  $(".${n}edit").show();
+    		  $(".${n}view").hide();
+    	  } else {
+    		  $(".${n}edit").hide();
+    		  $(".${n}edit-error").hide();
+    		  $(".${n}view").show();
+    		  
+    	  }
+      }
+   });			
+})(dl_v1.jQuery);
+</script>
+
+<c:if test="${!empty therewasanerror }">
+<script type="text/javascript">
+(function($) {
+   $(document).ready(function() {
+	   dl_v1.displayEdit(true);
+	   $(".${n}edit-error").show().delay();
+   });			
+})(dl_v1.jQuery);	
+</script>
+</c:if>
 </c:if>

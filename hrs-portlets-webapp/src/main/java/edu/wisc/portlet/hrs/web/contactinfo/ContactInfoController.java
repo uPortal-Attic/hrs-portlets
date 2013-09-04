@@ -118,9 +118,25 @@ public class ContactInfoController extends HrsControllerBase {
 		if(preferredName != null) {
 			modelMap.addAttribute("firstName", preferredName.getFirstName());
 			modelMap.addAttribute("middleName", preferredName.getMiddleName());
-			modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,pvi)));
 		}
+		
+		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,pvi)));
+		modelMap.addAttribute("sirName",userInfo.get("sn"));
 		modelMap.addAttribute("displayName",userInfo.get("displayName"));
+		
+		//edit setup
+		if(!modelMap.containsKey("preferredName")) {
+		
+			if(preferredName != null) {
+				modelMap.addAttribute("preferredName", preferredName);
+			} else {
+				modelMap.addAttribute("preferredName", new PreferredName());
+			}
+		}
+		
+		if(request.getParameter("therewasanerror") != null) {
+			modelMap.addAttribute("therewasanerror","true");
+		}
 	}
 
     //TODO switch to spring-sec role check?
