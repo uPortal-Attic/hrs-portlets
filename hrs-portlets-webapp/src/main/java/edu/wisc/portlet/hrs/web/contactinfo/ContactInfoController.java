@@ -22,9 +22,12 @@ package edu.wisc.portlet.hrs.web.contactinfo;
 import java.util.Arrays;
 import java.util.Map;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletMode;
+import javax.portlet.PortletModeException;
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
-import javax.portlet.RenderRequest;
 import javax.portlet.ResourceRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,18 +35,21 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import org.springframework.web.portlet.handler.PortletRequestMethodNotSupportedException;
 
 import edu.wisc.hr.dao.bnsemail.BusinessEmailUpdateDao;
 import edu.wisc.hr.dao.person.ContactInfoDao;
-import edu.wisc.hr.dao.prefname.PreferredNameDao;
 import edu.wisc.hr.dm.bnsemail.PreferredEmail;
 import edu.wisc.hr.dm.person.PersonInformation;
 import edu.wisc.hr.dm.prefname.PreferredName;
+import edu.wisc.hr.dm.prefname.PreferredNameValidator;
 import edu.wisc.hr.service.PreferredNameService;
 
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
@@ -57,6 +63,7 @@ import edu.wisc.portlet.hrs.web.HrsControllerBase;
 @Controller
 @RequestMapping("VIEW")
 public class ContactInfoController extends HrsControllerBase {
+	private final String PVI_ATTR = "wiscedupvi";
     private final EmailValidator emailValidator = EmailValidator.getInstance();
     
     private String businessEmailRolesPreferences = "businessEmailRoles";
@@ -105,12 +112,10 @@ public class ContactInfoController extends HrsControllerBase {
     }
     
     private void setupPreferredName(ModelMap modelMap, PortletRequest request) {
-		@SuppressWarnings("unchecked")
+    	@SuppressWarnings("unchecked")
 		Map<String, String> userInfo = (Map <String, String>) request.getAttribute(PortletRequest.USER_INFO);
-
-		final String pvi = userInfo.get("pviUserAttributes");
-		
-		PreferredName preferredName = preferredNameService.getPreferredName(pvi);
+    	
+		PreferredName preferredName = preferredNameService.getPreferredName(getPvi(request));
 		
 		String currentFirstName = userInfo.get("wiscedupreferredfirstname");
 		String currentMiddleName = userInfo.get("wiscedupreferredmiddlename");
@@ -120,7 +125,7 @@ public class ContactInfoController extends HrsControllerBase {
 			modelMap.addAttribute("middleName", preferredName.getMiddleName());
 		}
 		
-		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,pvi)));
+		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,getPvi(request))));
 		modelMap.addAttribute("sirName",userInfo.get("sn"));
 		modelMap.addAttribute("displayName",userInfo.get("displayName"));
 		
@@ -184,6 +189,24 @@ public class ContactInfoController extends HrsControllerBase {
         return this.getBusinessEmailAddress(modelMap);
     }
     
+    @ActionMapping(params="action=savePreferredName")
+	public void submitEdit(ActionRequest request, ActionResponse response, PreferredName preferredName, BindingResult bindingResult) throws PortletModeException {
+		//validation
+		ValidationUtils.invokeValidator(new PreferredNameValidator(), preferredName, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			//submit changes to DAO
+			preferredName.setPvi(getPvi(request));
+			
+			preferredNameService.setPreferredName(preferredName);
+			//redirect to view page on success
+			response.setPortletMode(PortletMode.VIEW);
+		} else {
+			//fail back to edit mode with flag set
+			response.setRenderParameter("therewasanerror", "true");
+			response.setPortletMode(PortletMode.VIEW);
+		}
+	}
+    
     protected String getBusinessEmailAddress( ModelMap modelMap) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
@@ -193,5 +216,13 @@ public class ContactInfoController extends HrsControllerBase {
         modelMap.addAttribute("email", updatedEmail);
         
         return "jsonView";
+    }
+    
+    private String getPvi(PortletRequest request) {
+    	@SuppressWarnings("unchecked")
+		Map<String, String> userInfo = (Map <String, String>) request.getAttribute(PortletRequest.USER_INFO);
+    	
+    	final String pvi = userInfo.get(PVI_ATTR);
+    	return pvi;
     }
 }

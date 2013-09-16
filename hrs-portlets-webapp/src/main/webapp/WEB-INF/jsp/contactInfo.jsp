@@ -22,6 +22,12 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
+<portlet:actionURL portletMode="VIEW" var="savePreferredNameURL">
+  <portlet:param name="action" value="savePreferredName" />
+</portlet:actionURL>
+
+<spring:message code="savePreferredName" var="savePreferredName" text="Save"/>
+
 <div id="${n}dl-contact-info" class="dl-contact-info">
   <div class="dl-banner-links">
     <div class="dl-help-link">
@@ -29,13 +35,14 @@
     </div>
   </div>
   <hrs:notification/>
-  <div class="contact-info-name">${displayName}</div>
-  <div>
-  	<form action="${savePreferredNameURL}" method="post">
-	<spring:nestedPath path="preferredName">
-	  <table>
-	  	<tr class='${n}view'>
-	  		<td>${firstName}
+  <div class="c-info-name">
+  	<div class="contact-info-official-name">
+  		<span class="label"><spring:message code="label.official.name"/>:</span>
+  		<span>${displayName}</span>
+  	</div>
+  	<div class="contact-info-pref-name-view ${n}view">
+  		<span class="label"><spring:message code="label.preferred.name"/>:</span>
+  		<span>${firstName}
 	  		    <c:if test="${!empty middleName }">
 	  		    	&nbsp;${middleName}
 	  		    </c:if>
@@ -44,26 +51,29 @@
 	  		    </c:if>
 	  		    &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
 	  		    &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
-	  		</td>
-	  	</tr>
-	  	<tr class='${n}edit-error' style="display: none;">
-	  	<td style='padding: .5em;'><form:errors path="firstName" cssClass="portlet-msg-error"/>&nbsp;<form:errors path="middleName" cssClass="portlet-msg-error"/></td>
-	  	</tr>
-	  	<tr class='${n}edit' style="display: none;">
-	  		<td>
-	  			<form:input path="firstName" class="uportal-input-text" maxlength="30" />
-	  			&nbsp;<form:input path="middleName" class="uportal-input-text" maxlength="30" />
-	  			&nbsp;${sirName}
-	  			&nbsp;<a href="#" onclick='studentPreferredNamePortlet.displayEdit(false);' class="uportal-button fancy-cancel"><spring:message code="button.cancel" text="Cancel"/></a>
-	  			&nbsp;<input class="uportal-button fancy-button" value="${savePreferredName}" type="submit">
-	  		</td>
-	  	</tr>
-	  	
-	  </table>
-	</spring:nestedPath>
-</form>
-  	
+	  	</span>
+  	</div>
+  	<form action="${savePreferredNameURL}" method="post">
+	<spring:nestedPath path="preferredName">
+  	<div class='${n}edit-error pref-name-edit-error' style="display: none;">
+  		<span><form:errors path="firstName" cssClass="portlet-msg-error"/>&nbsp;<form:errors path="middleName" cssClass="portlet-msg-error"/></span>
+  	</div>
+  	<div class="contact-info-pref-name-edit ${n}edit" style="display: none;">
+  		<span class="label">
+  			<spring:message code="label.preferred.name"/>:
+  		</span>
+  		<span>
+  			<form:input path="firstName" class="uportal-input-text" maxlength="30" />
+  			&nbsp;<form:input path="middleName" class="uportal-input-text" maxlength="30" />
+  			&nbsp;${sirName}
+  			&nbsp;<a href="#" onclick='dl_v1.displayEdit(false);' class="uportal-button fancy-cancel"><spring:message code="button.cancel" text="Cancel"/></a>
+  			&nbsp;<input class="uportal-button fancy-button" value="${savePreferredName}" type="submit">
+  		</span>
+  	</div>
+  	</spring:nestedPath>
+	</form>
   </div>
+  
   <div class="contact-info-job">
     <div class="contact-info-dept">
       <span class="label"><spring:message code="departmentLabel"/></span>
