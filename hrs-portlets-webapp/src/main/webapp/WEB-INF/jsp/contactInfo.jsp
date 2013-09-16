@@ -73,6 +73,11 @@
 			  	</div>
 		  	</spring:nestedPath>
 		</form>
+		<c:if test="${!empty prefs['notice'][0]}">
+			  <p>
+			  	${prefs['notice'][0]}
+			  </p>
+		</c:if>
 	</c:if>
   </div>
   
