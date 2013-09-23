@@ -8,4 +8,6 @@ public interface PreferredNameDao {
 	public boolean isPending();
 	
 	public void setPreferredName(PreferredName pn);
+
+	public void deletePreferredName(String pvi);
 }

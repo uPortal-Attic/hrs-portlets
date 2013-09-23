@@ -49,4 +49,10 @@ public class PreferredNameServiceImpl implements PreferredNameService {
 		
 	}
 
+	@Override
+	public void deletePreferredName(String pvi) {
+		dao.deletePreferredName(pvi);
+		
+	}
+
 }

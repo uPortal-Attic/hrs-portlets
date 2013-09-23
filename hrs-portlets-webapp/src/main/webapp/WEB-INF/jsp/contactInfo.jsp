@@ -26,6 +26,10 @@
   <portlet:param name="action" value="savePreferredName" />
 </portlet:actionURL>
 
+<portlet:actionURL portletMode="VIEW" var="deletePreferredNameURL">
+  <portlet:param name="action" value="deletePreferredName" />
+</portlet:actionURL>
+
 <spring:message code="savePreferredName" var="savePreferredName" text="Save"/>
 
 <div id="${n}dl-contact-info" class="dl-contact-info">
@@ -52,6 +56,7 @@
 		  		    </c:if>
 		  		    &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
 		  		    &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
+		  		    &nbsp;<a href="${deletePreferredNameURL}" onclick="confirm('Are you sure you want to delete your preferred name?')"><spring:message code="delete"/></a>
 		  	</span>
 	  	</div>
 	  	<form action="${savePreferredNameURL}" method="post">

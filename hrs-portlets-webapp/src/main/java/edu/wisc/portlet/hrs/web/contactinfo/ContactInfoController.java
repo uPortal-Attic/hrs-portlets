@@ -207,6 +207,13 @@ public class ContactInfoController extends HrsControllerBase {
 		}
 	}
     
+    @ActionMapping(params="action=deletePreferredName") 
+	public void submitDelete(ActionRequest request, ActionResponse response) throws PortletModeException {
+		final String pvi = getPvi(request);
+		preferredNameService.deletePreferredName(pvi);
+		response.setPortletMode(PortletMode.VIEW);
+	}
+    
     protected String getBusinessEmailAddress( ModelMap modelMap) {
         
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
