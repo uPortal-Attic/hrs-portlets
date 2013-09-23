@@ -37,6 +37,8 @@ public class PreferredNameServiceImpl implements PreferredNameService {
 			
 			if(ldapPn.equals(jdbcPn)) {
 				return "";
+			} else if (jdbcPn == null && !StringUtils.isEmpty(ldapPn.getFirstName())) { 
+				return "(deletion pending)";
 			} else {
 				return "(change pending)";
 			}
