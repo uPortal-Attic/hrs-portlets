@@ -103,12 +103,14 @@
           </table>
         </div>
         <hrs:pagerNavBar position="bottom" />
-      </div>
-      <div class="dl-link">
-        <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank">Explanation of Staff Benefits Statement</a>
-      </div>
-      <div class="dl-link">
-        <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank">WRS Explanation of Statement of Benefits</a>
+        <div class="${n}-dl-benefit-statement-links">
+	        <div class="dl-link">
+	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank">Explanation of Staff Benefits Statement</a>
+	        </div>
+	        <div class="dl-link">
+	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank">WRS Explanation of Statement of Benefits</a>
+	        </div>
+        </div>
       </div>
     </div>
     <div id="${n}dl-dependents" class="dl-dependents ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
@@ -156,7 +158,7 @@
     <portlet:param name="docId" value="TMPLT_*.docId_TMPLT"/>
 </portlet:resourceURL>
 
-<script type="text/javascript" language="javascript">
+<script type="text/javascript">
 <rs:compressJs>
 (function($, dl) {
     $(function() {
@@ -198,7 +200,14 @@
           dataList: {
               url: "${benefitStatementsUrl}",
               dataKey: "report",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+              dataLoadCallback: function (data) {
+                  if (data == undefined || data.length == 0) {
+                      //Hide the ${n}-dl-benefit-statement-links
+                      $('.${n}-dl-benefit-statement-links').hide();
+                      
+                  }
+              }
           }
         });
         
