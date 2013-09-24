@@ -187,8 +187,9 @@
         var benefitStatementUrl = dl.util.templateUrl("${benefitsPdfUrl}");
         dl.pager.init("#${n}dl-benefit-statements", {
           model: {
-              sortKey: "year",
-              sortDir: -1
+              sortKey: "name",
+              sortDir: 1
+              
           },
           columnDefs: [ 
               dl.pager.linkColDef("year", benefitStatementUrl, {sortable: true}),
