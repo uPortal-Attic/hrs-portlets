@@ -105,10 +105,10 @@
         <hrs:pagerNavBar position="bottom" />
         <div class="${n}-dl-benefit-statement-links">
 	        <div class="dl-link">
-	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank">Explanation of Staff Benefits Statement (Not Produced after April 2011)</a>
+	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank">WRS Explanation of Statement of Benefits</a>
 	        </div>
 	        <div class="dl-link">
-	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank">WRS Explanation of Statement of Benefits</a>
+	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank">Explanation of Staff Benefits Statement (Not Produced after April 2011)</a>
 	        </div>
         </div>
       </div>
