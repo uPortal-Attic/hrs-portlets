@@ -19,6 +19,8 @@
 
 package edu.wisc.portlet.hrs.web.benefits;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -28,8 +30,10 @@ import javax.portlet.ResourceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.commons.collections.comparators.ComparatorChain;
 import org.jasig.springframework.web.client.PortletResourceProxyResponse;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
@@ -39,6 +43,8 @@ import edu.wisc.hr.dm.benstmt.BenefitStatements;
 import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
 
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
+
+import com.google.common.collect.ComparisonChain;
 
 /**
  * 
@@ -67,6 +73,11 @@ public class BenefitStatementDataController {
         final BenefitStatements benefitStatements = this.benefitStatementDao.getBenefitStatements(emplid);
 
         final List<BenefitStatement> statements = benefitStatements.getBenefitStatements();
+        ComparatorChain chainSort = new ComparatorChain();
+        chainSort.addComparator(new BenefitStatementNameComparator());
+        chainSort.addComparator(new BenefitStatementYearComparator());
+        
+        Collections.sort(statements,chainSort);
         modelMap.addAttribute("report", statements);
         
         return "reportAttrJsonView";
@@ -82,5 +93,25 @@ public class BenefitStatementDataController {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
         HrsDownloadControllerUtils.setResponseHeaderForDownload(response, "benefits", "PDF");
         this.benefitStatementDao.getBenefitStatement(emplid, year, docId, mode, new PortletResourceProxyResponse(response, ignoredProxyHeaders));
+    }
+    
+    private class BenefitStatementYearComparator implements Comparator<BenefitStatement> {
+
+		@Override
+		public int compare(BenefitStatement o1, BenefitStatement o2) {
+			return o2.getYear().compareTo(o1.getYear());
+		}
+    	
+    }
+    
+    private class BenefitStatementNameComparator implements Comparator<BenefitStatement> {
+
+		@Override
+		public int compare(BenefitStatement o1, BenefitStatement o2) {
+			String o1Type = o1.getName().substring(0,o1.getName().indexOf(" "));
+			String o2Type = o2.getName().substring(0,o2.getName().indexOf(" "));
+			return o1Type.compareTo(o2Type);
+		}
+    	
     }
 }
