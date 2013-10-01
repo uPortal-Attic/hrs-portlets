@@ -56,7 +56,7 @@
 		  		    </c:if>
 		  		    &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
 		  		    &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
-		  		    &nbsp;<a href="${deletePreferredNameURL}" onclick="confirm('Are you sure you want to delete your preferred name?')"><spring:message code="delete"/></a>
+		  		    &nbsp;<a href="${deletePreferredNameURL}" onclick="return confirm('Are you sure you want to delete your preferred name?');"><spring:message code="delete"/></a>
 		  	</span>
 	  	</div>
 	  	<form action="${savePreferredNameURL}" method="post">
