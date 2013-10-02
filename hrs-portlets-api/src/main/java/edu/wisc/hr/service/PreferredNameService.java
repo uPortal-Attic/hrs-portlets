@@ -5,9 +5,9 @@ import edu.wisc.hr.dm.prefname.PreferredName;
 public interface PreferredNameService {
 	public PreferredName getPreferredName(String pvi);
 	
-	public String getStatus(PreferredName pn);
+	public String getStatus(PreferredName ldapPn, PreferredName jdbcPn);
 	
-	public void setPreferredName(PreferredName pn);
+	public void setPreferredName(String pvi, PreferredName pn);
 	
 	public void deletePreferredName(String pvi);
 

@@ -125,7 +125,7 @@ public class ContactInfoController extends HrsControllerBase {
 			modelMap.addAttribute("middleName", preferredName.getMiddleName());
 		}
 		
-		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,getPvi(request))));
+		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,getPvi(request)),preferredNameService.getPreferredName(getPvi(request))));
 		modelMap.addAttribute("sirName",userInfo.get("sn"));
 		modelMap.addAttribute("displayName",userInfo.get("displayName"));
 		
@@ -197,7 +197,7 @@ public class ContactInfoController extends HrsControllerBase {
 			//submit changes to DAO
 			preferredName.setPvi(getPvi(request));
 			
-			preferredNameService.setPreferredName(preferredName);
+			preferredNameService.setPreferredName(preferredName.getPvi(), preferredName);
 			//redirect to view page on success
 			response.setPortletMode(PortletMode.VIEW);
 		} else {
