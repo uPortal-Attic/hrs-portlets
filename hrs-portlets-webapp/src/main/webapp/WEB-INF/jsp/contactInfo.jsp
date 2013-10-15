@@ -41,12 +41,12 @@
   <hrs:notification/>
   <div class="c-info-name">
   	<div class="contact-info-official-name">
-  		<span class="label"><spring:message code="label.official.name"/>:</span>
+  		<span class="uportal-channel-strong"><spring:message code="label.official.name"/>:</span>
   		<span>${displayName}</span>
-  	</div>
+  	  </div>
   	<c:if test="${showBusinessEmail}">
 	  	<div class="contact-info-pref-name-view ${n}view">
-	  		<span class="label"><spring:message code="label.preferred.name"/>:</span>
+	  		<span class="uportal-channel-strong"><spring:message code="label.preferred.name"/>:</span>
 	  		<span>${firstName}
 		  		    <c:if test="${!empty middleName }">
 		  		    	&nbsp;${middleName}
@@ -59,30 +59,57 @@
 		  		    &nbsp;<a href="${deletePreferredNameURL}" onclick="return confirm('Are you sure you want to delete your preferred name?');"><spring:message code="delete"/></a>
 		  	</span>
 	  	</div>
+	  	<div class='edit-area'>
 	  	<form action="${savePreferredNameURL}" method="post">
 			<spring:nestedPath path="preferredName">
-			  	<div class='${n}edit-error pref-name-edit-error' style="display: none;">
+			  	<div class='${n}edit-error pref-name-edit-error' style="display: none; padding: .5em;">
 			  		<span><form:errors path="firstName" cssClass="portlet-msg-error"/>&nbsp;<form:errors path="middleName" cssClass="portlet-msg-error"/></span>
 			  	</div>
 			  	<div class="contact-info-pref-name-edit ${n}edit" style="display: none;">
-			  		<span class="label">
+			  		<span class="uportal-channel-strong">
 			  			<spring:message code="label.preferred.name"/>:
 			  		</span>
-			  		<span>
-			  			<form:input path="firstName" class="uportal-input-text" maxlength="30" />
-			  			&nbsp;<form:input path="middleName" class="uportal-input-text" maxlength="30" />
-			  			&nbsp;${sirName}
-			  			&nbsp;<a href="#" onclick='dl_v1.displayEdit(false);' class="uportal-button fancy-cancel"><spring:message code="button.cancel" text="Cancel"/></a>
-			  			&nbsp;<input class="uportal-button fancy-button" value="${savePreferredName}" type="submit">
-			  		</span>
+			  		<div style="margin-left: 1em;">
+			  			<div>
+				  			<spring:message code="text.enteryour" text="Enter your preferred first and middle names: " />
+				  		</div>
+				  		<div>
+				  			<div class="edit-name">
+					  		<span>
+					  			<form:input path="firstName" class="uportal-input-text" maxlength="30" />
+					  		</span>
+					  		<br/>
+					  		<span class='pn-label'>First Name</span>
+					  		</div>
+					  		<div class="edit-name">
+					  		<span>
+					  			<form:input path="middleName" class="uportal-input-text" maxlength="30" />
+					  		</span>
+					  		<br/>
+					  		<span class='pn-label'>Middle Name</span>
+					  		</div>
+				  		</div>
+				  		<div class="edit-buttons">
+				  			<span>
+					  			<a href="#" onclick='dl_v1.displayEdit(false);' class="uportal-button fancy-cancel"><spring:message code="button.cancel" text="Cancel"/></a>
+					  		</span>
+					  		<span>
+					  			<input class="uportal-button fancy-button" value="${savePreferredName}" type="submit">
+					  		</span>
+				  		</div>
+				  		
+			  		</div>
 			  	</div>
 		  	</spring:nestedPath>
 		</form>
-		<c:if test="${!empty prefs['notice'][0]}">
+		</div>
+		<div class='edit-notice'>
+	  		<c:if test="${!empty prefs['notice'][0]}">
 			  <p>
-			  	${prefs['notice'][0]}
+			  	 ${prefs['notice'][0]}
 			  </p>
-		</c:if>
+			</c:if>
+		</div>
 	</c:if>
   </div>
   

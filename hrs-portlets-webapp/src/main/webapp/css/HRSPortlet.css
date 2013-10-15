@@ -31,5 +31,53 @@
  .dl-contact-info p {
  	font-style: italic;
  	font-size: x-small;
+ }
+ 
+.dl-contact-info .fancy-button {
+	background: #990000;
+	color: white !important;
+	font-weight : normal;
+}
+
+.dl-contact-info .fancy-button:hover {
+	font-weight : bold;
+}
+
+.dl-contact-info .fancy-cancel {
+	background: lightgray;
+	color: black !important;
+}
+
+ .dl-contact-info .pref-name-edit-error
+ {
+ 	padding : 1em;
+ }
+ 
+ .sdl-contact-info .dl-contact-info p {
+ 	font-style: italic;
+ 	font-size: x-small;
  	margin: .5em;
+ }
+ 
+ .dl-contact-info .edit-name {
+	float : left; 
+ }
+ 
+ .dl-contact-info .edit-notice {
+ 	clear : left;
+ }
+ 
+ .dl-contact-info .edit-buttons {
+ 	clear: left;
+	min-width: 12em;
+	padding-top: .75em;
+	padding-bottom: .75em;
+	max-width: 24.5em;
+	width: 100%;
+	text-align: right;
+ }
+ 
+ .dl-contact-info .pn-label {
+ 	font-style: italic;
+	font-size : x-small;
  }
