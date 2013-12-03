@@ -17,11 +17,45 @@
  * under the License.
  */
 
-@import url("byu.css");
+package edu.byu.hr.model.timereporting;
 
+/**
+ * Description
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
+public class LeaveTimeBalance {
+    /**
+     * Job code.
+     */
+    int jobCode;
+    /**
+     * Time available in minutes
+     */
+    int timeAvailable;
+
+    public LeaveTimeBalance() {
+    }
+
+    public LeaveTimeBalance(int jobCode, int minutes) {
+        this.jobCode = jobCode;
+        this.timeAvailable = minutes;
+    }
+
+    public Integer getJobCode() {
+        return jobCode;
+    }
+
+    public void setJobCode(int jobCode) {
+        this.jobCode = jobCode;
+    }
+
+    public int getTimeAvailable() {
+        return timeAvailable;
+    }
+
+    public void setTimeAvailable(int timeAvailable) {
+        this.timeAvailable = timeAvailable;
+    }
+}

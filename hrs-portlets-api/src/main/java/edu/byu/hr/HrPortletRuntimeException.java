@@ -17,11 +17,25 @@
  * under the License.
  */
 
-@import url("byu.css");
+package edu.byu.hr;
 
+/**
+ * HR Portlets Runtime Exception
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
+public class HrPortletRuntimeException extends RuntimeException {
+
+    public HrPortletRuntimeException(String message) {
+        super(message);
+    }
+
+    public HrPortletRuntimeException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public HrPortletRuntimeException(Throwable cause) {
+        super(cause);
+    }
+}

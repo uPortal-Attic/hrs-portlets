@@ -24,7 +24,7 @@
 
     <!--
      | Please see http://ehcache.sourceforge.net/documentation/configuration.html for detailed information on
-     | how to configurigure caches in this file
+     | how to configure caches in this file
      +-->
 
     <defaultCache eternal="false" maxElementsInMemory="1000"
@@ -120,5 +120,18 @@
         maxElementsInMemory="10" overflowToDisk="false" diskPersistent="false"
         timeToIdleSeconds="0" timeToLiveSeconds="3600"
         memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
+
+<!--
+ | Time Reporting caches
+ +-->
+    <cache name="timePunch" eternal="false"
+           maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false"
+           timeToIdleSeconds="0" timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LRU" statistics="true" />
+
+    <cache name="leaveSummary" eternal="false"
+           maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false"
+           timeToIdleSeconds="0" timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LRU" statistics="true" />
+
 </ehcache>

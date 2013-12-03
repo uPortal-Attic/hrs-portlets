@@ -47,6 +47,7 @@
     <logger name="httpclient.wire" level="DEBUG"/>
     <logger name="edu.wisc" level="DEBUG"/>
     <logger name="org.springframework" level="DEBUG"/>
+    <logger name="edu.byu" level="DEBUG"/>
     -->
 
     <logger name="edu.wisc.logging.perf" level="TRACE" additivity="false">

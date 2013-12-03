@@ -56,19 +56,19 @@
         <joda-time.version>2.1</joda-time.version>
         <jsp-api.version>2.1</jsp-api.version>
         <junit.version>4.11</junit.version>
-        <logback.version>1.0.9</logback.version>
+        <logback.version>1.0.12</logback.version>
         <mail.version>1.4.5</mail.version>
         <mockito.version>1.9.5</mockito.version>
         <pluto.version>2.1.0-M3</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
         <portlet-utils.version>1.0.0</portlet-utils.version>
-        <resource-server.version>1.0.27</resource-server.version>
+        <resource-server.version>1.0.33</resource-server.version>
         <servlet-api.version>2.5</servlet-api.version>
         <spring.version>3.1.3.RELEASE</spring.version>
         <spring-portlet-contrib.version>1.0.0</spring-portlet-contrib.version>
         <spring-ws.version>2.1.2.RELEASE</spring-ws.version>
         <spring-security.version>3.1.3.RELEASE</spring-security.version>
-        <slf4j.version>1.7.2</slf4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
         <tomcat-jdbc.version>7.0.34</tomcat-jdbc.version>
     </properties>
 
@@ -77,13 +77,14 @@
         <module>hrs-portlets-ps-impl</module>
         <module>hrs-portlets-cypress-impl</module>
         <module>hrs-portlets-bnsemail-impl</module>
+        <module>hrs-portlets-employee-time-reporting</module>
         <module>hrs-portlets-webapp</module>
         <module>hrs-portlets-demo-impl</module>
     </modules>
     
     <dependencyManagement>
         <dependencies>
-	        <dependency>
+            <dependency>
 	        	<groupId>org.apache.portals.pluto</groupId>
 	        	<artifactId>pluto-taglib</artifactId>
 	        	<version>${pluto.version}</version>

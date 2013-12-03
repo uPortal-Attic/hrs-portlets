@@ -17,11 +17,18 @@
  * under the License.
  */
 
-@import url("byu.css");
+package edu.byu.hr.timereporting.util;
 
+/**
+ * Description
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
+public class TimePunchEmployeeKeyGeneratorImpl implements TimePunchEmployeeKeyGenerator {
+
+    @Override
+    public String getKey(String emplId) {
+        return "timeReporting.timePunch." + emplId;
+    }
+}

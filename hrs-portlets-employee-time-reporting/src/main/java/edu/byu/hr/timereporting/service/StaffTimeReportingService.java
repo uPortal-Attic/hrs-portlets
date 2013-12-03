@@ -17,11 +17,28 @@
  * under the License.
  */
 
-@import url("byu.css");
+package edu.byu.hr.timereporting.service;
 
+import java.util.List;
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
+import javax.portlet.PortletRequest;
+
+import edu.byu.hr.model.timereporting.LeaveTimeBalance;
+import edu.byu.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
+import edu.byu.hr.model.timereporting.TimePeriodEntry;
+import org.joda.time.LocalDate;
+
+/**
+ * Description
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
+
+public interface StaffTimeReportingService {
+
+    PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(PortletRequest request, String emplId, LocalDate dateInPayPeriod);
+
+    void updateLeaveTimeReported(PortletRequest request, String emplId, List<TimePeriodEntry> updatedTimesheet);
+
+    List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId);
+}

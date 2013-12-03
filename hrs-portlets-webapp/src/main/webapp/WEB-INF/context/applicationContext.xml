@@ -60,6 +60,10 @@
         <property name="cacheManagerName" value="HRSPortlets" />
     </bean>
 
+    <bean id="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
+
     <!-- 
      | Enable the @Cacheable and @TriggersRemove annotations 
      | 
