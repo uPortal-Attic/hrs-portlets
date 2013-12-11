@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to Jasig under one or more contributor license
  * agreements. See the NOTICE file distributed with this work
  * for additional information regarding copyright ownership.
@@ -17,28 +17,26 @@
  * under the License.
  */
 
-package edu.wisc.hr.dao.url;
-
-import java.util.Map;
+package edu.wisc.hr.dao.roles;
 
 /**
- * Gets a set of deep-links into the HRS system
- * 
- * @author Eric Dalquist
- * @version $Revision: 1.1 $
+ * Constants representing the roles recognized by the accompanying portlet.
+ * Defines keys suitable for use in HrsRoleDao.
  */
-public interface HrsUrlDao {
+public enum HrsRole {
 
+    // TODO: add comments documenting the meaning of each role.
 
+    ROLE_VIEW_ABSENCE_HISTORIES(),
 
-    /**
-     * Map from expected keys identifying URLs to Strings representing those URLs.
-     * The value Strings should be ready-to-render-to-users URLs, i.e., exactly what you want the hyperlink
-     * target URL to be.
-     *
-     * Expected keys are documented as static fields on this class.
-     *
-     * @return a non-null Map from out-of-band defined String keys to Strings representing the URL values
-     */
-    public Map<String, String> getHrsUrls();
+    ROLE_VIEW_MANAGED_ABSENCES(),
+
+    ROLE_VIEW_MANAGED_TIMES(),
+
+    ROLE_VIEW_TIME_SHEET(),
+
+    ROLE_VIEW_TIME_CLOCK(),
+
+    ROLE_VIEW_WEB_CLOCK();
+
 }
