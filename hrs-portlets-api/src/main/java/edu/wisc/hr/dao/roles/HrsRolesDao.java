@@ -29,5 +29,20 @@ import java.util.Set;
  */
 public interface HrsRolesDao {
 
+
+    /**
+     * Get the Set of roles applicable to the user identified by the provided emplId String.
+     * Roles recognized by this software are represented in HrsRole.
+     *
+     * While this returns a Set of Strings rather than of HrsRole s, the meaningful Strings
+     * are documented in the HrsRole enum.
+     *
+     * Implementations may return Strings not represented in the HrsRole enum.  Callers must cope with the Set
+     * including Strings not represented in the HrsRole enum.  So handle that IllegalArgumentException on
+     * HrsRole.valueOf() if you use it.
+     *
+     * @param emplId employee identifier identifying the user whose roles are queried
+     * @return a potentially empty non-null Set of Strings representing the user's roles
+     */
     public Set<String> getHrsRoles(String emplId);
 }
