@@ -78,6 +78,7 @@
         <module>hrs-portlets-cypress-impl</module>
         <module>hrs-portlets-bnsemail-impl</module>
         <module>hrs-portlets-webapp</module>
+        <module>hrs-portlets-demo-impl</module>
     </modules>
     
     <dependencyManagement>
