@@ -19,12 +19,15 @@
 
 package edu.wisc.hr.dao.url;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Constants representing the keys of URLs recognized by the accompanying portlet.
  * Defines keys suitable for use in HrsUrlDao.
  *
  * WARNING: This enum does not work the way you might expect in that HrsUrl.valueOf(String) is broken.
- * Use HrsUrlHelper.valueOf(String) instead.  See also accompanying unit test.
+ * Use HrsUrl.fromString(String) instead.  See also accompanying unit test.
  */
 public enum HrsUrl {
 
@@ -65,6 +68,16 @@ public enum HrsUrl {
 
     WEB_CLOCK("Web Clock");
 
+    private static Map<String, HrsUrl> CODE_TO_HRS_URLS = new HashMap();
+
+    static {
+
+        for (HrsUrl hrsUrl : HrsUrl.values()) {
+            CODE_TO_HRS_URLS.put(hrsUrl.getCode(), hrsUrl);
+        }
+
+    }
+
     /**
      * In practice there are "magic String" URL keys that HrsUrlDao implementations use to communicate HRS URLs
      * from DAO implementation to relying portlet.  These magic Strings have been harvested from the portlet
@@ -91,5 +104,29 @@ public enum HrsUrl {
         return code;
     }
 
+    /**
+     * Converts from a String to the corresponding HrsUrl, with semantics similar to Enum.valueOf(String).
+     *
+     * Corresponding means the HrsUrl getCode() returns *exactly* the representation.
+     *
+     * @param representation a code of a known HrsUrl
+     * @return the corresponding HrsUrl
+     * @throws IllegalArgumentException if the representation is not recognized
+     * @throws NullPointerException if the representation is null
+     */
+    public static HrsUrl fromString(String representation)
+            throws IllegalArgumentException, NullPointerException {
 
+        if (representation == null) {
+            throw new NullPointerException("Can't get the HrsUrl value of null.");
+        }
+
+        if ( !(CODE_TO_HRS_URLS.containsKey(representation)) ) {
+            throw new IllegalArgumentException("[" + representation + "] is not a recognized representation of an " +
+                    "HrsUrl");
+        }
+
+        return CODE_TO_HRS_URLS.get(representation);
+
+    }
 }
