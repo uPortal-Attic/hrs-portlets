@@ -229,6 +229,7 @@
                             <artifactId>datalist-portlet-content</artifactId>
                         </overlay>
                     </overlays>
+                    <useCache>true</useCache>
                 </configuration>
             </plugin>
             <plugin>
