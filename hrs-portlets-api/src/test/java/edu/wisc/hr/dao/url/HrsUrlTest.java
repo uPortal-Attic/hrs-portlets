@@ -36,4 +36,34 @@ public class HrsUrlTest {
         HrsUrl.valueOf("Open Enrollment/Hire Event");
     }
 
+
+    /**
+     * Test that HrsUrl.fromString() successfully resolves HrsUrls from their String code representations.
+     */
+    @Test
+    public void testResolvesHrsUrl(){
+
+        assertEquals(HrsUrl.OPEN_ENROLLMENT_HIRE_EVENT, HrsUrl.fromString("Open Enrollment/Hire Event"));
+
+        assertEquals(HrsUrl.REQUEST_ABSENCE, HrsUrl.fromString("Request Absence"));
+
+    }
+
+    /**
+     * Test that HrsUrl.fromString() throws NPE when passed null.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testThrowsNullPointerExceptionOnNullArgument() {
+        HrsUrl.fromString(null);
+    }
+
+    /**
+     * Test that HrsUrl.fromString() throws IllegalArgumentException when asked to resolve a String it does not
+     * recognize.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testThrowsIllegalArgumentExceptionOnUnrecognizedKey() {
+        HrsUrl.fromString("BogusNonExistentUrlIdentifier");
+    }
+
 }
