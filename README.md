@@ -1,6 +1,6 @@
-## ReadMe
+# ReadMe
 
-### Continuous Integration Status
+## Continuous Integration Status
 
 This project uses [Travis-CI.org][] for continuous integration.  This means that every commit to `master` and every
 Pull Request is automatically built and the unit tests are automatically run.  The below badge shows the current status
@@ -10,7 +10,9 @@ README locally. :) )
 ![Build Status](https://travis-ci.org/Jasig/hrs-portlets.png?branch=master)
 
 
-### Local Setup Instructions
+## Local Setup Instructions
+
+### Property files
 
 Several property files need to be configured for your local environment before the Portlet will run in your local uPortal server.
 
