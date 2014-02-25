@@ -53,8 +53,8 @@
             <c:when test="${timePunchEntry.punchedIn}">
                 <td>
                     <div class="btn-toggle-grp">
-                        <a href="${punchInUrl}" class="btn btn-xs btn-success btn-clocked-in" role="button">Clocked In</a>
-                        <a href="${punchOutUrl}" class="btn btn-default btn-xs btn-toggle-right" role="button">Out</a>
+                        <a href="${punchInUrl}" class="btn btn-xs btn-success btn-clocked-in" role="button" title="Clock in again">Clocked In</a>
+                        <a href="${punchOutUrl}" class="btn btn-default btn-xs btn-toggle-right" role="button" title="Clock Out">Out</a>
                     </div>
                 </td>
             </c:when>
@@ -62,7 +62,7 @@
                 <td>
                     <div class="btn-toggle-grp">
                         <a href="${punchInUrl}" title="Clock In" class="btn btn-default btn-xs btn-toggle-left clock-in">In</a>
-                        <a href="${punchOutUrl}" title="Clocked Out" class="btn btn-xs btn-danger btn-clocked-out">Clocked Out</a>
+                        <a href="${punchOutUrl}" title="Clock out again" class="btn btn-xs btn-danger btn-clocked-out">Clocked Out</a>
                     </div>
                 </td>
             </c:otherwise>
