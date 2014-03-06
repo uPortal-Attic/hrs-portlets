@@ -129,7 +129,7 @@
                                     <c:set var="rowTotalClass"></c:set>
                                 </c:otherwise>
                             </c:choose>
-                            <td class="${rowTotalClass} <c:out value="${jobDescription.jobTitle}"/>-total">${time:toHhMm(perTableJobCodeTotals[tableNumber.index][jobDescription.jobCode])}</td>
+                            <td class="${jobDescription.jobTitle}-total ${rowTotalClass}">${time:toHhMm(perTableJobCodeTotals[tableNumber.index][jobDescription.jobCode])}</td>
                         </tr>
                     </c:forEach>
                     <tr>

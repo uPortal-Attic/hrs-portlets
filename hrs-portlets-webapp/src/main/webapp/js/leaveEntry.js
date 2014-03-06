@@ -366,27 +366,27 @@
             });
         };
 
-        var updateAlert = function(state) {
+        var updateAlert = function(state, msg) {
             //console.log('state', state);
             switch(state) {
                 case 'success':
-                    settings.alertDiv.addClass(settings.messages.success.alertClass).text(settings.messages.success.msg);
+                    settings.alertDiv.addClass(settings.messages.success.alertClass).text((msg) ? msg : settings.messages.success.msg);
                     settings.alertDiv.show();
                     break;
                 case 'errors':
-                    settings.alertDiv.addClass(settings.messages.error.alertClass).text(settings.messages.error.msg);
+                    settings.alertDiv.addClass(settings.messages.error.alertClass).text((msg) ? msg : settings.messages.error.msg);
                     settings.alertDiv.show();
                     break;
                 case 'overDayTotal':
-                    settings.alertDiv.addClass(settings.messages.overDayTotal.alertClass).text(settings.messages.overDayTotal.msg);
+                    settings.alertDiv.addClass(settings.messages.overDayTotal.alertClass).text((msg) ? msg : settings.messages.overDayTotal.msg);
                     settings.alertDiv.show();
                     break;
                 case 'overWeekTotal':
-                    settings.alertDiv.addClass(settings.messages.overWeekTotal.alertClass).text(settings.messages.overWeekTotal.msg);
+                    settings.alertDiv.addClass(settings.messages.overWeekTotal.alertClass).text((msg) ? msg : settings.messages.overWeekTotal.msg);
                     settings.alertDiv.show();
                     break;
                 case 'failed':
-                    settings.alertDiv.addClass(settings.messages.failed.alertClass).text(settings.messages.failed.msg);
+                    settings.alertDiv.addClass(settings.messages.failed.alertClass).text((msg) ? msg : settings.messages.failed.msg);
                     settings.alertDiv.show();
                     break;
                 default:
@@ -407,11 +407,12 @@
         };
 
         var submitForm = function() {
-            var jqxhr = $.post( self.attr('action'), self.serialize(), function( data ) {
+            var data = self.serialize();
+            var jqxhr = $.post( self.attr('action'), data , function( data ) {
                 if (data.success) {
                     updateAlert('success');
                 } else {
-                    updateAlert('failed');
+                    updateAlert('failed', data.error_message);
                 }
 
                 
