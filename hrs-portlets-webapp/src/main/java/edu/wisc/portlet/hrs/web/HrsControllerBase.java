@@ -41,7 +41,7 @@ public class HrsControllerBase {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     
     private String notificationPreferences = "notification";
-    private String helpUrlPreferences = "helpUrl";
+    protected static final String helpUrlPreferences = "helpUrl";
     private HrsUrlDao hrsUrlDao;
 
 
@@ -60,7 +60,7 @@ public class HrsControllerBase {
     @ModelAttribute("helpUrl")
     public final String getNavLinks(PortletRequest request) {
         final PortletPreferences preferences = request.getPreferences();
-        return preferences.getValue(this.helpUrlPreferences, "#");
+        return preferences.getValue(helpUrlPreferences, "#");
     }
     
     /**

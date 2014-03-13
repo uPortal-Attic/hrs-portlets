@@ -19,16 +19,20 @@
 
 package edu.wisc.portlet.hrs.web.payroll;
 
+import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.wisc.hr.dao.person.ContactInfoDao;
 import edu.wisc.hr.dm.person.PersonInformation;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
+
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
 /**
@@ -43,6 +47,17 @@ public class PayrollInformationController extends HrsControllerBase {
     @Autowired
     public void setContactInfoDao(ContactInfoDao contactInfoDao) {
         this.contactInfoDao = contactInfoDao;
+    }
+    
+    /**
+     * Gets the URL to a page describing your earning statement
+     * @param request the request
+     * @return the value of the portlet preference
+     */
+    @ModelAttribute("understandingEarningUrl")
+    public final String getUnderstandingEarningUrl(PortletRequest request) {
+        final PortletPreferences preferences = request.getPreferences();
+        return preferences.getValue("understandingEarningUrl",null);
     }
 
     @RequestMapping
