@@ -68,9 +68,11 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
       </div>
-      <div class="dl-link">
-        <a href="https://uwservice.wisc.edu/hrs/earnings-statement.php" target="_blank">Understanding Your Earnings Statement</a>
-      </div>
+      <c:if test="${not empty understandingEarningUrl}">
+          <div class="dl-link">
+            <a href="${understandingEarningUrl}" target="_blank">Understanding Your Earnings Statement</a>
+          </div>
+      </c:if>
     </div>
     <div id="${n}dl-tax-statements" class="dl-tax-statements ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
       <div class="tax-description">
