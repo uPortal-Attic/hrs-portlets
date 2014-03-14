@@ -98,6 +98,10 @@
         <constructor-arg ref="prefnameDataSource" />
     </bean>
     
+    <bean id="deletePreferredNameProcedure" class="edu.wisc.prefname.dao.DeletePreferredNameUserFunction" >
+        <constructor-arg ref="prefnameDataSource" />
+    </bean>
+    
     <bean id="prefnameNamedParameterJdbcOperations" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <qualifier value="prefname" />
         <constructor-arg ref="prefnameDataSource" />
