@@ -19,11 +19,12 @@ import edu.wisc.hr.dao.prefname.PreferredNameDao;
 import edu.wisc.hr.dm.prefname.PreferredName;
 
 @Repository
-public class PreferredNameDaoImpl implements PreferredNameDao  {
+public class PreferredNameDaoImpl implements PreferredNameDao {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
     private NamedParameterJdbcOperations jdbcTemplate;
     private UpdatePreferredNameProcedure updatePreferredName;
+    private DeletePreferredNameUserFunction deletePreferredName;
 	
 	@Autowired
     public void setJdbcTemplate(@Qualifier("prefname") NamedParameterJdbcOperations jdbcTemplate) {
@@ -31,8 +32,13 @@ public class PreferredNameDaoImpl implements PreferredNameDao  {
     }
 	
 	@Autowired
-    public void setUpdatePreferredEmail(UpdatePreferredNameProcedure updatePrefNameProc) {
+    public void setUpdatePreferredName(UpdatePreferredNameProcedure updatePrefNameProc) {
         this.updatePreferredName = updatePrefNameProc;
+    }
+	
+	@Autowired
+    public void setDeletePreferredName(DeletePreferredNameUserFunction deletePreferredName) {
+        this.deletePreferredName = deletePreferredName;
     }
 
 	@SuppressWarnings("unchecked")
@@ -63,7 +69,7 @@ public class PreferredNameDaoImpl implements PreferredNameDao  {
 	@Override
 	@Transactional
 	public void deletePreferredName(String pvi) {
-		updatePreferredName.updatePrefferedName(new PreferredName("","",pvi));
+		deletePreferredName.deletePreferredNameUser(pvi);
 		
 	}
 
