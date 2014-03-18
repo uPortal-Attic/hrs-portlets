@@ -64,10 +64,10 @@
                                         <bean class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
                                             <property name="preAuthenticatedUserDetailsService">
                                                 <!-- Configurable - replace with custom impl or extension to add GrantedAuthorities -->
-                                                <bean class="org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService"/>
-                                                <!-- Implementation that gets additional roles from Peoplesoft web service
+                                                <!-- Implementation that gets additional roles from Peoplesoft web service -->
                                                 <bean class="edu.wisc.portlet.hrs.security.HrsPreAuthenticatedGrantedAuthoritiesUserDetailsService" />
-                                                -->
+                                                <!-- Implementation that does not provide any roles. Use ONLY if not using portlets requiring HR roles -->
+                                                <!--<bean class="org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService"/>-->
                                             </property>
                                         </bean>
                                     </constructor-arg>
