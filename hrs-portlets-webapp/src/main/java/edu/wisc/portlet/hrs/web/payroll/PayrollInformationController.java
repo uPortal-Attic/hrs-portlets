@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.wisc.hr.dao.person.ContactInfoDao;
 import edu.wisc.hr.dm.person.PersonInformation;
 
-import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
 
 import edu.wisc.portlet.hrs.web.HrsControllerBase;
 
