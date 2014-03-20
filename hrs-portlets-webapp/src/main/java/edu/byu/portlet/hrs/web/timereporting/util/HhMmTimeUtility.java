@@ -19,8 +19,6 @@
 
 package edu.byu.portlet.hrs.web.timereporting.util;
 
-import edu.byu.hr.HrPortletRuntimeException;
-
 /**
  * Various utility methods related to handling time
  *
@@ -30,6 +28,12 @@ import edu.byu.hr.HrPortletRuntimeException;
 public class HhMmTimeUtility implements TimeParser {
     private static final String COLON = ":";
 
+    /**
+     * Return the number of minutes for an hh:mm time value.
+     * @param timeWorked Time value (must not be null or blank string)
+     * @return Time value converted to minutes
+     * @throws IllegalArgumentException if the time value cannot be converted to minutes
+     */
     public int computeMinutes(String timeWorked) {
         return parseHHMMStringToMinutes(timeWorked);
     }
@@ -38,6 +42,7 @@ public class HhMmTimeUtility implements TimeParser {
      * Return the number of minutes for an hh:mm time value.
      * @param time Time value (must not be null or blank string)
      * @return Time value converted to minutes
+     * @throws IllegalArgumentException if the time value cannot be converted to minutes
      */
     public static int parseHHMMStringToMinutes(String time) {
         String[] values = time.split(COLON);
@@ -50,7 +55,7 @@ public class HhMmTimeUtility implements TimeParser {
                 // fall through to error.
             }
         }
-        throw new HrPortletRuntimeException("Invalid Time entry not HH:MM, was '" + time);
+        throw new IllegalArgumentException("Invalid Time entry not HH:MM, was '" + time);
     }
 
     /**

@@ -35,7 +35,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
- * Description
+ * Implementation of the Staff Time Punch Service.  The service performs some caching of data.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */

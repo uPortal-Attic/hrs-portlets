@@ -34,7 +34,7 @@ public interface TimeParser {
      * @param timeWorked Time worked in format determined by implementing class.  Null or empty value is
      *                   treated as 0 minutes.
      * @return Number of minutes
-     * @throws HrPortletRuntimeException if the string is invalid.
+     * @throws IllegalArgumentException if the string cannot be converted to minutes.
      */
     public int computeMinutes(String timeWorked) throws HrPortletRuntimeException;
 }

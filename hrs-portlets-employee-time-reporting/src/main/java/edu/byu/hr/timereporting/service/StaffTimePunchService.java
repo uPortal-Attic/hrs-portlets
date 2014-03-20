@@ -26,7 +26,7 @@ import javax.portlet.PortletRequest;
 import edu.byu.hr.model.timereporting.TimePunchEntry;
 
 /**
- * Description
+ * Service interface definition for the Staff Time Punch portlet.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */
@@ -34,7 +34,8 @@ import edu.byu.hr.model.timereporting.TimePunchEntry;
 public interface StaffTimePunchService {
 
     /**
-     * Returns a list of <code>TimePunchEntry</code> items for the employee.
+     * Returns a list of <code>TimePunchEntry</code> items for the employee.  The list order is the order the
+     * items are displayed on the UI.
      * @param emplId Employee ID
      * @return List of <code>TimePUnchEntry</code> items
      */

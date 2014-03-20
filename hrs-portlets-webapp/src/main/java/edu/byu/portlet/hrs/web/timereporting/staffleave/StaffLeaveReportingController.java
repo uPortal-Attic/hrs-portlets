@@ -285,7 +285,7 @@ public class StaffLeaveReportingController {
                     int timeValue = time != null && StringUtils.isNotBlank(time) ?
                             timeParser.computeMinutes(request.getParameter(parameterName)) : 0;
                     userEntries.add(new TimePeriodEntry(LocalDate.parse(dateString), Integer.parseInt(jobCode), timeValue));
-                } catch (HrPortletRuntimeException e) {
+                } catch (IllegalArgumentException e) {
                     invalidFields.add(parameterName);
                     errorMessage = messageSource.getMessage(INVALID_FIELD_ERROR_MESSAGE, null,
                             DEFAULT_INVALID_FIELD_ERROR_MESSAGE, request.getLocale());

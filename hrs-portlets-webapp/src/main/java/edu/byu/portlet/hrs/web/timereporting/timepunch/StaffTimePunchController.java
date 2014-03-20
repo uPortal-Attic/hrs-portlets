@@ -86,6 +86,7 @@ public class StaffTimePunchController {
             service.punchOutTimeClock(request, emplId, jobCode, request.getProperty("REMOTE_ADDR"));
             response.setRenderParameter("message", messageSource.getMessage(PUNCHED_OUT_MESSAGE, null, "You have been punched out", request.getLocale()));
         } catch (HrPortletRuntimeException e) {
+            // Pass the error message on to the user for them to resolve the issue or possibly retry the operation.
             log.debug("Punch Out action failed for employee {} job code {}", emplId, jobCode, e);
             response.setRenderParameter(ERROR_MESSAGE_PARAM, e.getMessage());
         }
@@ -100,6 +101,7 @@ public class StaffTimePunchController {
             service.punchInTimeClock(request, emplId, jobCode, request.getProperty("REMOTE_ADDR"));
             response.setRenderParameter("message", messageSource.getMessage(PUNCHED_IN_MESSAGE, null, "You have been punched in", request.getLocale()));
         } catch (HrPortletRuntimeException e) {
+            // Pass the error message on to the user for them to resolve the issue or possibly retry the operation.
             log.debug("Punch in action failed for employee {} job code {}", emplId, jobCode, e);
             response.setRenderParameter(ERROR_MESSAGE_PARAM, e.getMessage());
         }

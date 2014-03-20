@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 /**
- * Description
+ * DAO Implementation providing demo data for the Staff Time punch portlet.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */

@@ -29,16 +29,40 @@ import edu.byu.hr.model.timereporting.TimePeriodEntry;
 import org.joda.time.LocalDate;
 
 /**
- * Description
+ * Service interface for Staff Time Reporting.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */
 
 public interface StaffTimeReportingService {
 
+    /**
+     * Returns the leave hours reported by the employee starting with the pay period containing
+     * <code>dateInPayPeriod</code>.
+     * @param request PortletRequest
+     * @param emplId Employee ID
+     * @param dateInPayPeriod Date within a pay period to return data for
+     * @return Summary object holding the leave hours reported by the employee.
+     */
     PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(PortletRequest request, String emplId, LocalDate dateInPayPeriod);
 
+    /**
+     * Update the leave hours reported by the employee.
+     * @param request Portlet Request
+     * @param emplId Employee ID
+     * @param updatedTimesheet Unordered list of time period entries. Implementations should insure submitted
+     *                         entries are valid, employee is allowed to enter or update time for the job code, and
+     *                         all entries are within the same time period if appropriate for the use case.  0 values
+     *                         occur whether the user entered data or not.
+     */
     void updateLeaveTimeReported(PortletRequest request, String emplId, List<TimePeriodEntry> updatedTimesheet);
 
+    /**
+     * Return a list of the current leave balances for the employee.  The order of the list determines the order
+     * the items display on the UI.
+     * @param request Portlet Request
+     * @param emplId Employee ID
+     * @return List of current leave balances for the employee.
+     */
     List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId);
 }

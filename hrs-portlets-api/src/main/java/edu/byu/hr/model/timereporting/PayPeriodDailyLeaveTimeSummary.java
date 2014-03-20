@@ -43,7 +43,8 @@ public class PayPeriodDailyLeaveTimeSummary {
     LocalDate payPeriodEnd;
 
     /**
-     * List of job descriptions available to the employee.
+     * List of job descriptions available to the employee.  The order of the list determines the order the job
+     * descriptions are presented on the UI.
      */
     List<JobDescription> jobDescriptions;
 
@@ -54,8 +55,8 @@ public class PayPeriodDailyLeaveTimeSummary {
     Set<Integer> displayOnlyJobCodes;
 
     /**
-     * List of leave information for each day in the pay period.  This list may not be fully populated for all days in
-     * the pay period.
+     * Unordered list of leave information for each day in the pay period.  This list may not be fully
+     * populated for all days in the pay period.
      */
     List<TimePeriodEntry> timePeriodEntries;
 
@@ -65,6 +66,9 @@ public class PayPeriodDailyLeaveTimeSummary {
     public PayPeriodDailyLeaveTimeSummary(LocalDate payPeriodStart, LocalDate payPeriodEnd,
                                           List<JobDescription> jobDescriptions, Set<Integer> displayOnlyJobCodes,
                                           List<TimePeriodEntry> timePeriodEntries) {
+        if (payPeriodEnd.isBefore(payPeriodStart)) {
+            throw new IllegalArgumentException("Pay period end cannot be earlier than pay period start");
+        }
         this.payPeriodStart = payPeriodStart;
         this.payPeriodEnd = payPeriodEnd;
         this.jobDescriptions = jobDescriptions;

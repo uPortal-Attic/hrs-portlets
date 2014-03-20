@@ -20,7 +20,7 @@
 package edu.byu.hr.model.timereporting;
 
 /**
- * Description
+ * Model object representing Leave time balance.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */
