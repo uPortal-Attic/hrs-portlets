@@ -65,7 +65,7 @@ public class StaffTimePunchServiceImpl implements StaffTimePunchService {
     @CachePut(value="timePunch", key = "#emplId", condition = "#refresh")
     public List<TimePunchEntry> getTimePunchEntries(PortletRequest request, String emplId, boolean refresh) {
         log.debug("Invoking dao for time punch entries for employee ID {}, refresh = {}", emplId, refresh);
-        return dao.getTimePunchEntries(emplId);
+        return dao.getTimePunchEntries(request, emplId);
     }
 
     /**
@@ -78,7 +78,7 @@ public class StaffTimePunchServiceImpl implements StaffTimePunchService {
     @CacheEvict(value = "timePunch", key="#emplId")
     public void punchInTimeClock(PortletRequest request, String emplId, int jobCode, String clientIP) {
         log.debug("Punching in employee ID {}", emplId);
-        dao.punchInTimeClock(emplId, jobCode, clientIP);
+        dao.punchInTimeClock(request, emplId, jobCode, clientIP);
     }
 
     /**
@@ -92,6 +92,6 @@ public class StaffTimePunchServiceImpl implements StaffTimePunchService {
     @CacheEvict(value = "timePunch", key="#emplId")
     public void punchOutTimeClock(PortletRequest request, String emplId, int jobCode, String clientIP) {
         log.debug("Punching out employee ID {}", emplId);
-        dao.punchOutTimeClock(emplId, jobCode, clientIP);
+        dao.punchOutTimeClock(request, emplId, jobCode, clientIP);
     }
 }

@@ -104,7 +104,11 @@
         <!-- ===== Runtime Dependencies ================================== -->
 
         <!-- ===== Provided Dependencies ================================== -->
-
+        <dependency>
+            <groupId>javax.portlet</groupId>
+            <artifactId>portlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- ===== Test Dependencies ====================================== -->
         <dependency>

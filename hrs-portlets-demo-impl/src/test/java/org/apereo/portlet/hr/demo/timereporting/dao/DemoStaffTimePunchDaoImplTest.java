@@ -21,6 +21,8 @@ package org.apereo.portlet.hr.demo.timereporting.dao;
 
 import java.util.List;
 
+import javax.portlet.PortletRequest;
+
 import org.apereo.portlet.hr.HrPortletRuntimeException;
 import org.apereo.portlet.hr.model.timereporting.TimePunchEntry;
 import org.junit.After;
@@ -38,10 +40,12 @@ public class DemoStaffTimePunchDaoImplTest {
 
     DemoStaffTimePunchDaoImpl obj;
     String admin = "admin";
+    PortletRequest request;
 
     @Before
     public void setUp() throws Exception {
         obj = new DemoStaffTimePunchDaoImpl();
+        request = null;
     }
 
     @After
@@ -50,7 +54,7 @@ public class DemoStaffTimePunchDaoImplTest {
 
     @Test
     public void testGetTimePunchEntries() throws Exception {
-        List<TimePunchEntry> entries = obj.getTimePunchEntries(admin);
+        List<TimePunchEntry> entries = obj.getTimePunchEntries(request, admin);
         assert entries.size() == 3;
         TimePunchEntry entry = entries.get(0);
         Assert.assertEquals("Entry 0 job code wrong", 123, entry.getJob().getJobCode());
@@ -62,14 +66,14 @@ public class DemoStaffTimePunchDaoImplTest {
 
     @Test
     public void testPunchInTimeClock() throws Exception {
-        obj.punchInTimeClock(admin, 123, "127.0.0.1");
+        obj.punchInTimeClock(request, admin, 123, "127.0.0.1");
     }
 
     @Test
     public void testPunchInTimeClockTwice() {
         try {
-            obj.punchInTimeClock(admin, 123, "127.0.0.1");
-            obj.punchInTimeClock(admin, 123, "127.0.0.1");
+            obj.punchInTimeClock(request, admin, 123, "127.0.0.1");
+            obj.punchInTimeClock(request, admin, 123, "127.0.0.1");
             Assert.fail("Punch in did not throw error on 2nd punch in for same job code");
         } catch (HrPortletRuntimeException e) {
             // expected, all good.
@@ -78,20 +82,20 @@ public class DemoStaffTimePunchDaoImplTest {
 
     @Test
     public void testPunchOutTimeClockNoPunchIn() throws Exception {
-        obj.punchOutTimeClock(admin, 123, "127.0.0.1");
+        obj.punchOutTimeClock(request, admin, 123, "127.0.0.1");
 
     }
 
     @Test
     public void testPunchedInAndOutJob123() {
-        List<TimePunchEntry> entries = obj.getTimePunchEntries(admin);
+        List<TimePunchEntry> entries = obj.getTimePunchEntries(request, admin);
         TimePunchEntry entry = entries.get(0);
         Assert.assertEquals("Entry 0 job code is wrong", 123, entry.getJob().getJobCode());
         Assert.assertEquals("Entry 0 week time worked wrong", 1250, entry.getWeekTimeWorked());
         Assert.assertEquals("Entry 0 pay period time worked wrong", 1555, entry.getPayPeriodTimeWorked());
-        obj.punchInTimeClock(admin, 123, "127.0.0.1");
-        obj.punchOutTimeClock(admin, 123, "127.0.0.1");
-        entries = obj.getTimePunchEntries(admin);
+        obj.punchInTimeClock(request, admin, 123, "127.0.0.1");
+        obj.punchOutTimeClock(request, admin, 123, "127.0.0.1");
+        entries = obj.getTimePunchEntries(request, admin);
         entry = entries.get(0);
         // Punch out adds 5 minutes in demo mode
         Assert.assertEquals("Entry 0 week time worked wrong", 1255, entry.getWeekTimeWorked());

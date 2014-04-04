@@ -21,6 +21,8 @@ package org.apereo.portlet.hr.dao.timereporting;
 
 import java.util.List;
 
+import javax.portlet.PortletRequest;
+
 import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
@@ -37,23 +39,29 @@ public interface StaffTimeReportingDao {
     /**
      * Returns summary of the hours worked and the sick and vacation time recorded for the employee during the
      * pay period that contains the indicated date.
+     *
+     * @param request Portlet Request
      * @param emplId Employee ID
      * @param dateInPayPeriod date to get pay period data for (may be date within a pay period)
      * @return Summary of hours worked, sick, and vacation time during the pay period
      */
-    PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(String emplId, LocalDate dateInPayPeriod);
+    PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(PortletRequest request, String emplId, LocalDate dateInPayPeriod);
 
     /**
      * Returns a list of current leave time (sick, vacation, etc) balances available to the employee.
+     *
+     * @param request Portlet Request
      * @param emplId Employee ID
      * @return List of current leave times
      */
-    List<LeaveTimeBalance> getLeaveBalance(String emplId);
+    List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId);
 
     /**
      * Updates the time entries for the employee.
+     *
+     * @param request Portlet Request
      * @param emplId Employee ID
      * @param updatedTimesheet List of time sheet entries to update.
      */
-    void updateLeaveTimeReported(String emplId, List<TimePeriodEntry> updatedTimesheet);
+    void updateLeaveTimeReported(PortletRequest request, String emplId, List<TimePeriodEntry> updatedTimesheet);
 }

@@ -26,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.portlet.PortletRequest;
+
 import org.apereo.portlet.hr.HrPortletRuntimeException;
 import org.apereo.portlet.hr.dao.timereporting.StaffTimePunchDao;
 import org.apereo.portlet.hr.model.timereporting.JobDescription;
@@ -120,7 +122,7 @@ public class DemoStaffTimePunchDaoImpl implements StaffTimePunchDao {
     }
 
     @Override
-    public List<TimePunchEntry> getTimePunchEntries(String emplId) {
+    public List<TimePunchEntry> getTimePunchEntries(PortletRequest request, String emplId) {
         List<TimePunchEntry> jobEntries = getTimePunchData(emplId);
         Map<Integer, Boolean> punchedInJobs = punchedInList.get(emplId);
         // Update the punched-in status
@@ -133,7 +135,7 @@ public class DemoStaffTimePunchDaoImpl implements StaffTimePunchDao {
 
 
     @Override
-    public synchronized void punchInTimeClock(String emplId, int jobCode, String clientIP) {
+    public synchronized void punchInTimeClock(PortletRequest request, String emplId, int jobCode, String clientIP) {
         getTimePunchData(emplId);  // For Demo mode and junit tests, make sure the database is initialized
         log.debug("Punching in employee {} for job Code {} from IP {}", emplId, jobCode, clientIP);
         Map<Integer,Boolean> punchedInJobs = punchedInList.get(emplId);
@@ -156,7 +158,7 @@ public class DemoStaffTimePunchDaoImpl implements StaffTimePunchDao {
 
     // Punches out and auto-gives 5 more minutes regardless of when punched in.
     @Override
-    public void punchOutTimeClock(String emplId, int jobCode, String clientIP) {
+    public void punchOutTimeClock(PortletRequest request, String emplId, int jobCode, String clientIP) {
         getTimePunchData(emplId);  // For Demo mode and junit tests, make sure the database is initialized
         log.debug("Punching out employee {} for job Code {} from IP {}", emplId, jobCode, clientIP);
         Map<Integer,Boolean> punchedInJobs = punchedInList.get(emplId);

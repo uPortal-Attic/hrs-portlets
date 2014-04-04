@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.portlet.PortletRequest;
+
 import org.apereo.portlet.hr.dao.timereporting.StaffTimeReportingDao;
 import org.apereo.portlet.hr.model.timereporting.JobDescription;
 import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
@@ -133,7 +135,7 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
     }
 
     @Override
-    public PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(String emplId, LocalDate dateInPayPeriod) {
+    public PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(PortletRequest request, String emplId, LocalDate dateInPayPeriod) {
         initializeForEmployeeIfNeeded(emplId);
 
         LocalDate startDate = calculatePayperiodStartDate(dateInPayPeriod);
@@ -173,7 +175,7 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
     }
 
     @Override
-    public void updateLeaveTimeReported(String emplId, List<TimePeriodEntry> updatedTimesheet) {
+    public void updateLeaveTimeReported(PortletRequest request, String emplId, List<TimePeriodEntry> updatedTimesheet) {
         initializeForEmployeeIfNeeded(emplId);
         log.debug("Updating leave entries for employee ID {}", emplId);
 
@@ -208,7 +210,7 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
      * @return List of current leave balances
      */
     @Override
-    public List<LeaveTimeBalance> getLeaveBalance(String emplId) {
+    public List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId) {
         initializeForEmployeeIfNeeded(emplId);
         List<LeaveTimeBalance> currentBalances = new ArrayList<LeaveTimeBalance>();
         for (LeaveTimeBalance leaveBalance : emplLeaveBalances.get(emplId)) {
