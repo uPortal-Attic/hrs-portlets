@@ -33,7 +33,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <context:annotation-config />
-    
+
+    <context:component-scan base-package="edu.wisc.hr.demo"/>
+
     <!-- | Reads in properties files to provide setting of property placeholders in the application context + -->
     <context:property-override location="classpath:/override.properties" />
     <context:property-placeholder location="classpath:/placeholder.properties" />

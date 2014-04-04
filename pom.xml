@@ -75,9 +75,9 @@
 
     <modules>
         <module>hrs-portlets-api</module>
-        <module>hrs-portlets-ps-impl</module>
-        <module>hrs-portlets-cypress-impl</module>
-        <module>hrs-portlets-bnsemail-impl</module>
+        <!--<module>hrs-portlets-ps-impl</module>-->
+        <!--<module>hrs-portlets-cypress-impl</module>-->
+        <!--<module>hrs-portlets-bnsemail-impl</module>-->
         <module>hrs-portlets-employee-time-reporting</module>
         <module>hrs-portlets-webapp</module>
         <module>hrs-portlets-demo-impl</module>
