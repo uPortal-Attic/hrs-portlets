@@ -17,15 +17,25 @@
  * under the License.
  */
 
-/* Bootstrap namespaced for use within portlet */
-@import url("bootstrap-styles.css");
+package org.apereo.portlet.hr;
 
+/**
+ * HR Portlets Runtime Exception
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
- .hours-notice {
-    text-align: center;
- }
+public class HrPortletRuntimeException extends RuntimeException {
+
+    public HrPortletRuntimeException(String message) {
+        super(message);
+    }
+
+    public HrPortletRuntimeException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public HrPortletRuntimeException(Throwable cause) {
+        super(cause);
+    }
+}

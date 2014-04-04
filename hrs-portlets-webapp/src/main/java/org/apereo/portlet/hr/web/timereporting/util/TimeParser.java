@@ -17,15 +17,24 @@
  * under the License.
  */
 
-/* Bootstrap namespaced for use within portlet */
-@import url("bootstrap-styles.css");
+package org.apereo.portlet.hr.web.timereporting.util;
 
+import org.apereo.portlet.hr.HrPortletRuntimeException;
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
- .hours-notice {
-    text-align: center;
- }
+/**
+ * Interface related to parsing time values from the UI to minutes
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
+
+public interface TimeParser {
+
+    /**
+     * Convert a string time value from the UI to the number of minutes.
+     * @param timeWorked Time worked in format determined by implementing class.  Null or empty value is
+     *                   treated as 0 minutes.
+     * @return Number of minutes
+     * @throws IllegalArgumentException if the string cannot be converted to minutes.
+     */
+    public int computeMinutes(String timeWorked) throws HrPortletRuntimeException;
+}

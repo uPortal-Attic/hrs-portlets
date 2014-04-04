@@ -34,7 +34,7 @@
     <context:annotation-config />
     <aop:config proxy-target-class="true" />
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" proxy-target-class="true"/>
-    <context:component-scan base-package="edu.byu.portlet.hrs.web.timereporting.timepunch"/>
+    <context:component-scan base-package="org.apereo.portlet.hr.web.timereporting.timepunch"/>
     
     <bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
         <property name="interceptors" ref="defaultPortletInterceptors" />

@@ -17,15 +17,18 @@
  * under the License.
  */
 
-/* Bootstrap namespaced for use within portlet */
-@import url("bootstrap-styles.css");
+package org.apereo.portlet.hr.timereporting.util;
 
+/**
+ * Description
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
- .hours-notice {
-    text-align: center;
- }
+public class TimePunchEmployeeKeyGeneratorImpl implements TimePunchEmployeeKeyGenerator {
+
+    @Override
+    public String getKey(String emplId) {
+        return "timeReporting.timePunch." + emplId;
+    }
+}

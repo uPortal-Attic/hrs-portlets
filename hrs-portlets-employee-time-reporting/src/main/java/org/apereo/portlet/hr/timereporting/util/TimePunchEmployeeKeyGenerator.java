@@ -17,15 +17,21 @@
  * under the License.
  */
 
-/* Bootstrap namespaced for use within portlet */
-@import url("bootstrap-styles.css");
+package org.apereo.portlet.hr.timereporting.util;
 
+/**
+ * Returns a cache key for the time punch entries
+ *
+ * @author James Wennmacher, jwennmacher@unicon.net
+ */
 
- p.padded-paragraph 
- {
- 	padding-top: 1em; 
- 	padding-bottom: 1em;
- }
- .hours-notice {
-    text-align: center;
- }
+public interface TimePunchEmployeeKeyGenerator {
+
+    /**
+     * Returns a cache key for the user
+     *
+     * @param emplId user's employeeId
+     * @return cache key for the user
+     */
+    String getKey(String emplId);
+}

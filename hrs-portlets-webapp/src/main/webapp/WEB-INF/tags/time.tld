@@ -27,7 +27,7 @@
     <uri>http://edu.byu.portlet.hrs/HRSPortlets/time</uri>
     <function>
         <name>toHhMm</name>
-        <function-class>edu.byu.portlet.hrs.web.timereporting.util.HhMmTimeUtility</function-class>
+        <function-class>org.apereo.portlet.hr.web.timereporting.util.HhMmTimeUtility</function-class>
         <function-signature>java.lang.String toHhMm(java.lang.Integer)</function-signature>
     </function>
 </taglib>
