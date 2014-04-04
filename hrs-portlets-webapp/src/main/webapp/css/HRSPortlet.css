@@ -16,9 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- 
+
+/* Bootstrap name spaced for use within portlet */
+@import url("bootstrap-styles.css");
+
+
  p.padded-paragraph 
  {
  	padding-top: 1em; 
  	padding-bottom: 1em;
+ }
+ .hours-notice {
+    text-align: center;
  }

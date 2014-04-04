@@ -35,6 +35,14 @@
         <param-value>/WEB-INF/context/portlet/portletApplicationContext.xml</param-value>
     </context-param>
 
+    <!-- For some reason Tomcat 7.0.39 wasn't resolving the taglibs in the tags folder automatically -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://edu.byu.portlet.hrs/HRSPortlets/time</taglib-uri>
+            <taglib-location>/WEB-INF/tags/time.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -43,7 +51,7 @@
         <!-- MUST be listed after ContextLoaderListener -->
         <listener-class>org.jasig.springframework.web.portlet.context.PortletContextLoaderListener</listener-class>
     </listener>
-    
+
     <filter>
         <filter-name>gzipFilter</filter-name>
         <filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
@@ -94,5 +102,5 @@
         <servlet-name>ViewRendererServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/view</url-pattern>
     </servlet-mapping>
-    
+
 </web-app>

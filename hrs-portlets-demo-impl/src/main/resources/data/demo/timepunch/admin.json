@@ -1,0 +1,23 @@
+[
+    {
+        "jobId": 123,
+        "jobTitle": "Computer Technician",
+        "jobDescription": "Computer Technician Grade IT5",
+        "weekTime": 1250,
+        "periodTime": 1555
+    },
+    {
+        "jobId": 124,
+        "jobTitle": "Teaching Assistant",
+        "jobDescription": "Teaching Assistant Grade ST1",
+        "weekTime": 601,
+        "periodTime": 735
+    },
+    {
+        "jobId": 125,
+        "jobTitle": "Portal Administrator",
+        "jobDescription": "Portal Administrator Grade IT8",
+        "weekTime": 561,
+        "periodTime": 736
+    }
+]

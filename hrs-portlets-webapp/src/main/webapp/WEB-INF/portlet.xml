@@ -179,6 +179,90 @@
         </portlet-preferences>
     </portlet>
     
+    <portlet>
+        <portlet-name>EmployeeTimeReporting</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/employee-time-reporting.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Employee Time Reporting</title>
+            <short-title>Employee Time Reporting</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <!-- the value or values here should be the user attributes providing HRS system user identifiers -->
+              <value>user.login.id</value>
+            </preference>
+            <preference>
+                <name>timesheetDeepLink</name>
+                <value>http://localhost:8080/enterTimesheetUrlHere</value>
+            </preference>
+            <preference>
+                <name>hoursDeepLink2</name>
+                <value>http://localhost:8080/enterAcaHoursUrlHere</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+    
+    <portlet>
+        <portlet-name>StaffLeaveReporting</portlet-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/staff-leave-reporting.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Staff Leave Reporting</title>
+            <short-title>Staff Leave Reporting</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+              <name>emplidUserAttributes</name>
+              <!-- the value or values here should be the user attributes providing HRS system user identifiers -->
+              <value>user.login.id</value>
+            </preference>
+            <preference>
+                <name>timesheetDeepLink</name>
+                <value>http://localhost:8080/enterTimesheetUrlHere</value>
+            </preference>
+            <preference>
+                <name>leaveHistory</name>
+                <value>http://localhost:8080/enterLeaveHistoryUrlHere</value>
+            </preference>
+            <preference>
+                <name>blankZeroTimeValues</name>
+                <value>true</value>
+            </preference>
+            <!-- Format string for displaying the pay period start date on the JSP page.  For date formats, see
+                 http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html
+            -->
+            <preference>
+                <name>payPeriodStartDateFormat</name>
+                <value>MMM d</value>
+            </preference>
+            <!-- Format string for displaying the pay period end date on the JSP page.  For date formats, see
+                 http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html
+            -->
+            <preference>
+                <name>payPeriodEndDateFormat</name>
+                <value>MMM d, YYYY</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
     <user-attribute>
         <name>user.login.id</name>
     </user-attribute>

@@ -36,7 +36,12 @@
             <artifactId>hrs-portlets-bnsemail-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
-    
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hrs-portlets-employee-time-reporting</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- ===== Compile Time Dependencies ============================== -->
         <dependency>
             <groupId>javax.servlet</groupId>
