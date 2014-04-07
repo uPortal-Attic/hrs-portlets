@@ -44,7 +44,7 @@ public class PayPeriodDailyLeaveTimeSummary {
 
     /**
      * List of job descriptions available to the employee.  The order of the list determines the order the job
-     * descriptions are presented on the UI.
+     * descriptions are presented on the UI.  There should only be entries for job codes that are in the other members of this class.
      */
     List<JobDescription> jobDescriptions;
 

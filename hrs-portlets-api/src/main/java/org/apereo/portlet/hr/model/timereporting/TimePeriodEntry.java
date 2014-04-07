@@ -22,7 +22,7 @@ package org.apereo.portlet.hr.model.timereporting;
 import org.joda.time.LocalDate;
 
 /**
- * Description
+ * Model representing time entered for a job code on a specified date.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */

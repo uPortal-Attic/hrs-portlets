@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.portlet.PortletRequest;
 
-import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
+import org.apereo.portlet.hr.model.timereporting.LeaveSummary;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
 import org.joda.time.LocalDate;
@@ -48,13 +48,15 @@ public interface StaffTimeReportingDao {
     PayPeriodDailyLeaveTimeSummary getLeaveHoursReported(PortletRequest request, String emplId, LocalDate dateInPayPeriod);
 
     /**
-     * Returns a list of current leave time (sick, vacation, etc) balances available to the employee.
+     * Returns the leave summary (sick, vacation, etc.) for the employee for whatever time period (year to date, quarter to date,
+     * month to date, etc.) is appropriate for this institution's needs.
+     * needs.
      *
      * @param request Portlet Request
      * @param emplId Employee ID
-     * @return List of current leave times
+     * @return Leave summary information for employee.
      */
-    List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId);
+    LeaveSummary getLeaveSummary(PortletRequest request, String emplId);
 
     /**
      * Updates the time entries for the employee.

@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,8 +32,9 @@ import java.util.Set;
 import javax.portlet.PortletRequest;
 
 import org.apereo.portlet.hr.dao.timereporting.StaffTimeReportingDao;
+import org.apereo.portlet.hr.model.timereporting.JobCodeTime;
 import org.apereo.portlet.hr.model.timereporting.JobDescription;
-import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
+import org.apereo.portlet.hr.model.timereporting.LeaveSummary;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
 import org.joda.time.Days;
@@ -61,9 +63,9 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
     private Set<Integer> uneditableJobs;
     private Set<Integer> allUneditableJobs;
 
-    // Map<emplId, List<LeaveTimeBalance>
-    private Map<String, List<LeaveTimeBalance>> emplLeaveBalances = Collections.synchronizedMap(
-            new HashMap<String, List<LeaveTimeBalance>>());
+    // Map<emplId, List<JobCodeTime>
+    private Map<String, List<JobCodeTime>> emplLeaveBalances = Collections.synchronizedMap(
+            new HashMap<String, List<JobCodeTime>>());
 
     // Map<emplId, List<TimePeriodEntry>
     private Map<String, List<TimePeriodEntry>> emplWorkEntries = Collections.synchronizedMap(
@@ -101,9 +103,9 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
     private void initializeForEmployeeIfNeeded (String emplId) {
         // All employees have a leave balance and sick balance setup
         if (emplLeaveBalances.get(emplId) == null) {
-            List<LeaveTimeBalance> leaveBalances = new ArrayList<LeaveTimeBalance>();
-            leaveBalances.add(new LeaveTimeBalance(SICK, 215*60+4)); // 215 hours, 4 min
-            leaveBalances.add(new LeaveTimeBalance(VACATION, 64*60+10)); //64:10
+            List<JobCodeTime> leaveBalances = new ArrayList<JobCodeTime>();
+            leaveBalances.add(new JobCodeTime(SICK, 215*60+4)); // 215 hours, 4 min
+            leaveBalances.add(new JobCodeTime(VACATION, 64*60+10)); //64:10
             emplLeaveBalances.put(emplId, leaveBalances);
         }
 
@@ -205,31 +207,75 @@ public class DemoStaffTimeReportingImpl implements StaffTimeReportingDao {
     }
 
     /**
-     * Calculate the current leave balances taking into account all leave entries.
-     * @param emplId Employee ID
-     * @return List of current leave balances
+     * Returns the leave summary (sick, vacation, etc.) for the employee for whatever time period (year to date, quarter to date,
+     * month to date, etc.) is appropriate for this institution's needs.
+     * needs.
+     *
+     * @param request Portlet Request
+     * @param emplId  Employee ID
+     * @return Leave summary information for employee.
      */
     @Override
-    public List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId) {
+    public LeaveSummary getLeaveSummary(PortletRequest request, String emplId) {
         initializeForEmployeeIfNeeded(emplId);
-        List<LeaveTimeBalance> currentBalances = new ArrayList<LeaveTimeBalance>();
-        for (LeaveTimeBalance leaveBalance : emplLeaveBalances.get(emplId)) {
-            int currentBalance = calculateCurrentLeaveBalance(leaveBalance.getJobCode(), leaveBalance.getTimeAvailable(),
-                    emplLeaveEntries.get(emplId));
-            currentBalances.add(new LeaveTimeBalance(leaveBalance.getJobCode(), currentBalance));
+        LeaveSummary summary = new LeaveSummary();
+        summary.setJobDescriptions(removeTimeWorked(jobDescriptions));
+        calculateLeaveBalances(emplId, summary);
+        summary.setLeaveEarned(calculateEarned(summary.getLeaveBalance()));
+        return summary;
+    }
+
+    private List<JobDescription> removeTimeWorked(List<JobDescription> jobDescriptions) {
+        ArrayList jobs = new ArrayList();
+        for (JobDescription job : jobDescriptions) {
+            if (job.getJobCode() != WORKED) {
+                jobs.add(job);
+            }
         }
+        return Collections.unmodifiableList(jobs);
+    }
+
+    // Set earned = balance / 4
+    private Set<JobCodeTime> calculateEarned(Set<JobCodeTime> currentBalance) {
+        HashSet<JobCodeTime> earned = new HashSet<JobCodeTime>();
+        Iterator<JobCodeTime> iterator = currentBalance.iterator();
+        while (iterator.hasNext()) {
+            JobCodeTime item = iterator.next();
+            earned.add(new JobCodeTime(item.getJobCode(), item.getTime()/4));
+        }
+        return earned;
+    }
+
+    // Calculate the current leave balance taking into account the employee's balance minus all existing time
+    // entries for that job code.
+    private Set<JobCodeTime> calculateLeaveBalances(String emplId, LeaveSummary summary) {
+        Set<JobCodeTime> currentBalances = new HashSet<JobCodeTime>();
+        Set<JobCodeTime> leaveTaken = new HashSet<JobCodeTime>();
+        Set<JobCodeTime> leaveEarned = new HashSet<JobCodeTime>();
+        for (JobCodeTime leaveBalance : emplLeaveBalances.get(emplId)) {
+            int leaveAmount = calculateCurrentLeaveTaken(leaveBalance.getJobCode(), emplLeaveEntries.get(emplId));
+            leaveTaken.add(new JobCodeTime(leaveBalance.getJobCode(), leaveAmount));
+
+            int currentBalance = leaveBalance.getTime() - leaveAmount;
+            currentBalances.add(new JobCodeTime(leaveBalance.getJobCode(), currentBalance));
+
+            // Set leave earned to balance / 4
+            leaveEarned.add(new JobCodeTime(leaveBalance.getJobCode(), leaveBalance.getTime() / 4));
+        }
+        summary.setLeaveBalance(currentBalances);
+        summary.setLeaveTaken(leaveTaken);
+        summary.setLeaveEarned(leaveEarned);
         return currentBalances;
     }
 
-     // Calculate the current leave balance taking into account the employee's balance minus all existing time
-     // entries for that job code.
-    private int calculateCurrentLeaveBalance(int jobCode, int startBalance, List<TimePeriodEntry> entries) {
-        int balance = startBalance;
+    // Calculate the amount of leave taken.
+    private int calculateCurrentLeaveTaken(int jobCode, List<TimePeriodEntry> entries) {
+        int leaveTaken = 0;
         for (TimePeriodEntry entry : entries) {
             if (entry.getJobCode() == jobCode) {
-                balance -= entry.getTimeEntered();
+                leaveTaken += entry.getTimeEntered();
             }
         }
-        return balance;
+        return leaveTaken;
     }
 }

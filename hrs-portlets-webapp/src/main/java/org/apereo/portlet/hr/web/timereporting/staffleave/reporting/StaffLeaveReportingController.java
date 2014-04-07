@@ -1,26 +1,28 @@
-package org.apereo.portlet.hr.web.timereporting.staffleave;
+package org.apereo.portlet.hr.web.timereporting.staffleave.reporting;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
+import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apereo.portlet.hr.HrPortletRuntimeException;
+import org.apereo.portlet.hr.model.timereporting.JobCodeTime;
 import org.apereo.portlet.hr.model.timereporting.JobDescription;
-import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
+import org.apereo.portlet.hr.model.timereporting.LeaveSummary;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
 import org.apereo.portlet.hr.timereporting.service.StaffTimeReportingService;
 import org.apereo.portlet.hr.web.timereporting.util.HhMmTimeUtility;
 import org.apereo.portlet.hr.web.timereporting.util.TimeParser;
-import edu.wisc.web.security.portlet.primaryattr.PrimaryAttributeUtils;
-import org.apache.commons.lang.StringUtils;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
@@ -66,11 +68,15 @@ public class StaffLeaveReportingController {
     public String viewStaffLeaveReportingInfo(ModelMap model, PortletRequest request,
                                               @RequestParam(value = "payDate", required = false) String payDateStart) {
         final String emplId = PrimaryAttributeUtils.getPrimaryId();
+        if (StringUtils.isBlank(emplId)) {
+            throw new HrPortletRuntimeException("Unable to obtain employee ID. Check configuration");
+        }
 
         LocalDate date = StringUtils.isNotBlank(payDateStart) ? LocalDate.parse(payDateStart) : new LocalDate();
 
         log.debug("Fetching leave reporting data from service tier");
-        List<LeaveTimeBalance> leaveBalances = service.getLeaveBalance(request, emplId);
+        LeaveSummary leaveSummary = service.getLeaveSummary(request, emplId);
+        Set<JobCodeTime> leaveBalances = leaveSummary.getLeaveBalance();
         PayPeriodDailyLeaveTimeSummary summary =  service.getLeaveHoursReported(request, emplId, date);
 
         PortletPreferences prefs = request.getPreferences();
@@ -243,16 +249,16 @@ public class StaffLeaveReportingController {
      * Based on current time entries and leave balances, add to the model the calculated start balances and the
      * current end balance.
      */
-    private void addLeaveTotals(Map<Integer, Integer> jobCodeTotals, List<LeaveTimeBalance> leaveBalancesList,
+    private void addLeaveTotals(Map<Integer, Integer> jobCodeTotals, Set<JobCodeTime> leaveBalance,
                                 ModelMap model) {
         // Calculate the leave starting balances by taking away the job totals and store both as a map<jobCode, minutes>
         Map<Integer, Integer> leaveStartBalances = new HashMap<Integer, Integer>();
         Map<Integer, Integer> leaveEndBalances = new HashMap<Integer, Integer>();
-        for (LeaveTimeBalance endBalance : leaveBalancesList) {
-            int startBalance = endBalance.getTimeAvailable() + jobCodeTotals.get(endBalance.getJobCode());
+        for (JobCodeTime endBalance : leaveBalance) {
+            int startBalance = endBalance.getTime() + jobCodeTotals.get(endBalance.getJobCode());
             leaveStartBalances.put(endBalance.getJobCode(), startBalance);
 
-            leaveEndBalances.put(endBalance.getJobCode(), endBalance.getTimeAvailable());
+            leaveEndBalances.put(endBalance.getJobCode(), endBalance.getTime());
         }
         model.addAttribute("leaveStartBalances", leaveStartBalances);
         model.addAttribute("leaveEndBalances", leaveEndBalances);

@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.portlet.PortletRequest;
 
-import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
+import org.apereo.portlet.hr.model.timereporting.LeaveSummary;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
 import org.joda.time.LocalDate;
@@ -58,11 +58,14 @@ public interface StaffTimeReportingService {
     void updateLeaveTimeReported(PortletRequest request, String emplId, List<TimePeriodEntry> updatedTimesheet);
 
     /**
-     * Return a list of the current leave balances for the employee.  The order of the list determines the order
-     * the items display on the UI.
+     * Returns the leave summary (sick, vacation, etc.) for the employee for whatever time period (year to date, quarter to date,
+     * month to date, etc.) is appropriate for this institution's needs.
+     * needs.
+     *
      * @param request Portlet Request
      * @param emplId Employee ID
-     * @return List of current leave balances for the employee.
+     * @return Leave summary information for employee.
      */
-    List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId);
+    LeaveSummary getLeaveSummary(PortletRequest request, String emplId);
+
 }

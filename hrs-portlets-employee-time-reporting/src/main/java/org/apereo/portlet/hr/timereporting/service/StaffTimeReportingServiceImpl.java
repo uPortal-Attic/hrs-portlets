@@ -24,7 +24,7 @@ import java.util.List;
 import javax.portlet.PortletRequest;
 
 import org.apereo.portlet.hr.dao.timereporting.StaffTimeReportingDao;
-import org.apereo.portlet.hr.model.timereporting.LeaveTimeBalance;
+import org.apereo.portlet.hr.model.timereporting.LeaveSummary;
 import org.apereo.portlet.hr.model.timereporting.PayPeriodDailyLeaveTimeSummary;
 import org.apereo.portlet.hr.model.timereporting.TimePeriodEntry;
 import org.joda.time.LocalDate;
@@ -66,8 +66,8 @@ public class StaffTimeReportingServiceImpl implements StaffTimeReportingService 
 
     @Override
     @Cacheable(value="leaveSummary", key="#emplId")
-    public List<LeaveTimeBalance> getLeaveBalance(PortletRequest request, String emplId) {
-        log.debug("Invoking dao to get leave balance for employee ID {}", emplId);
-        return dao.getLeaveBalance(request, emplId);
+    public LeaveSummary getLeaveSummary(PortletRequest request, String emplId) {
+        log.debug("Invoking dao to get leave summary for employee ID {}", emplId);
+        return dao.getLeaveSummary(request, emplId);
     }
 }

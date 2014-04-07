@@ -1,7 +1,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-<%@ taglib prefix="time" uri="http://edu.byu.portlet.hrs/HRSPortlets/time"%>
+<%@ taglib prefix="time" uri="http://org.apereo.portlet/HRSPortlets/time"%>
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 

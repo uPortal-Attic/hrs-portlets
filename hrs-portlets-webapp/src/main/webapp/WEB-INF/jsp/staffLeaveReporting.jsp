@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
-<%@ taglib prefix="time" uri="http://edu.byu.portlet.hrs/HRSPortlets/time" %>
+<%@ taglib prefix="time" uri="http://org.apereo.portlet/HRSPortlets/time" %>
 <c:set var="n"><portlet:namespace/></c:set>
 
 <%-- values are in minutes.  day = 24x60, week = 40x60 --%>

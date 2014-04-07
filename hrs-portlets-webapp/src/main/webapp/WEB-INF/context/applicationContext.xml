@@ -35,6 +35,7 @@
     <context:annotation-config />
 
     <context:component-scan base-package="edu.wisc.hr.demo"/>
+    <context:component-scan base-package="org.apereo.portlet.hr.demo"/>
 
     <!-- | Reads in properties files to provide setting of property placeholders in the application context + -->
     <context:property-override location="classpath:/override.properties" />

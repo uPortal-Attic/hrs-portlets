@@ -24,7 +24,7 @@
     version="2.1">
     <tlib-version>1.0</tlib-version>
     <short-name>time</short-name>
-    <uri>http://edu.byu.portlet.hrs/HRSPortlets/time</uri>
+    <uri>http://org.apereo.portlet/HRSPortlets/time</uri>
     <function>
         <name>toHhMm</name>
         <function-class>org.apereo.portlet.hr.web.timereporting.util.HhMmTimeUtility</function-class>

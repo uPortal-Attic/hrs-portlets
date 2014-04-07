@@ -180,7 +180,9 @@
     </portlet>
     
     <portlet>
+        <description>Allows employees to punch into and out of their job codes</description>
         <portlet-name>EmployeeTimeReporting</portlet-name>
+        <display-name>Employee Time Reporting</display-name>
         <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
@@ -213,7 +215,9 @@
     </portlet>
     
     <portlet>
+        <description>Allows employee to enter sick and vacation time entries</description>
         <portlet-name>StaffLeaveReporting</portlet-name>
+        <display-name>Staff Leave Reporting</display-name>
         <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
@@ -259,6 +263,38 @@
             <preference>
                 <name>payPeriodEndDateFormat</name>
                 <value>MMM d, YYYY</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet>
+        <description>Displays employee sick and vacation balance information</description>
+        <portlet-name>StaffLeaveBalances</portlet-name>
+        <display-name>Sick and Vacation Balances</display-name>
+        <portlet-class>org.jasig.springframework.web.portlet.context.ContribDispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/staff-leave-balance.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Staff Sick and Vacation Balance</title>
+            <short-title>Sick and Vacation Balance</short-title>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+                <name>emplidUserAttributes</name>
+                <!-- the value or values here should be the user attributes providing HRS system user identifiers -->
+                <value>user.login.id</value>
+            </preference>
+            <!-- URL for a link into the employee's leave history in the HR system. -->
+            <preference>
+                <name>leaveHistoryLink</name>
+                <value>http://localhost:8080/enterLeaveHistoryUrlHere</value>
             </preference>
         </portlet-preferences>
     </portlet>

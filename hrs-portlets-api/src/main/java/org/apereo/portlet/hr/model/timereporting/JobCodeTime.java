@@ -20,27 +20,27 @@
 package org.apereo.portlet.hr.model.timereporting;
 
 /**
- * Model object representing Leave time balance.
+ * Model object representing time for a job code.  Can be used for leave balance, leave accumulated, leave used, etc.
  *
  * @author James Wennmacher, jwennmacher@unicon.net
  */
 
-public class LeaveTimeBalance {
+public class JobCodeTime {
     /**
      * Job code.
      */
     int jobCode;
     /**
-     * Time available in minutes
+     * Time in minutes
      */
-    int timeAvailable;
+    int time;
 
-    public LeaveTimeBalance() {
+    public JobCodeTime() {
     }
 
-    public LeaveTimeBalance(int jobCode, int minutes) {
+    public JobCodeTime(int jobCode, int minutes) {
         this.jobCode = jobCode;
-        this.timeAvailable = minutes;
+        this.time = minutes;
     }
 
     public Integer getJobCode() {
@@ -51,11 +51,11 @@ public class LeaveTimeBalance {
         this.jobCode = jobCode;
     }
 
-    public int getTimeAvailable() {
-        return timeAvailable;
+    public int getTime() {
+        return time;
     }
 
-    public void setTimeAvailable(int timeAvailable) {
-        this.timeAvailable = timeAvailable;
+    public void setTime(int time) {
+        this.time = time;
     }
 }
