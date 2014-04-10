@@ -1,0 +1,51 @@
+/**
+ * Override since the portlet.css is overriding the table class with its !important statement
+ */
+.bootstrap-styles .table-bordered,
+.bootstrap-styles .table-bordered > thead > tr > th,
+.bootstrap-styles .table-bordered > tbody > tr > th,
+.bootstrap-styles .table-bordered > tfoot > tr > th,
+.bootstrap-styles .table-bordered > thead > tr > td,
+.bootstrap-styles .table-bordered > tbody > tr > td,
+.bootstrap-styles .table-bordered > tfoot > tr > td {
+  border: 1px solid #ddd !important;
+}
+.bootstrap-styles .nav-tabs > li.active > a {
+  background-color: #efefef !important;
+}
+.bootstrap-styles .nav-tabs > li.active > a:hover {
+  background-color: #efefef !important;
+}
+.bootstrap-styles .btn-row {
+  padding: 5px 0;
+}
+.bootstrap-styles ul.nav {
+  margin-left: 0;
+}
+.bootstrap-styles .row {
+  margin: auto 0;
+}
+.bootstrap-styles .pagination {
+  margin-top: 0 !important;
+}
+.bootstrap-styles .nav-tabs .active a {
+  background-color: #efefef;
+}
+.bootstrap-styles .nav-tabs .active a:hover {
+  background-color: #efefef;
+}
+.bootstrap-styles .amounts-toggle label {
+  font-weight: normal;
+}
+.bootstrap-styles .earnings-table tbody tr td.amount {
+  text-align: right;
+}
+.bootstrap-styles .earnings-toggle {
+  text-align: right;
+}
+.bootstrap-styles .tab-content {
+  margin-top: 1em;
+}
+.bootstrap-styles #content {
+  margin-top: 1em;
+}

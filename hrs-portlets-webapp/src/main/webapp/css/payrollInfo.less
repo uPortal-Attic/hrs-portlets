@@ -1,0 +1,77 @@
+/**
+ * Override since the portlet.css is overriding the table class with its !important statement
+ */
+.bootstrap-styles .table-bordered, .bootstrap-styles .table-bordered > thead > tr > th, .bootstrap-styles .table-bordered > tbody > tr > th, .bootstrap-styles .table-bordered > tfoot > tr > th, .bootstrap-styles .table-bordered > thead > tr > td, .bootstrap-styles .table-bordered > tbody > tr > td, .bootstrap-styles .table-bordered > tfoot > tr > td {
+    border: 1px solid #ddd !important;
+}
+
+.bootstrap-styles {
+    .nav-tabs {
+        > li.active {
+            > a {
+                background-color: #efefef !important;
+
+                &:hover {
+                    background-color: #efefef !important;
+                }
+            }
+        }
+    }
+    .btn-row {
+        padding: 5px 0;
+    }
+    ul.nav {
+        margin-left: 0;
+    }
+    .row {
+        margin: auto 0;
+    }
+    .pagination {
+        margin-top: 0 !important;
+    }
+
+    .nav-tabs {
+        .active {
+            a {
+                background-color: #efefef;
+
+                &:hover {
+                    background-color: #efefef;
+                }
+            }
+        }
+
+    }
+    .amounts-toggle {
+        label {
+            font-weight: normal;
+        }
+    }
+
+    .earnings-table {
+        tbody {
+            tr {
+                td.amount {
+                    text-align: right;
+                }
+                // td:last-child {
+                //     span {
+                //         display: none;
+                //     }
+                // }
+            }
+        }
+    }
+
+    .earnings-toggle {
+        text-align: right;
+    }
+
+    .tab-content {
+        margin-top: 1em;
+    }
+
+    #content {
+        margin-top: 1em;
+    }
+}
