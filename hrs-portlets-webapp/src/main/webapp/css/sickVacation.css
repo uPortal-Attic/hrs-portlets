@@ -17,22 +17,11 @@
  * under the License.
  */
 
-#information {
-    background-color: #f5f5f5;
-    padding: 0px 10px;
-    border-radius: 15px;
+/* Bootstrap name spaced for use within portlet */
+.sickVacation table {
+    font-size: 100%;
 }
 
-#balances {
-    padding: 0px 10px;
+.fl-theme-mist th {
+    background-color: #d5d5d5;
 }
-
-#balances table {
-    margin-top:15px;
-}
-
-
-#psLinks {
-    padding: 0px 10px;
-}
-
