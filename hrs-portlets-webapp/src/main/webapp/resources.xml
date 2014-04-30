@@ -27,5 +27,5 @@
   <css import="true">common-resources.xml</css>
     
   <js import="true">common-resources.xml</js>
-    
+  
 </resources>
