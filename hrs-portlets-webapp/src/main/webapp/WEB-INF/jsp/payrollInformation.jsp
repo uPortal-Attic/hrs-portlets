@@ -134,7 +134,19 @@
 <script type="text/javascript" language="javascript">
 <rs:compressJs>
 (function($, fluid, dl) {
-    $(function() {
+    dl.jQuery(function() {
+        
+        <%-- Disable Right Clicks in Safari browsers --%>
+        <%-- Safari (not webkit) does not honor context header for naming downloads
+             If indexOf('Constructor')>0 then we are in Safari Browser--%>
+        if (Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) {
+            $(".dl-clickable").live("contextmenu", function() {
+                return false;
+            });
+        }
+        
+        $(document).ready(function(){
+        
         var updateAmmountVisibility = function(checkbox) {
             var checked = checkbox.is(':checked');
             var ammounts = $("#${n}dl-payroll-information table.dl-table a.dl-earning-amount");
@@ -225,6 +237,7 @@
         dl.tabs("#${n}dl-tabs");
         
         dl.util.clickableContainer("#${n}dl-payroll-information");
+        });
     });    
 })(dl_v1.jQuery, dl_v1.fluid, dl_v1);
 </rs:compressJs>
