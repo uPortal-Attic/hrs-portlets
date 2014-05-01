@@ -54,7 +54,7 @@
     </bean>  
     
     <!-- 
-     | Control which methods of the exposed beans are actually avaialble via JMX
+     | Control which methods of the exposed beans are actually available via JMX
      |
      | http://static.springsource.org/spring/docs/3.1.x/reference/jmx.html#jmx-interface-assembler
      +-->
