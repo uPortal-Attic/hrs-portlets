@@ -64,7 +64,7 @@
         <pluto.version>2.1.0-M3</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
         <portlet-utils.version>1.0.0</portlet-utils.version>
-        <resource-server.version>1.0.39-SNAPSHOT</resource-server.version>
+        <resource-server.version>1.0.39</resource-server.version>
         <servlet-api.version>2.5</servlet-api.version>
         <spring.version>3.1.3.RELEASE</spring.version>
         <spring-portlet-contrib.version>1.0.0</spring-portlet-contrib.version>

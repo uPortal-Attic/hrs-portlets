@@ -20,6 +20,7 @@
 --%>
 
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
+<%@ include file="/WEB-INF/jsp/bootstrapHeader.jsp"%>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@ taglib prefix="time" uri="http://org.apereo.portlet/HRSPortlets/time" %>
 
@@ -39,6 +40,8 @@
         <c:otherwise>
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 alert alert-info"><strong><spring:message code="leave.balances.info.title"/></strong><br /><spring:message code="leave.balances.info.message"/></div>
+            </div>
+            <div class="row">
                 <div class="table-responsive">
                     <h4><spring:message code="leave.table.title"/></h4>
                     <table class="table table-striped">
