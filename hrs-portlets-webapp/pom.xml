@@ -240,6 +240,7 @@
                                 <include>rs/jquery/1.4.2/</include>
                                 <include>rs/jqueryui/1.8/</include>
                                 <include>rs/fluid/1.2.1/js/</include>
+                                <include>/rs/bootstrap-namespaced/3.1.1/</include>
                             </includes>
                         </overlay>
                         <overlay>

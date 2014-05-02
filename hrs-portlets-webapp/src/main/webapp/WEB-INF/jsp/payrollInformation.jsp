@@ -20,7 +20,7 @@
 --%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+<%@ include file="/WEB-INF/jsp/bootstrapHeader.jsp"%>
 
 <portlet:resourceURL var="earningStatementsUrl" id="earningStatements" escapeXml="false"/>
 <portlet:resourceURL var="earningStatementPdfUrl" id="earning_statement.pdf" escapeXml="false">
@@ -34,15 +34,38 @@
 
 <link rel="stylesheet" href="<c:url value="/css/payrollInfo.css"/>" type="text/css" />
 
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    // Bootstrap javascript fails if included multiple times on a page.
+    // uPortal Bootstrap best practice: include bootstrap if and only if it is not present and save it to
+    // portlets object. Bootstrap functions could be manually invoked via portlets.bootstrapjQuery variable.
+    // All portlets using Bootstrap Javascript must use this approach.  Portlet's jQuery should be included
+    // prior to this code block.
+
+    var portlets = portlets || {};
+    // If bootstrap is not present at uPortal jQuery nor a community bootstrap, dynamically load it.
+    up.jQuery().carousel || portlets.bootstrapjQuery || document.write('<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/script>');
+
+</script>
+<script type="text/javascript">
+    // Must be in separate script tag to insure bootstrap was dynamically loaded.
+    portlets["${n}"] = {};
+    portlets["${n}"].jQuery = jQuery.noConflict(true);
+    // If bootstrap JS global variable was not defined, set it to the jQuery that has bootstrap attached to.
+    portlets.bootstrapjQuery = portlets.bootstrapjQuery || (up.jQuery().carousel ? up.jQuery : portlets["${n}"].jQuery);
+</script>
+
 <div class="bootstrap-styles">
 	<div class="container-fluid payroll">
 		<div id="content">
 			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-				<li class="active"><a href="#earnings" data-toggle="tab">Earnings Statements</a></li>
-				<li><a href="#taxes" data-toggle="tab">Tax Statements</a></li>
+				<li class="active"><a href="#${n}earnings" data-toggle="tab">Earnings Statements</a></li>
+				<li><a href="#${n}taxes" data-toggle="tab">Tax Statements</a></li>
 			</ul>
 			<div id="my-tab-content" class="tab-content">
-				<div class="tab-pane active" id="earnings">
+				<div class="tab-pane active" id="${n}earnings">
 					<div class="row">
 						<div class="col-sm-10 col-sm-offset-1 alert alert-info">
 							Your Net Pay Check amount is reflected on each individual Earnings Statement
@@ -52,7 +75,7 @@
 						<div class="col-sm-12 amounts-toggle text-right">
 							<label>
 								Display amounts
-								<input type="checkbox" name="earnings-toggle" id="earnings-toggle"></label>
+								<input type="checkbox" name="earnings-toggle" id="${n}earnings-toggle"></label>
 							</div>
 					</div>
 					<div class="row">
@@ -86,7 +109,7 @@
 				</div> <%-- end earnings tab --%>
 
 				<%-- Taxes Tab --%>		  
-				<div class="tab-pane" id="taxes">
+				<div class="tab-pane" id="${n}taxes">
 					<div class="row">
 						<div class="col-sm-10 col-sm-offset-1 alert alert-info"> <strong>Note:</strong>
 							W-2 Forms will be available the last week of January
@@ -136,19 +159,19 @@
 	</div><!-- container -->
 </div>
 
-
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-	var earningsUrl = '${earningStatementsUrl}';
-	var earningsPDFUrl = '${earningStatementPdfUrl}';
-
-	var taxesUrl = '${taxStatementsUrl}';
-	var taxesPDFUrl = '${irsStatementPdfUrl}';
-
-	var earningsTable = '#${n}earnings-table';
-	var taxesTable = '#${n}taxes-table';
-</script>
-
 <script src="<c:url value="/js/payrollInformation.js"/>"></script>
+<script type="text/javascript">
+    var options = {
+        earningsToggle: '#${n}earnings-toggle',
+
+        earningsUrl: '${earningStatementsUrl}',
+        earningsPDFUrl: '${earningStatementPdfUrl}',
+    
+        taxesUrl: '${taxStatementsUrl}',
+        taxesPDFUrl: '${irsStatementPdfUrl}',
+    
+        earningsTable: '#${n}earnings-table',
+        taxesTable: '#${n}taxes-table'
+    };
+    portlets["${n}"].jQuery(payrollInformation(portlets["${n}"].jQuery, options));
+</script>

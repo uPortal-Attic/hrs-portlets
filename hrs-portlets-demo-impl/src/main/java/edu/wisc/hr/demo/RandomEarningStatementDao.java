@@ -19,24 +19,20 @@
 
 package edu.wisc.hr.demo;
 
-import edu.wisc.hr.dao.ernstmt.EarningStatementDao;
-import edu.wisc.hr.demo.support.PayPeriodGenerator;
-import edu.wisc.hr.dm.ernstmt.EarningStatement;
-import edu.wisc.hr.dm.ernstmt.EarningStatements;
-import org.joda.time.DateTimeConstants;
-import org.joda.time.LocalDate;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.client.ExtendedRestOperations;
-
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import edu.wisc.hr.dao.ernstmt.EarningStatementDao;
+import edu.wisc.hr.demo.support.PayPeriodGenerator;
+import edu.wisc.hr.dm.ernstmt.EarningStatement;
+import edu.wisc.hr.dm.ernstmt.EarningStatements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.ExtendedRestOperations;
 
 /**
  * Generates and remembers zero to nineteen earning statements for each employee.
@@ -62,7 +58,7 @@ public class RandomEarningStatementDao
 
         EarningStatements earningStatements = new EarningStatements();
 
-        int howManyEarningStatements = random.nextInt(20);
+        int howManyEarningStatements = random.nextInt(16) + 4;
 
         // "earned" is the date period in which earned, as in
         // "11/03/2013 - 11/16/2013" . Get one such label for each earning statement

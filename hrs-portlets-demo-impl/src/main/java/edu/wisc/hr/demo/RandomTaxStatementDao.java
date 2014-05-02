@@ -19,19 +19,18 @@
 
 package edu.wisc.hr.demo;
 
-import edu.wisc.hr.dao.taxstmt.TaxStatementDao;
-import edu.wisc.hr.dm.taxstmt.TaxStatement;
-import edu.wisc.hr.dm.taxstmt.TaxStatements;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.client.ExtendedRestOperations;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import edu.wisc.hr.dao.taxstmt.TaxStatementDao;
+import edu.wisc.hr.dm.taxstmt.TaxStatement;
+import edu.wisc.hr.dm.taxstmt.TaxStatements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.ExtendedRestOperations;
 
 
 /**
@@ -56,7 +55,7 @@ public class RandomTaxStatementDao
 
         TaxStatements taxStatements = new TaxStatements();
 
-        int howManyTaxStatements = random.nextInt(20);
+        int howManyTaxStatements = random.nextInt(16) + 4;
 
         for (int i = 0; i < howManyTaxStatements; i++) {
 

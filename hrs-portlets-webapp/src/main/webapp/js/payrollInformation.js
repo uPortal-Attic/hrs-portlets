@@ -1,9 +1,9 @@
-up.jQuery(function() {
+var payrollInformation = function(myJQuery, options) {
     // Reassign jQuery to $
-    var $ = up.jQuery;
+    var $ = myJQuery;
 
     var getUrl = function(data) {
-        return (data.toggle == 'tax') ? taxesPDFUrl.replace('--docId--', data.id) : earningsPDFUrl.replace('--docId--', data.id);
+        return (data.toggle == 'tax') ? options.taxesPDFUrl.replace('--docId--', data.id) : options.earningsPDFUrl.replace('--docId--', data.id);
     };
 
     /**
@@ -110,9 +110,9 @@ up.jQuery(function() {
     } );
 
     // Datatables 
-    var eTable = $(earningsTable).dataTable( {
+    var eTable = $(options.earningsTable).dataTable( {
         "bProcessing": true,
-        "sAjaxSource": earningsUrl,
+        "sAjaxSource": options.earningsUrl,
         "sAjaxDataProp": "report",
         "aaSorting": [[ 3, "desc" ]],
         "aoColumnDefs": [
@@ -144,7 +144,7 @@ up.jQuery(function() {
             /**
              * Place all event handler code here
              */
-            $('#earnings-toggle').on( 'change', function (e) {
+            $(options.earningsToggle).on( 'change', function (e) {
                 e.preventDefault();
 
                 var bVis = eTable.fnSettings().aoColumns[2].bVisible;
@@ -154,9 +154,9 @@ up.jQuery(function() {
         }
     });
 
-    var tTable = $(taxesTable).dataTable( {
+    var tTable = $(options.taxesTable).dataTable( {
         "bProcessing": true,
-        "sAjaxSource": taxesUrl,
+        "sAjaxSource": options.taxesUrl,
         "sAjaxDataProp": "report",
         "aoColumnDefs": [
             {
@@ -177,4 +177,4 @@ up.jQuery(function() {
             }
         ]
     });
-});
+};
