@@ -83,11 +83,10 @@
  }
  
  .dl-benefit-confirmations {
-    background-color: lightgray;
-    border: 2px black dotted;
+    border: 2px black dotted !important;
     text-align: center;
     max-height: 4em;
     vertical-align: middle;
-    padding: 1em;
     border-radius: .5em;
+    margin: 1em;
 }

@@ -146,10 +146,11 @@
         <a href="${hrsUrls['Dependent Coverage']}" target="_blank">View Dependent Coverage</a>
       </div>
     </div>
+    <div id="${n}dl-benefit-confirmations" class="dl-benefit-confirmations ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+      Coming soon!
+    </div>
   </div>
-  <div id="${n}dl-benefit-confirmations" class="dl-benefit-confirmations ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-    Coming soon!
-  </div>
+  
 </div>
 
 <portlet:resourceURL var="benefitSummaryUrl" id="benefitSummary" escapeXml="false"/>
