@@ -81,3 +81,13 @@
  	font-style: italic;
 	font-size : x-small;
  }
+ 
+ .dl-benefit-confirmations {
+    background-color: lightgray;
+    border: 2px black dotted;
+    text-align: center;
+    max-height: 4em;
+    vertical-align: middle;
+    padding: 1em;
+    border-radius: .5em;
+}
