@@ -51,6 +51,7 @@
       <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#${n}dl-benefits">Summary</a></li>
       <li class="ui-state-default ui-corner-top"><a href="#${n}dl-benefit-statements">Statements</a></li>
       <li class="ui-state-default ui-corner-top"><a href="#${n}dl-dependents">Dependents</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="#${n}dl-benefit-confirmations">Confirmations</a></li>
     </ul>
     <div id="${n}dl-benefits" class="dl-benefits ui-tabs-panel ui-widget-content ui-corner-bottom">
       <div class="coverage-header">
@@ -145,6 +146,9 @@
         <a href="${hrsUrls['Dependent Coverage']}" target="_blank">View Dependent Coverage</a>
       </div>
     </div>
+  </div>
+  <div id="${n}dl-benefit-confirmations" class="dl-benefit-confirmations ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+    Coming soon!
   </div>
 </div>
 
