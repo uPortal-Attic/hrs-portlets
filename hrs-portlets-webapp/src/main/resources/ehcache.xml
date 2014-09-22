@@ -52,6 +52,10 @@
         maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
         timeToIdleSeconds="0" timeToLiveSeconds="600"
         memoryStoreEvictionPolicy="LRU" statistics="true" />
+    <cache name="benefitConfirmations" eternal="false"
+        maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
+        timeToIdleSeconds="0" timeToLiveSeconds="600"
+        memoryStoreEvictionPolicy="LRU" statistics="true" />
     <cache name="earningStatement" eternal="false"
         maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
         timeToIdleSeconds="0" timeToLiveSeconds="600"

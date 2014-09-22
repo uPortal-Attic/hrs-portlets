@@ -147,7 +147,24 @@
       </div>
     </div>
     <div id="${n}dl-benefit-confirmations" class="dl-benefit-confirmations ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-      Coming soon!
+      <div class="fl-pager">
+        <hrs:pagerNavBar position="top" showSummary="${true}" />
+        <div class="fl-container-flex dl-pager-table-data fl-pager-data">
+          <table class="dl-table">
+            <thead>
+              <tr rsf:id="header:">
+                <th class="flc-pager-sort-header" rsf:id="name"><a href="javascript:;">Benefit Confirmations</a></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr rsf:id="row:" class="dl-clickable">
+                  <td class="dl-data-text"><a href="#" target="_blank" rsf:id="name"></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <hrs:pagerNavBar position="bottom" />
+      </div>
     </div>
   </div>
   
@@ -160,6 +177,12 @@
 <portlet:resourceURL var="benefitsPdfUrl" id="benefits.pdf" escapeXml="false">
     <portlet:param name="mode" value="TMPLT_*.docType_TMPLT"/>
     <portlet:param name="year" value="TMPLT_*.year_TMPLT"/>
+    <portlet:param name="docId" value="TMPLT_*.docId_TMPLT"/>
+</portlet:resourceURL>
+
+<portlet:resourceURL var="benefitConfirmationsUrl" id="benefitConfirmations" escapeXml="false"/>
+
+<portlet:resourceURL var="benefitsConfirmationPdfUrl" id="benefitConfirmation.pdf" escapeXml="false">
     <portlet:param name="docId" value="TMPLT_*.docId_TMPLT"/>
 </portlet:resourceURL>
 
@@ -191,7 +214,28 @@
           }
         });
         
-        var benefitStatementUrl = dl.util.templateUrl("${benefitsPdfUrl}");
+        var benefitStatementUrl = dl.util.templateUrl("${benefitsConfirmationPdfUrl}");
+        dl.pager.init("#${n}dl-benefit-confirmations", {
+          model: {
+              /* sortKey: "name",
+              sortDir: 1 */              
+          },
+          columnDefs: [ 
+              dl.pager.linkColDef("name", benefitStatementUrl, {sortable: true})
+          ],
+          dataList: {
+              url: "${benefitConfirmationsUrl}",
+              dataKey: "report",
+              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+              dataLoadCallback: function (data) {
+                  if (data == undefined || data.length == 0) {
+                      //left in case we want do do something special in the future
+                  }
+              }
+          }
+        });
+        
+        var benefitConfirmationUrl = dl.util.templateUrl("${benefitsPdfUrl}");
         dl.pager.init("#${n}dl-benefit-statements", {
           model: {
               /* sortKey: "name",

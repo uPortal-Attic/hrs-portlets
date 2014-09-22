@@ -28,6 +28,15 @@
             </jaxb:nameXmlTransform>
         </jaxb:schemaBindings>
     </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../resources/xsd/cypress/benefit-confirmations.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="edu.wisc.cypress.xdm.benconf" />
+            <jaxb:nameXmlTransform>
+                <jaxb:typeName prefix="Xml"/>
+                <jaxb:elementName prefix="Xml"/>
+            </jaxb:nameXmlTransform>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
     <jaxb:bindings schemaLocation="../resources/xsd/cypress/benefit-statements.xsd">
         <jaxb:schemaBindings>
             <jaxb:package name="edu.wisc.cypress.xdm.benstmt" />
