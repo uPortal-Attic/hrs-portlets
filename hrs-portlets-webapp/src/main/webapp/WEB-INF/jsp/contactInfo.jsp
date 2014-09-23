@@ -179,6 +179,21 @@
     </c:choose>
   </div>
 
+  <div class="federal-reporting-statuses">
+      <div>
+          <span class="label">Disability Status</span>
+          <span>(<a href="${hrsUrls['Disability Status']}" target="_blank">view/update</a>)</span>
+      </div>
+      <div>
+          <span class="label">Veteran Status</span>
+          <span>(<a href="${hrsUrls['Veteran Status']}" target="_blank">view/update</a>)</span>
+      </div>
+      <div>
+          <span class="label">Ethnic Group</span>
+          <span>(<a href="${hrsUrls['Ethnic Groups']}" target="_blank">view/update</a>)</span>
+      </div>
+  </div>
+
   <div class="dl-contact-info-update">
     <a href="${hrsUrls['Personal Information']}" target="_blank"><spring:message code="updateInfoLink"/></a>
     <br/>
