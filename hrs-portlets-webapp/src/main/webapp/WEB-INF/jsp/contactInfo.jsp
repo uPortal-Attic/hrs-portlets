@@ -188,7 +188,7 @@
   
   <div class="change-business-email-dialog" title="Change Campus Business Email">
     <div>
-      Email address used for official campus communications, for the directory,and other authorized uses.
+      Email address used for official campus communications, for the directory, and other authorized uses.
     </div>
     <form action="javascript:;" novalidate>
       <div>
