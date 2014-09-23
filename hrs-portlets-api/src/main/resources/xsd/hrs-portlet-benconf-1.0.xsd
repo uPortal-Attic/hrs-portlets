@@ -25,7 +25,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
     
-    <xs:element name="BenefitStatements">
+    <xs:element name="BenefitConfirmations">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="benefitConfirmations" type="BenefitConfirmation" minOccurs="0" maxOccurs="unbounded" />

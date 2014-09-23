@@ -23,7 +23,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   targetNamespace="http://cypress.doit.wisc.edu/schema/benefit-confirmations">
   
-  <xs:element name="benefit-statements">
+  <xs:element name="benefit-confirmations">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="benefit-confirmation" maxOccurs="unbounded" type="benefit-confirmation"/>
