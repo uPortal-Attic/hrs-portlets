@@ -33,7 +33,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import edu.wisc.cypress.dao.benconf.RestBenefitConfirmationDao;
 import edu.wisc.cypress.dm.MockProxyResponse;
 import edu.wisc.hr.dm.benconf.BenefitConfirmation;
-import edu.wisc.hr.dm.benconf.BenefitStatements;
+import edu.wisc.hr.dm.benconf.BenefitConfirmations;
 
 /**
  * Test out the benefit confirmation. This is an integration test.
@@ -59,7 +59,7 @@ public class RestBenefitConfirmationDaoIT {
     
     @Test
     public void testGetStatements() throws Exception {
-        final BenefitStatements benefitStatements = client.getBenefitConfirmations("00001234");
+        final BenefitConfirmations benefitStatements = client.getBenefitConfirmations("00001234");
         assertNotNull(benefitStatements);
         final List<BenefitConfirmation> statements = benefitStatements.getBenefitConfirmations();
         assertNotNull(statements);
@@ -68,7 +68,7 @@ public class RestBenefitConfirmationDaoIT {
     
     @Test
     public void testNoStatements() throws Exception {
-        final BenefitStatements benefitStatements = client.getBenefitConfirmations("00000000");
+        final BenefitConfirmations benefitStatements = client.getBenefitConfirmations("00000000");
         assertNotNull(benefitStatements);
         final List<BenefitConfirmation> statements = benefitStatements.getBenefitConfirmations();
         assertNotNull(statements);
@@ -77,7 +77,7 @@ public class RestBenefitConfirmationDaoIT {
     
     @Test
     public void testBadEmplId() throws Exception {
-        final BenefitStatements benefitStatements = client.getBenefitConfirmations("");
+        final BenefitConfirmations benefitStatements = client.getBenefitConfirmations("");
         assertNotNull(benefitStatements);
         final List<BenefitConfirmation> statements = benefitStatements.getBenefitConfirmations();
         assertNotNull(statements);

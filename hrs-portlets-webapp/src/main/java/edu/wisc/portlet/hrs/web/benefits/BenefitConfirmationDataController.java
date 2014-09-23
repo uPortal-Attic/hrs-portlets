@@ -18,7 +18,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.benconf.BenefitConfirmationDao;
 import edu.wisc.hr.dm.benconf.BenefitConfirmation;
-import edu.wisc.hr.dm.benconf.BenefitStatements;
+import edu.wisc.hr.dm.benconf.BenefitConfirmations;
 import edu.wisc.portlet.hrs.util.HrsDownloadControllerUtils;
 
 @Controller
@@ -41,7 +41,7 @@ public class BenefitConfirmationDataController {
     @ResourceMapping("benefitConfirmations")
     public String getBenefitConfirmations(ModelMap modelMap) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
-        final BenefitStatements benefitConfirmations = this.benefitConfirmationDao.getBenefitConfirmations(emplid);
+        final BenefitConfirmations benefitConfirmations = this.benefitConfirmationDao.getBenefitConfirmations(emplid);
 
         List<BenefitConfirmation> benefitConfirmationsList = benefitConfirmations.getBenefitConfirmations();
         

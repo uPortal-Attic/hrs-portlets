@@ -14,10 +14,10 @@ import org.springframework.stereotype.Repository;
 import com.googlecode.ehcache.annotations.Cacheable;
 
 import edu.wisc.cypress.xdm.benconf.XmlBenefitConfirmation;
-import edu.wisc.cypress.xdm.benconf.XmlBenefitStatements;
+import edu.wisc.cypress.xdm.benconf.XmlBenefitConfirmations;
 import edu.wisc.hr.dao.benconf.BenefitConfirmationDao;
 import edu.wisc.hr.dm.benconf.BenefitConfirmation;
-import edu.wisc.hr.dm.benconf.BenefitStatements;
+import edu.wisc.hr.dm.benconf.BenefitConfirmations;
 
 @Repository("restBenefitConfirmationDao")
 public class RestBenefitConfirmationDao implements BenefitConfirmationDao {
@@ -42,12 +42,12 @@ protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Cacheable(cacheName="benefitConfirmations", exceptionCacheName="cypressUnknownExceptionCache")
     @Override
-    public BenefitStatements getBenefitConfirmations(String emplid) {
+    public BenefitConfirmations getBenefitConfirmations(String emplid) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("HRID", emplid);
         
-        final XmlBenefitStatements xmlBenefitConfirmations = 
-                this.restOperations.getForObject(this.statementsUrl, XmlBenefitStatements.class, httpHeaders, emplid);
+        final XmlBenefitConfirmations xmlBenefitConfirmations = 
+                this.restOperations.getForObject(this.statementsUrl, XmlBenefitConfirmations.class, httpHeaders, emplid);
 
         return this.getBenefitConfirmations(xmlBenefitConfirmations);
     }
@@ -59,10 +59,10 @@ protected final Logger logger = LoggerFactory.getLogger(getClass());
         this.restOperations.proxyRequest(proxyResponse, this.statementUrl, HttpMethod.GET, httpHeaders, docId);
     }
     
-    protected BenefitStatements getBenefitConfirmations(XmlBenefitStatements xmlBenefitConfirmations) {
+    protected BenefitConfirmations getBenefitConfirmations(XmlBenefitConfirmations xmlBenefitConfirmations) {
         final List<XmlBenefitConfirmation> xmlBenefitConfirmationList = xmlBenefitConfirmations.getBenefitConfirmations();
         
-        final BenefitStatements benefitConfirmations = new BenefitStatements();
+        final BenefitConfirmations benefitConfirmations = new BenefitConfirmations();
         final List<BenefitConfirmation> benefitConfirmationList = benefitConfirmations.getBenefitConfirmations();
         
         for (final XmlBenefitConfirmation input : xmlBenefitConfirmationList) {
