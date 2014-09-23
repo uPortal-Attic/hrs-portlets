@@ -210,7 +210,7 @@
   
   <div class="change-business-email-dialog" title="Change Campus Business Email">
     <div>
-      Email address used for official campus communications, for the directory,and other authorized uses.
+      Email address used for official campus communications, for the directory, and other authorized uses.
     </div>
     <form action="javascript:;" novalidate>
       <div>
@@ -270,7 +270,7 @@
             var email2 = form.find("input[name='email2']").val();
             
             if ((email1 != undefined && email1 != "") || (email2 != undefined && email2 != "")) {
-                var close = confirm("Close the Change Business Email Addres box?");
+                var close = confirm("Close the Change Business Email Address box?");
                 if (!close) {
                     return false;
                 }
