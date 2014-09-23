@@ -181,15 +181,15 @@
 
   <div class="federal-reporting-statuses">
       <div>
-          <span class="label">Disability Status</span>
+          <span class="label"><spring:message code="label.disability.status" text="Disability Status"/></span>
           <span>(<a href="${hrsUrls['Disability Status']}" target="_blank">view/update</a>)</span>
       </div>
       <div>
-          <span class="label">Veteran Status</span>
+          <span class="label"><spring:message code="label.veteran.status" text="Veteran Status"/></span>
           <span>(<a href="${hrsUrls['Veteran Status']}" target="_blank">view/update</a>)</span>
       </div>
       <div>
-          <span class="label">Ethnic Group</span>
+          <span class="label"><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></span>
           <span>(<a href="${hrsUrls['Ethnic Groups']}" target="_blank">view/update</a>)</span>
       </div>
   </div>
