@@ -179,11 +179,33 @@
     </c:choose>
   </div>
 
+  <div class="federal-reporting-statuses">
+      <div>
+          <span class="label"><spring:message code="label.disability.status" text="Disability Status"/></span>
+          <span>(<a href="${hrsUrls['Disability Status']}" target="_blank">
+              <spring:message code="label.status.link" text="view/update"/>
+                 </a>)</span>
+      </div>
+      <div>
+          <span class="label"><spring:message code="label.veteran.status" text="Veteran Status"/></span>
+          <span>(<a href="${hrsUrls['Veteran Status']}" target="_blank">
+              <spring:message  code="label.status.link" text="view/update"/>
+                 </a>)</span>
+      </div>
+      <div>
+          <span class="label"><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></span>
+          <span>(<a href="${hrsUrls['Ethnic Groups']}" target="_blank">
+              <spring:message code="label.status.link" text="view/update"/>
+                 </a>)</span>
+      </div>
+  </div>
+
   <div class="dl-contact-info-update">
     <a href="${hrsUrls['Personal Information']}" target="_blank"><spring:message code="updateInfoLink"/></a>
     <br/>
-    Click to update Home Address, Phone, Release Home Address Release Information, Emergency Contacts, Marital Status and
-    Coordination of Benefits.<br/><br/><b>Please contact your Payroll Office to update Business/Office Address.</b>
+    <div>
+    <spring:message code="bottomNote" text="Please note that you can update Home Address, Phone, Release Home Address Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in Oracle.  To update your Business/Office Address, please contact your Payroll Office."/>
+    </div>
   </div>
   
   <div class="change-business-email-dialog" title="Change Campus Business Email">
