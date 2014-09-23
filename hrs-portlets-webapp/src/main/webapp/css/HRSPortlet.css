@@ -82,3 +82,11 @@
 	font-size : x-small;
  }
  
+ .dl-benefit-summary .dl-banner-links .dl-banner-link {
+    font-size:1.15em;
+ }
+ 
+ .dl-benefit-summary .dl-banner-links .dl-banner-link a {
+    font-weight:bold;
+ }
+ 
