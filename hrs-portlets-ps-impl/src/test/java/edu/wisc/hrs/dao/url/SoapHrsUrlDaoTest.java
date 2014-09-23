@@ -20,14 +20,17 @@ package edu.wisc.hrs.dao.url;
 
 import static junit.framework.Assert.assertNotNull;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.transform.stream.StreamSource;
 
+import edu.wisc.hr.dao.roles.HrsRolesDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -82,5 +85,24 @@ public class SoapHrsUrlDaoTest extends SoapHrsUrlDaoIT {
         
         final Map<String, String> urlMap = client.convertUrlMap(response);
         verifyMappedData(urlMap);
+    }
+
+    /**
+     * Test that the log message computation utility method composes messages as expected.
+     */
+    @Test
+    public void testUrlMapLogMessageComputation() {
+
+        final Map<String, String> someKeyValuePairs = new HashMap<String, String>();
+        someKeyValuePairs.put("key1", "value1");
+
+        System.out.println(SoapHrsUrlDao.computeUrlMapLogMessage(someKeyValuePairs));
+
+        final String expected =
+                "Retrieved URL map (and updating the URL map cache) with these name : value pairs: \n" +
+                "  key1 : value1\n";
+
+        assertEquals(expected, SoapHrsUrlDao.computeUrlMapLogMessage(someKeyValuePairs));
+
     }
 }
