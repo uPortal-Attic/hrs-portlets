@@ -82,11 +82,3 @@
 	font-size : x-small;
  }
  
- .dl-benefit-confirmations {
-    border: 2px black dotted !important;
-    text-align: center;
-    max-height: 4em;
-    vertical-align: middle;
-    border-radius: .5em;
-    margin: 1em;
-}

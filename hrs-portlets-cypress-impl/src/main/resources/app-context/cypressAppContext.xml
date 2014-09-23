@@ -39,7 +39,7 @@
     
     
     <bean id="cypressJaxbContext" class="javax.xml.bind.JAXBContext" factory-method="newInstance">
-        <constructor-arg type="java.lang.String" value="edu.wisc.cypress.xdm.benstmt:edu.wisc.cypress.xdm.ernstmt:edu.wisc.cypress.xdm.levstmt:edu.wisc.cypress.xdm.taxstmt:edu.wisc.cypress.xdm.sabstmt"/>
+        <constructor-arg type="java.lang.String" value="edu.wisc.cypress.xdm.benconf:edu.wisc.cypress.xdm.benstmt:edu.wisc.cypress.xdm.ernstmt:edu.wisc.cypress.xdm.levstmt:edu.wisc.cypress.xdm.taxstmt:edu.wisc.cypress.xdm.sabstmt"/>
     </bean>
 
     <bean id="cypressRestOperations" class="org.jasig.springframework.web.client.ExtendedRestTemplate">
