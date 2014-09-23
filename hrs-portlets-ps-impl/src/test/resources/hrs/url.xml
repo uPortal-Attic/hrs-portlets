@@ -91,4 +91,19 @@
         <m90:Descr>Open Enrollment/Hire Event</m90:Descr>
         <m90:Adp>N</m90:Adp>
     </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://www.google.com/#q=Disability+Status</m90:Url>
+        <m90:Descr>Disability Status</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://www.google.com/#q=Veteran%20Status</m90:Url>
+        <m90:Descr>Veteran Status</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
+    <m90:Installation>
+        <m90:Url>https://www.google.com/#q=Ethnic+Groups</m90:Url>
+        <m90:Descr>Ethnic Groups</m90:Descr>
+        <m90:Adp>N</m90:Adp>
+    </m90:Installation>
 </m90:Get__CompIntfc__UW_PORTAL1_URLResponse>

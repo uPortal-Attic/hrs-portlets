@@ -49,6 +49,7 @@ public class SoapHrsUrlDaoIT extends BaseSoapDaoTest {
 
     protected void verifyMappedData(final Map<String, String> urlMap) {
         assertNotNull(urlMap);
-        assertEquals(14, urlMap.size());
+        assertEquals(17, urlMap.size());
+        assertEquals("https://www.google.com/#q=Disability+Status", urlMap.get("Disability Status"));
     }
 }
