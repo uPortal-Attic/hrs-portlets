@@ -197,8 +197,9 @@
   <div class="dl-contact-info-update">
     <a href="${hrsUrls['Personal Information']}" target="_blank"><spring:message code="updateInfoLink"/></a>
     <br/>
-    Click to update Home Address, Phone, Release Home Address Release Information, Emergency Contacts, Marital Status and
-    Coordination of Benefits.<br/><br/><b>Please contact your Payroll Office to update Business/Office Address.</b>
+    <div>
+    <spring:message code="bottomNote" text="Please note that you can update Home Address, Phone, Release Home Address Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in Oracle.  To update your Business/Office Address, please contact your Payroll Office."/>
+    </div>
   </div>
   
   <div class="change-business-email-dialog" title="Change Campus Business Email">
