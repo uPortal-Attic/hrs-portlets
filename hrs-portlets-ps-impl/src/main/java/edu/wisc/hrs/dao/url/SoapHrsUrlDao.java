@@ -63,7 +63,13 @@ public class SoapHrsUrlDao extends BaseHrsSoapDao implements HrsUrlDao {
 	    
 	    final GetCompIntfcUWPORTAL1URLResponse response = this.internalInvoke(request);
 	    
-	    return this.convertUrlMap(response);
+	    Map<String, String> urlMap = this.convertUrlMap(response);
+
+        if (logger.isInfoEnabled()) {
+            logger.info(computeUrlMapLogMessage(urlMap));
+        }
+
+        return urlMap;
     }
 
     protected Map<String, String> convertUrlMap(final GetCompIntfcUWPORTAL1URLResponse response) {
@@ -78,5 +84,29 @@ public class SoapHrsUrlDao extends BaseHrsSoapDao implements HrsUrlDao {
         }
 	    
         return hrsUrls;
+    }
+
+    /**
+     * Compute a loggable String describing the retrieved URL map, to enable reasonable logging.
+     * This method is non-private only to enable unit testing.
+     * This method is not part of the exposed API of this class.
+     * @param urlMap non-null Map from String keys to String values
+     * @return a String suitable for logging.
+     */
+    static String computeUrlMapLogMessage(final Map<String, String> urlMap) {
+
+        StringBuilder logMessage = new StringBuilder();
+        logMessage.append("Retrieved URL map (and updating the URL map cache) with these name : value pairs: \n");
+
+        for (Map.Entry<String, String> entry : urlMap.entrySet()) {
+            logMessage.append("  ");
+            logMessage.append(entry.getKey());
+            logMessage.append(" : ");
+            logMessage.append(entry.getValue());
+            logMessage.append("\n");
+        }
+
+        return logMessage.toString();
+
     }
 }

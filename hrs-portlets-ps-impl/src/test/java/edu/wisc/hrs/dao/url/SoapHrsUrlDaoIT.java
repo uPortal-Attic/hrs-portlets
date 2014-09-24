@@ -49,6 +49,9 @@ public class SoapHrsUrlDaoIT extends BaseSoapDaoTest {
 
     protected void verifyMappedData(final Map<String, String> urlMap) {
         assertNotNull(urlMap);
-        assertEquals(14, urlMap.size());
+        assertEquals(17, urlMap.size());
+        assertEquals(
+          "https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/UW_HR_SS_PI_MENU.UW_DISABL_STS_SELF.GBL",
+          urlMap.get("Disability Status"));
     }
 }
