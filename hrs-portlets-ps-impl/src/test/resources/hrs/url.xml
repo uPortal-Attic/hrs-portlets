@@ -92,17 +92,17 @@
         <m90:Adp>N</m90:Adp>
     </m90:Installation>
     <m90:Installation>
-        <m90:Url>https://www.google.com/#q=Disability+Status</m90:Url>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/UW_HR_SS_PI_MENU.UW_DISABL_STS_SELF.GBL</m90:Url>
         <m90:Descr>Disability Status</m90:Descr>
         <m90:Adp>N</m90:Adp>
     </m90:Installation>
     <m90:Installation>
-        <m90:Url>https://www.google.com/#q=Veteran%20Status</m90:Url>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/UW_HR_SS_PI_MENU.UW_VEVRAA_STS_SELF.GBL</m90:Url>
         <m90:Descr>Veteran Status</m90:Descr>
         <m90:Adp>N</m90:Adp>
     </m90:Installation>
     <m90:Installation>
-        <m90:Url>https://www.google.com/#q=Ethnic+Groups</m90:Url>
+        <m90:Url>https://proxy.hrstest.ps.wisconsin.edu/psc/hrtst-bd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.HR_ETHNIC_GROUPS.GBL</m90:Url>
         <m90:Descr>Ethnic Groups</m90:Descr>
         <m90:Adp>N</m90:Adp>
     </m90:Installation>
