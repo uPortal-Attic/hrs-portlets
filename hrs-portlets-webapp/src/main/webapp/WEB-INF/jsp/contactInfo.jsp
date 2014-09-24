@@ -180,24 +180,32 @@
   </div>
 
   <div class="federal-reporting-statuses">
+      <c:if test="${not empty hrsUrls['Disability Status']}">
       <div>
           <span class="label"><spring:message code="label.disability.status" text="Disability Status"/></span>
           <span>( <a href="${hrsUrls['Disability Status']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
+      </c:if>
+
+      <c:if test="${not empty hrsUrls['Veteran Status']}">
       <div>
           <span class="label"><spring:message code="label.veteran.status" text="Veteran Status"/></span>
           <span>( <a href="${hrsUrls['Veteran Status']}" target="_blank">
               <spring:message  code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
+      </c:if>
+
+      <c:if test="${not empty hrsUrls['Ethnic Groups']}">
       <div>
           <span class="label"><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></span>
           <span>( <a href="${hrsUrls['Ethnic Groups']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
+      </c:if>
   </div>
 
   <div class="dl-contact-info-update">
