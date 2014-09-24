@@ -204,7 +204,7 @@
     <a href="${hrsUrls['Personal Information']}" target="_blank"><spring:message code="updateInfoLink"/></a>
     <br/>
     <div>
-    <spring:message code="bottomNote" text="Please note that you can update Home Address, Phone, Release Home Address Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in Oracle.  To update your Business/Office Address, please contact your Payroll Office."/>
+    <spring:message code="bottomNote" text="Please note that you can update Home Address, Phone, Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in Oracle.  To update your Business/Office Address, please contact your Payroll Office."/>
     </div>
   </div>
   
