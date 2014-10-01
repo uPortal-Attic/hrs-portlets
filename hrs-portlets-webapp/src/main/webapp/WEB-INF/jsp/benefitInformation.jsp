@@ -187,7 +187,7 @@
           }
         });
         
-        var benefitStatementUrl = dl.util.templateUrl("${benefitsConfirmationPdfUrl}");
+        var benefitStatementUrl = dl.util.templateUrl("${benefitsPdfUrl}");
         dl.pager.init("#${n}dl-benefit-statements", {
           model: {
               /* sortKey: "name",
