@@ -104,7 +104,7 @@
           </table>
         </div>
         <hrs:pagerNavBar position="bottom" />
-        <div class="${n}-dl-benefit-statement-links">
+        <div class="${n}-dl-benefit-statement-links dl-benefit-statement-links">
 	        <div class="dl-link">
 	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank">WRS Explanation of Statement of Benefits</a>
 	        </div>
