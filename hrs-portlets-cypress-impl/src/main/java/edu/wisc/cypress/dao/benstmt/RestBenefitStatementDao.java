@@ -74,7 +74,12 @@ public class RestBenefitStatementDao implements BenefitStatementDao {
         final XmlBenefitStatements xmlBenefitStatements = 
                 this.restOperations.getForObject(this.statementsUrl, XmlBenefitStatements.class, httpHeaders, emplid);
 
-        return this.mapBenefitStatements(xmlBenefitStatements);
+        final BenefitStatements benefitStatements = mapBenefitStatements(xmlBenefitStatements);
+
+        logger.debug("Got statements [{}] for emplid [{}] (and updating portlet-local cache).",
+                benefitStatements, emplid);
+
+        return benefitStatements;
     }
     
     @Override

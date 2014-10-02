@@ -90,6 +90,10 @@
     font-weight:bold;
  }
 
+ .dl-benefit-statement-links {
+     margin-top: 1em;
+ }
+
 .federal-reporting-statuses {
     margin-top: 1em;
 }
