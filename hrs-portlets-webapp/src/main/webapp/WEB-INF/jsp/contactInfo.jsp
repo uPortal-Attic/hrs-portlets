@@ -105,7 +105,7 @@
 		</div>
 		<div class='edit-notice'>
 	  		<c:if test="${!empty prefs['notice'][0]}">
-			  <p>
+			  <p class="prefNotice">
 			  	 ${prefs['notice'][0]}
 			  </p>
 			</c:if>
@@ -212,7 +212,14 @@
     <a href="${hrsUrls['Personal Information']}" target="_blank"><spring:message code="updateInfoLink"/></a>
     <br/>
     <div>
-    <spring:message code="bottomNote" text="Please note that you can update Home Address, Phone, Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in Oracle.  To update your Business/Office Address, please contact your Payroll Office."/>
+        <p class="padded-paragraph">
+            <spring:message code="bottomNotePart1" text="Please note that you can update Home Address, Phone, Release Information, Emergency Contacts, Marital Status, Coordination of Benefits, Disability Status, Veteran Status, and Ethnic Group in HRS."/>
+        </p>
+        <p>
+            <strong>
+                <spring:message code="bottomNotePart2" text="To update your Business/Office Address, please contact your Payroll Office."/>
+            </strong>
+        </p>
     </div>
   </div>
   

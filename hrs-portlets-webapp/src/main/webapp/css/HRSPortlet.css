@@ -28,7 +28,7 @@
  	padding : 1em;
  }
  
- .dl-contact-info p {
+ .dl-contact-info p.pref-notice {
  	font-style: italic;
  	font-size: x-small;
  }
