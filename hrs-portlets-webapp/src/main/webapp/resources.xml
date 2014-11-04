@@ -25,7 +25,10 @@
   <css>css/HRSPortlet.css</css>
 
   <css import="true">common-resources.xml</css>
-    
+
+  <css included="plain">/ResourceServingWebapp/rs/jqueryui/1.8.13/theme/smoothness/jquery-ui-1.8.13-smoothness.css</css>
+  <css included="aggregated">/ResourceServingWebapp/rs/jqueryui/1.8.13/theme/smoothness/jquery-ui-1.8.13-smoothness.min.css</css>
+
   <js import="true">common-resources.xml</js>
     
 </resources>
