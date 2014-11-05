@@ -115,11 +115,11 @@
   
   <div class="contact-info-job">
     <div class="contact-info-dept">
-      <span class="label"><spring:message code="departmentLabel"/></span>
+      <span><strong><spring:message code="departmentLabel"/></strong></span>
       <span> ${fn:escapeXml(contactInformation.primaryJob.departmentName)}</span>
     </div>
     <div class="contact-info-title">
-      <span class="label"><spring:message code="titleLabel"/></span>
+      <span><strong><spring:message code="titleLabel"/></strong></span>
       <span> ${fn:escapeXml(contactInformation.primaryJob.title)}</span>
     </div>
   </div>
@@ -127,11 +127,11 @@
     <c:if test="${contactInformation.primaryJob != otherJob}">
 	    <div class="contact-info-other-job">
 	      <div class="contact-info-dept">
-	        <span class="label"><spring:message code="otherDepartmentLabel"/></span>
+	        <span><strong><spring:message code="otherDepartmentLabel"/></strong></span>
 	        <span> ${fn:escapeXml(otherJob.departmentName)}</span>
 	      </div>
 	      <div class="contact-info-title">
-	        <span class="label"><spring:message code="titleLabel"/></span>
+	        <span><strong><spring:message code="titleLabel"/></strong></span>
 	        <span> ${fn:escapeXml(otherJob.title)}</span>
 	      </div>
 	    </div>
@@ -140,12 +140,12 @@
   <hrs:addressOut messagePrefix="office" address="${contactInformation.officeAddress}" />
   <c:if test="${not empty contactInformation.officeAddress.otherPhone}">
     <div class="contact-info-phone">
-      <span class="label"><spring:message code="otherPhoneLabel" /></span>
+      <span><strong><spring:message code="otherPhoneLabel" /></strong></span>
       <span> ${fn:escapeXml(contactInformation.officeAddress.otherPhone)}</span>
     </div>
   </c:if>
   <div class="business-email-details">
-    <span class="label">Campus Business Email: </span>
+    <span><strong>Campus Business Email:</strong> </span>
     <!-- TODO switch to spring-sec role check? -->
     <span class="email-address">${fn:escapeXml(contactInformation.email)}</span>
     <c:if test="${showBusinessEmail and not empty preferredEmail.name}">
@@ -168,7 +168,7 @@
   </div>
   <hrs:addressOut messagePrefix="home" address="${contactInformation.homeAddress}" />
   <div class="home-addr-release">
-    <span class="label"><spring:message code="releaseHomeAddress"/></span>
+    <span><strong><spring:message code="releaseHomeAddress"/></strong></span>
     <c:choose>
       <c:when test="${contactInformation.homeAddress.releaseHomeAddress}">
         <span> <spring:message code="yes"/></span>
@@ -182,7 +182,7 @@
   <div class="federal-reporting-statuses">
       <c:if test="${not empty hrsUrls['Disability Status']}">
       <div>
-          <span class="label"><spring:message code="label.disability.status" text="Disability Status"/></span>
+          <span><strong><spring:message code="label.disability.status" text="Disability Status"/></strong></span>
           <span>( <a href="${hrsUrls['Disability Status']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>
@@ -191,7 +191,7 @@
 
       <c:if test="${not empty hrsUrls['Veteran Status']}">
       <div>
-          <span class="label"><spring:message code="label.veteran.status" text="Veteran Status"/></span>
+          <span><strong><spring:message code="label.veteran.status" text="Veteran Status"/></strong></span>
           <span>( <a href="${hrsUrls['Veteran Status']}" target="_blank">
               <spring:message  code="label.status.link" text="view/update"/>
                  </a> )</span>
@@ -200,7 +200,7 @@
 
       <c:if test="${not empty hrsUrls['Ethnic Groups']}">
       <div>
-          <span class="label"><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></span>
+          <span><strong><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></strong></span>
           <span>( <a href="${hrsUrls['Ethnic Groups']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>

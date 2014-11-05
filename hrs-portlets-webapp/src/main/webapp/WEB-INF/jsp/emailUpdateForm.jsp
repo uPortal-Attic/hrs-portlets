@@ -66,11 +66,11 @@
               </tr>
             </c:if>
             <tr>
-              <th class="dl-email-update-label"><label class="label" for="email1">New Campus Business Email:</label></th>
+              <th class="dl-email-update-label"><label for="email1"><strong>New Campus Business Email:</strong></label></th>
               <td><input type="email" name="email1" required="required" /></td>
             </tr>
             <tr>
-              <th class="dl-email-update-label"><label class="label" for="email2">Confirm Campus Business Email:</label></th>
+              <th class="dl-email-update-label"><label for="email2"><strong>Confirm Campus Business Email:</strong></label></th>
               <td><input type="email" name="email2" required="required" /></td>
             </tr>
             <tr>
