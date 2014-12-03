@@ -54,7 +54,7 @@
     </ul>
     <div id="${n}dl-benefits" class="dl-benefits ui-tabs-panel ui-widget-content ui-corner-bottom">
       <div class="coverage-header">
-        <span>Balances as of the last pay check</span>
+        <span>Coverage as of the last pay period</span>
       </div>
       <div class="fl-pager">
         <hrs:pagerNavBar position="top" showSummary="${true}" />
