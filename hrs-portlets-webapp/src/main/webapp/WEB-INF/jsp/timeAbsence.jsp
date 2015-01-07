@@ -40,6 +40,12 @@
   <hrs:notification/>
   
   <div>
+    <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
+        <div class="dl-link">
+            <a href="${hrsUrls['Year End Leave Balances']}"
+               target="_blank">Year End Leave Balances</a><br/>
+        </div>
+    </c:if>
     <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
       <div class="dl-link">
         <a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a><br/>
