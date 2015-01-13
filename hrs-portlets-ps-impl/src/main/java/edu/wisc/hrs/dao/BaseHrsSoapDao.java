@@ -140,10 +140,12 @@ public abstract class BaseHrsSoapDao {
         }
         catch (TransformerConfigurationException tce) {
             //ignore this SoapFaultDetailElement since sadly it could not be converted to a DOM Node
+            logger.trace("Failed to configure transformer for Source {} .", source, tce);
             return null;
         }
         catch (TransformerException te) {
             //ignore this SoapFaultDetailElement since sadly it could not be converted to a DOM Node
+            logger.trace("Failed to transform Source {} .", source, te);
             return null;
         }
     }
@@ -156,6 +158,7 @@ public abstract class BaseHrsSoapDao {
             xpathExpression = xPath.compile(expression);
         }
         catch (XPathExpressionException e) {
+            logger.trace("Failed to compile expression {} .", expression, e);
             return null;
         }
         
@@ -163,6 +166,7 @@ public abstract class BaseHrsSoapDao {
             return xpathExpression.evaluate(node);
         }
         catch (XPathExpressionException e) {
+            logger.trace("Failed to evaluate expression {} .", expression, e);
             return null;
         }
     }
