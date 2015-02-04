@@ -24,7 +24,69 @@
 
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
-<div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
+<style>
+.sidebar { background-color: transparent; }
+.inner-nav-container {
+  border:0px solid transparent;
+  padding:0px;
+  margin:0px;
+}
+.inner-nav-container .inner-nav {
+  background-color:#fff;
+  border:0px solid transparent;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+  padding:0px;
+  margin:0px;
+  border-bottom:1px solid #b70101;
+}
+
+
+.inner-nav-container .inner-nav li {
+  background:#fff;
+  border:0px solid transparent;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  margin:0px;
+  padding:0px;
+  top:0px;
+}
+.inner-nav-container .inner-nav li a {
+  padding:8px 20px;
+  margin:0px;
+  font-size:16px;
+  font-weight:400;
+  color:#777;
+}
+.inner-nav-container .inner-nav li a:hover {
+  background-color:#fff;
+  padding:8px 20px 10px;
+  border-bottom:1px solid #b70101;
+  color:#666;
+}
+.inner-nav-container .inner-nav li.ui-tabs-selected {
+  border-bottom:3px solid #b70101 !important;
+  padding-bottom:0px;
+}
+.inner-nav-container .inner-nav li.ui-tabs-selected a {
+  font-weight:600;
+  color:#222;
+}
+.inner-nav-container .inner-nav li.ui-tabs-selected a:hover {
+padding:8px 20px;
+border-bottom:0px !important;
+}
+.inner-nav-container .inner-nav li.ui-tabs-selected a:focus {
+outline:none;
+}
+.inner-nav-container .inner-nav li.ui-tabs-selected a:active {
+outline:none;
+}
+</style>
+
+<%-- <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
   <div class="dl-banner-links">
     <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
       <div class="dl-banner-link">
@@ -61,22 +123,22 @@
         <a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a><br/>
       </div>
     </sec:authorize>
-  </div>
-  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
-    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+  </div> --%>
+  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <c:set var="activeTabStyle" value="ui-tabs-selected ui-state-active"/>
-      <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
+      <%-- <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES"> --%>
         <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-absence">Absence</a></li>
         <c:set var="activeTabStyle" value=""/>
-      </sec:authorize>
+      <%-- </sec:authorize> --%>
       <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-leave-balance">Leave Balance</a></li>
-      <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET">
+      <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET"> --%>
         <li class="ui-state-default ui-corner-top"><a href="#${n}dl-time-entry">Time Entry</a></li>
-      </sec:authorize>
+      <%-- </sec:authorize> --%>
       <li class="ui-state-default ui-corner-top"><a href="#${n}dl-absence-statements">Leave Reports</a></li>
     </ul>
     <c:set var="hiddenTabStyle" value=""/>
-    <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
+    <%-- <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES"> --%>
       <c:set var="hiddenTabStyle" value="ui-tabs-hide"/>
       <div id="${n}dl-absence" class="dl-absence ui-tabs-panel ui-widget-content ui-corner-bottom">
         <div class="fl-pager">
@@ -112,7 +174,7 @@
           <hrs:pagerNavBar position="bottom" />
         </div>
       </div>
-    </sec:authorize>
+    <%-- </sec:authorize> --%>
     <div id="${n}dl-leave-balance" class="dl-leave-balance ui-tabs-panel ui-widget-content ui-corner-bottom ${hiddenTabStyle}">
       <div class="balance-header">
         <span>Balances as of the last pay check</span>
@@ -144,7 +206,7 @@
         <hrs:pagerNavBar position="bottom" />
       </div>
     </div>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET">
+    <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET"> --%>
       <div id="${n}dl-time-entry" class="dl-time-entry ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
@@ -188,7 +250,7 @@
           </div>
         </div>
       </div>
-    </sec:authorize>
+    <%-- </sec:authorize> --%>
     <div id="${n}dl-absence-statements" class="dl-absence-statements ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
       <div class="data-table-description-header">
         <div class="data-table-description">
