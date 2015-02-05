@@ -30,18 +30,18 @@
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <c:set var="activeTabStyle" value="ui-tabs-selected ui-state-active"/>
-      <%-- <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES"> --%>
+      <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
         <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-absence">Absence</a></li>
         <c:set var="activeTabStyle" value=""/>
-      <%-- </sec:authorize> --%>
+      </sec:authorize>
       <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-leave-balance">Leave Balance</a></li>
-      <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET"> --%>
+      <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET">
         <li class="ui-state-default ui-corner-top"><a href="#${n}dl-time-entry">Time Entry</a></li>
-      <%-- </sec:authorize> --%>
+      </sec:authorize>
       <li class="ui-state-default ui-corner-top"><a href="#${n}dl-absence-statements">Leave Reports</a></li>
     </ul>
     <c:set var="hiddenTabStyle" value=""/>
-    <%-- <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES"> --%>
+    <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
       <c:set var="hiddenTabStyle" value="ui-tabs-hide"/>
       <div id="${n}dl-absence" class="dl-absence ui-tabs-panel ui-widget-content ui-corner-bottom">
         <div class="fl-pager">
@@ -77,7 +77,7 @@
           <hrs:pagerNavBar position="bottom" />
         </div>
       </div>
-    <%-- </sec:authorize> --%>
+    </sec:authorize>
     <div id="${n}dl-leave-balance" class="dl-leave-balance ui-tabs-panel ui-widget-content ui-corner-bottom ${hiddenTabStyle}">
       <div class="balance-header">
         <span>Balances as of the last pay check</span>
@@ -109,7 +109,7 @@
         <hrs:pagerNavBar position="bottom" />
       </div>
     </div>
-    <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET"> --%>
+    <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK,ROLE_VIEW_TIME_SHEET">
       <div id="${n}dl-time-entry" class="dl-time-entry ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
@@ -149,7 +149,7 @@
           </div>
         </div>
       </div>
-    <%-- </sec:authorize> --%>
+    </sec:authorize>
     <div id="${n}dl-absence-statements" class="dl-absence-statements ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
       <div class="data-table-description-header">
         <div class="data-table-description">
@@ -222,22 +222,22 @@
       <%-- <li><a href="${prefs['UnclassifiedFurloughTimeReport_NonInstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Non-Instructional Staff</a></li>
       <li><a href="${prefs['UnclassifiedFurloughTimeReport_InstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Instructional Staff</a></li> --%>
       <li><a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a></li>
-      <%-- <c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}"></p> --%>
+      <c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">
         <li><a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></li>
-      <%-- </c:if> --%>
-      <%-- <c:if test="${not empty hrsUrls['Year End Leave Balances']}"> --%>
+      </c:if>
+      <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
         <li><a href="${hrsUrls['Year End Leave Balances']}"
           target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a></li>
-        <%-- </c:if> --%>
-        <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES"> --%>
+        </c:if>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
           <li><a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a></li>
-        <%-- </sec:authorize> --%>
-        <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK"> --%>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
           <li><a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a></li>
-        <%-- </sec:authorize> --%>
-        <%-- <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK"> --%>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
           <li><a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a></li>
-        <%-- </sec:authorize> --%>
+        </sec:authorize>
         <li><a href="${helpUrl}" target="_blank">Help</a></li>
     </ul>
   </div>
