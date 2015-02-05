@@ -24,76 +24,14 @@
 
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
-<style>
-.sidebar { background-color: transparent; }
-.inner-nav-container {
-  border:0px solid transparent;
-  padding:0px;
-  margin:0px;
-}
-.inner-nav-container .inner-nav {
-  background-color:#fff;
-  border:0px solid transparent;
-  border-top-left-radius:0px;
-  border-top-right-radius:0px;
-  border-bottom-left-radius:0px;
-  border-bottom-right-radius:0px;
-  padding:0px;
-  margin:0px;
-  border-bottom:1px solid #b70101;
-}
-
-
-.inner-nav-container .inner-nav li {
-  background:#fff;
-  border:0px solid transparent;
-  border-top-left-radius:0px;
-  border-top-right-radius:0px;
-  margin:0px;
-  padding:0px;
-  top:0px;
-}
-.inner-nav-container .inner-nav li a {
-  padding:8px 20px;
-  margin:0px;
-  font-size:16px;
-  font-weight:400;
-  color:#777;
-}
-.inner-nav-container .inner-nav li a:hover {
-  background-color:#fff;
-  padding:8px 20px 10px;
-  border-bottom:1px solid #b70101;
-  color:#666;
-}
-.inner-nav-container .inner-nav li.ui-tabs-selected {
-  border-bottom:3px solid #b70101 !important;
-  padding-bottom:0px;
-}
-.inner-nav-container .inner-nav li.ui-tabs-selected a {
-  font-weight:600;
-  color:#222;
-}
-.inner-nav-container .inner-nav li.ui-tabs-selected a:hover {
-padding:8px 20px;
-border-bottom:0px !important;
-}
-.inner-nav-container .inner-nav li.ui-tabs-selected a:focus {
-outline:none;
-}
-.inner-nav-container .inner-nav li.ui-tabs-selected a:active {
-outline:none;
-}
-</style>
-
-<%-- <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
+<div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
   <div class="dl-banner-links">
-    <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
+    <%-- <c:if test="${not empty hrsUrls['Benefits Enrollment']}"> --%>
       <div class="dl-banner-link">
         You have a benefit enrollment opportunity. Please enroll online by clicking the
         following link. <a target="_blank" href="${hrsUrls['Benefits Enrollment']}">Benefits Enrollment</a> 
       </div>
-    </c:if>
+    <%-- </c:if> --%>
     <div class="dl-help-link">
       <a href="${helpUrl}" target="_blank">Help</a>
     </div>
@@ -102,28 +40,8 @@ outline:none;
   <hrs:notification/>
   
   <div>
-    <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
-        <div class="dl-link">
-            <a href="${hrsUrls['Year End Leave Balances']}"
-               target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a><br/>
-        </div>
-    </c:if>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
-      <div class="dl-link">
-        <a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a><br/>
-      </div>
-    </sec:authorize>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
-      <div class="dl-link">
-        <a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a><br/>
-      </div>
-    </sec:authorize>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
-      <div class="dl-link">
-        <a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a><br/>
-      </div>
-    </sec:authorize>
-  </div> --%>
+    
+  </div>
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <c:set var="activeTabStyle" value="ui-tabs-selected ui-state-active"/>
@@ -144,7 +62,7 @@ outline:none;
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+            <table class="dl-table table-responsive">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="name"><a href="javascript:;">Name</a></th>
@@ -182,7 +100,7 @@ outline:none;
       <div class="fl-pager">
         <hrs:pagerNavBar position="top" showSummary="${true}" />
         <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-          <table class="dl-table">
+          <table class="dl-table table-responsive">
             <thead>
               <tr rsf:id="header:">
                 <th class="flc-pager-sort-header" rsf:id="entitlement"><a href="javascript:;">Entitlement</a></th>
@@ -211,7 +129,7 @@ outline:none;
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+            <table class="dl-table table-responsive">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="date"><a href="javascript:;">Date</a></th>
@@ -240,13 +158,9 @@ outline:none;
         </div>
         <div>
           <div class="dl-link">
-            <a href="${hrsUrls['Payable time detail']}" target="_blank">View Details</a><br/>
-          </div>
-          <div class="dl-link">
-            <a href="${hrsUrls['Time Exceptions']}" target="_blank">View Time Entry Exceptions</a><br/>
-          </div>
-          <div class="dl-link">  
-            <a href="https://uwservice.wisc.edu/docs/forms/time-missed-punch.pdf" target="_blank">Missed Punch Form</a>
+            <a href="${hrsUrls['Payable time detail']}" target="_blank" class="btn btn-default">View Details</a>
+            <a href="${hrsUrls['Time Exceptions']}" target="_blank" class="btn btn-default">View Time Entry Exceptions</a>
+            <a href="https://uwservice.wisc.edu/docs/forms/time-missed-punch.pdf" target="_blank" class="btn btn-default">Missed Punch Form</a>
           </div>
         </div>
       </div>
@@ -264,7 +178,7 @@ outline:none;
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+            <table class="dl-table table-responsive">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="payPeriod"><a href="javascript:;">Pay Period</a></th>
@@ -289,7 +203,7 @@ outline:none;
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
           <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+            <table class="dl-table table-responsive">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="year"><a href="javascript:;">Year</a></th>
@@ -324,7 +238,23 @@ outline:none;
     </div>
      --%>
     <div class="dl-link">
-      <a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a><c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">&nbsp;|&nbsp;<a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></c:if>
+      <p><a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a>
+      <c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}"></p>
+        <p><a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></p>
+      </c:if>
+      <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
+        <a href="${hrsUrls['Year End Leave Balances']}"
+          target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a><br/>
+        </c:if>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
+          <a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a><br/>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
+          <a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a><br/>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
+          <a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a><br/>
+        </sec:authorize>
     </div>
   </div>
 </div>
