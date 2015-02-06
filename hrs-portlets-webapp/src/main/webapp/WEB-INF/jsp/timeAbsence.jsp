@@ -24,46 +24,33 @@
 
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
+<style>
+  .my-uw .dl-pager-navbar {
+    height:auto;
+    text-align:center;
+  }
+  .my-uw .dl-table {
+    margin-bottom:30px;
+  }
+  .my-uw table.dl-table {
+    border:1px solid #eee !important;
+  }
+  .my-uw table.dl-table tr:nth-child(even) {
+    background-color:#eee;
+  }
+  .my-uw .hrs-notification-wrapper {
+    padding:10px;
+    margin-bottom:50px;
+    text-align:center;
+  }
+  
+</style>
+
 <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
-  <div class="dl-banner-links">
-    <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
-      <div class="dl-banner-link">
-        You have a benefit enrollment opportunity. Please enroll online by clicking the
-        following link. <a target="_blank" href="${hrsUrls['Benefits Enrollment']}">Benefits Enrollment</a> 
-      </div>
-    </c:if>
-    <div class="dl-help-link">
-      <a href="${helpUrl}" target="_blank">Help</a>
-    </div>
-  </div>
   
-  <hrs:notification/>
   
-  <div>
-    <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
-        <div class="dl-link">
-            <a href="${hrsUrls['Year End Leave Balances']}"
-               target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a><br/>
-        </div>
-    </c:if>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
-      <div class="dl-link">
-        <a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a><br/>
-      </div>
-    </sec:authorize>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
-      <div class="dl-link">
-        <a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a><br/>
-      </div>
-    </sec:authorize>
-    <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
-      <div class="dl-link">
-        <a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a><br/>
-      </div>
-    </sec:authorize>
-  </div>
-  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
-    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <c:set var="activeTabStyle" value="ui-tabs-selected ui-state-active"/>
       <sec:authorize ifAllGranted="ROLE_VIEW_ABSENCE_HISTORIES">
         <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-absence">Absence</a></li>
@@ -81,8 +68,8 @@
       <div id="${n}dl-absence" class="dl-absence ui-tabs-panel ui-widget-content ui-corner-bottom">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="name"><a href="javascript:;">Name</a></th>
@@ -119,8 +106,8 @@
       </div>
       <div class="fl-pager">
         <hrs:pagerNavBar position="top" showSummary="${true}" />
-        <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-          <table class="dl-table">
+        <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+          <table class="dl-table table">
             <thead>
               <tr rsf:id="header:">
                 <th class="flc-pager-sort-header" rsf:id="entitlement"><a href="javascript:;">Entitlement</a></th>
@@ -148,8 +135,8 @@
       <div id="${n}dl-time-entry" class="dl-time-entry ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="date"><a href="javascript:;">Date</a></th>
@@ -177,14 +164,10 @@
           <hrs:pagerNavBar position="bottom" />
         </div>
         <div>
-          <div class="dl-link">
-            <a href="${hrsUrls['Payable time detail']}" target="_blank">View Details</a><br/>
-          </div>
-          <div class="dl-link">
-            <a href="${hrsUrls['Time Exceptions']}" target="_blank">View Time Entry Exceptions</a><br/>
-          </div>
-          <div class="dl-link">  
-            <a href="https://uwservice.wisc.edu/docs/forms/time-missed-punch.pdf" target="_blank">Missed Punch Form</a>
+          <div class="dl-link center">
+            <a href="${hrsUrls['Payable time detail']}" target="_blank" class="btn btn-default">View Details</a>
+            <a href="${hrsUrls['Time Exceptions']}" target="_blank" class="btn btn-default">View Time Entry Exceptions</a>
+            <a href="https://uwservice.wisc.edu/docs/forms/time-missed-punch.pdf" target="_blank" class="btn btn-default">Missed Punch Form</a>
           </div>
         </div>
       </div>
@@ -201,8 +184,8 @@
       	</p>
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="payPeriod"><a href="javascript:;">Pay Period</a></th>
@@ -226,8 +209,8 @@
       <div id="${n}dl-sabbatical-reports">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="year"><a href="javascript:;">Year</a></th>
@@ -253,17 +236,32 @@
     </div>
   </div>
   <div>
-    <%--
-    <div class="dl-link">
-      <a href="${prefs['UnclassifiedFurloughTimeReport_NonInstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Non-Instructional Staff</a><br/>
-    </div>
-    <div class="dl-link">
-      <a href="${prefs['UnclassifiedFurloughTimeReport_InstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Instructional Staff</a>
-    </div>
-     --%>
-    <div class="dl-link">
-      <a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a><c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">&nbsp;|&nbsp;<a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></c:if>
-    </div>
+    <hrs:notification/>
+    <ul class="dl-link inline-link-list">
+      <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
+        <p>You have a benefit enrollment opportunity. Please enroll online at <a target="_blank" href="${hrsUrls['Benefits Enrollment']}">Benefits Enrollment</a></p>
+      </c:if>
+      <%-- <li><a href="${prefs['UnclassifiedFurloughTimeReport_NonInstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Non-Instructional Staff</a></li>
+      <li><a href="${prefs['UnclassifiedFurloughTimeReport_InstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Instructional Staff</a></li> --%>
+      <li><a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a></li>
+      <c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">
+        <li><a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></li>
+      </c:if>
+      <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
+        <li><a href="${hrsUrls['Year End Leave Balances']}"
+          target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a></li>
+        </c:if>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
+          <li><a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a></li>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
+          <li><a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a></li>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
+          <li><a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a></li>
+        </sec:authorize>
+        <li><a href="${helpUrl}" target="_blank">Help</a></li>
+    </ul>
   </div>
 </div>
 
