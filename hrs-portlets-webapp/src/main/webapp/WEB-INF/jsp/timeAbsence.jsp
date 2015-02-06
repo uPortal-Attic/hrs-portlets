@@ -24,6 +24,28 @@
 
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
+<style>
+  .my-uw .dl-pager-navbar {
+    height:auto;
+    text-align:center;
+  }
+  .my-uw .dl-table {
+    margin-bottom:30px;
+  }
+  .my-uw table.dl-table {
+    border:1px solid #eee !important;
+  }
+  .my-uw table.dl-table tr:nth-child(even) {
+    background-color:#eee;
+  }
+  .my-uw .hrs-notification-wrapper {
+    padding:10px;
+    margin-bottom:50px;
+    text-align:center;
+  }
+  
+</style>
+
 <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
   
   

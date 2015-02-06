@@ -14,7 +14,6 @@
     <li>
       <ul class="flc-pager-links dl-pager-links">
         <li class="flc-pager-pageLink dl-pager-pageLink-default"><a href="javascript:;" class="btn btn-default">1</a></li>
-        <%-- <li class="flc-pager-pageLink-skip dl-pager-pageLink-skip">&#8230;</li> --%>
         <li class="flc-pager-pageLink"><a href="javascript:;" class="btn btn-default">2</a></li>
       </ul>
     </li>
