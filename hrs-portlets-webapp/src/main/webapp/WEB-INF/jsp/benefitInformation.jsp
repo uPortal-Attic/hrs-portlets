@@ -113,7 +113,7 @@
         <div class="${n}-dl-benefit-statement-links dl-benefit-statement-links">
 	        <div class="center">
 	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
-	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement (Not produced after April 2011)</a>
+	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
 	        </div>
         </div>
       </div>
