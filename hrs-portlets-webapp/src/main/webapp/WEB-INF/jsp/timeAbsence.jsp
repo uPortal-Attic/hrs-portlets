@@ -48,6 +48,9 @@
       display:none;
     }
   }
+  .flc-pager-top {
+    margin-top:15px;
+  }
 
   
 </style>

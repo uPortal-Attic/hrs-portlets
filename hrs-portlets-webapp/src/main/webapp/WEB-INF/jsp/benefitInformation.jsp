@@ -46,6 +46,9 @@
       display:none;
     }
   }
+  .flc-pager-top {
+    margin-top:15px;
+  }
 </style>
 
 <div id="${n}dl-benefit-summary" class="fl-widget portlet dl-benefit-summary">
