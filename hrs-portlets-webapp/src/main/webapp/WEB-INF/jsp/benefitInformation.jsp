@@ -41,6 +41,11 @@
     margin-bottom:50px;
     text-align:center;
   }
+  @media (max-width:768px) {
+    .my-uw .dl-pager-links {
+      display:none;
+    }
+  }
 </style>
 
 <div id="${n}dl-benefit-summary" class="fl-widget portlet dl-benefit-summary">
