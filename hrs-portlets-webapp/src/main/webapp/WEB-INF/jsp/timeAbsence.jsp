@@ -28,6 +28,7 @@
   .my-uw .dl-pager-navbar {
     height:auto;
     text-align:center;
+    margin-bottom:20px;
   }
   .my-uw .dl-table {
     margin-bottom:30px;
