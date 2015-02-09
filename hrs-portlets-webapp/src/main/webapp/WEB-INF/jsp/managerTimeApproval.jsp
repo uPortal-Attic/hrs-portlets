@@ -22,30 +22,42 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
+<style>
+  .my-uw .dl-pager-navbar {
+    height:auto;
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .my-uw .dl-table {
+    margin-bottom:30px;
+  }
+  .my-uw table.dl-table {
+    border:1px solid #eee !important;
+  }
+  .my-uw table.dl-table tr:nth-child(even) {
+    background-color:#eee;
+  }
+  .my-uw .hrs-notification-wrapper {
+    padding:10px;
+    margin-bottom:50px;
+    text-align:center;
+  }
+  @media (max-width:768px) {
+    .my-uw .dl-pager-links {
+      display:none;
+    }
+  }
+  .flc-pager-top {
+    margin-top:15px;
+  }
+
+</style>
+
 <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
   <sec:authorize ifAnyGranted="ROLE_VIEW_MANAGED_ABSENCES,ROLE_VIEW_MANAGED_TIMES">
-
-  <div class="dl-banner-links">
-    <div class="dl-banner-link">
-      <a href="${hrsUrls['Time Management']}" target="_blank">Manager Self Service - Time Management</a>
-    </div>
-    <div class="dl-help-link">
-      <a href="${helpUrl}" target="_blank">Help</a>
-    </div>
-  </div>
   
-  <hrs:notification/>
-  
-  <div>
-    <div class="dl-link">
-      <a href="${hrsUrls['Approve Absence']}" target="_blank">Approve Absence</a><br/>
-    </div>
-    <div class="dl-link">
-      <a href="${hrsUrls['Approve Payable time']}" target="_blank">Approve Payable Time</a>
-    </div>
-  </div>
-  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
-    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+  <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <c:set var="activeTabStyle" value="ui-tabs-selected ui-state-active"/>
       <sec:authorize ifAnyGranted="ROLE_VIEW_MANAGED_ABSENCES">
         <li class="ui-state-default ui-corner-top ${activeTabStyle}"><a href="#${n}dl-absence">Absence</a></li>
@@ -61,8 +73,8 @@
       <div id="${n}dl-absence" class="dl-absence ui-tabs-panel ui-widget-content ui-corner-bottom">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="name"><a href="javascript:;">Name</a></th>
@@ -88,8 +100,8 @@
       <div id="${n}dl-time" class="dl-time ui-tabs-panel ui-widget-content ui-corner-bottom ${hiddenTabStyle}">
         <div class="fl-pager">
           <hrs:pagerNavBar position="top" showSummary="${true}" />
-          <div class="fl-container-flex dl-pager-table-data fl-pager-data">
-            <table class="dl-table">
+          <div class="fl-container-flex dl-pager-table-data fl-pager-data table-responsive">
+            <table class="dl-table table">
               <thead>
                 <tr rsf:id="header:">
                   <th class="flc-pager-sort-header" rsf:id="name"><a href="javascript:;">Name</a></th>
@@ -112,9 +124,28 @@
       </div>
     </sec:authorize>
   </div>
+  
+  <div>
+    <div class="center">
+      <a href="${hrsUrls['Approve Absence']}" target="_blank" class="btn btn-default">Approve Absence</a>
+      <a href="${hrsUrls['Approve Payable time']}" target="_blank" class="btn btn-default">Approve Payable Time</a>
+    </div>
+  </div>
+  
+  
+  
+  <div>
+    <hrs:notification/>
+    <ul class="inline-link-list">
+      <li><a href="${hrsUrls['Time Management']}" target="_blank">Manager Self Service - Time Management</a></li>
+      <li><a href="${helpUrl}" target="_blank">Help</a></li>
+    </ul>
+  </div>
+  
+  
   </sec:authorize>
   <sec:authorize ifNotGranted="ROLE_VIEW_MANAGED_ABSENCES,ROLE_VIEW_MANAGED_TIMES">
-    <div>This module is for managers. If you believe you are a manager and should see content, please contact HR.</div>
+    <div class="center">This module is for managers. If you believe you are a manager and should see content, please contact HR.</div>
   </sec:authorize>
 </div>
 

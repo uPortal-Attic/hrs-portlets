@@ -28,6 +28,7 @@
   .my-uw .dl-pager-navbar {
     height:auto;
     text-align:center;
+    margin-bottom:20px;
   }
   .my-uw .dl-table {
     margin-bottom:30px;
@@ -43,6 +44,15 @@
     margin-bottom:50px;
     text-align:center;
   }
+  @media (max-width:768px) {
+    .my-uw .dl-pager-links {
+      display:none;
+    }
+  }
+  .flc-pager-top {
+    margin-top:15px;
+  }
+
   
 </style>
 
