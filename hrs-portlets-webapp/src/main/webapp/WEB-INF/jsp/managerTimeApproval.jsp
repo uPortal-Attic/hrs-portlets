@@ -50,6 +50,15 @@
   .flc-pager-top {
     margin-top:15px;
   }
+  .portlet .fl-pager ul.fl-pager-ui.dl-pager-bar {
+    text-align:center;
+  }
+  .up .fl-pager .fl-pager-ui .flc-pager-next {
+    position:relative;
+  }
+  .up .fl-pager .fl-pager-ui .flc-pager-previous {
+    position:relative;
+  }
 
 </style>
 
