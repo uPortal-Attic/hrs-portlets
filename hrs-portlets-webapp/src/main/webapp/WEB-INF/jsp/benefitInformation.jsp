@@ -119,9 +119,13 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
       </div>
-      <div class="center">
-        <a href="${hrsUrls['Benefits Summary']}" target="_blank" class="btn btn-default">View Benefits Summary Detail</a>
-        <a href="${hrsUrls['Update TSA Deductions']}" target="_blank" class="btn btn-default">Update TSA Deductions</a>
+      <div class="container-fluid row">
+        <div class='col-xs-4 col-xs-offset-2'>
+            <a href="${hrsUrls['Benefits Summary']}" target="_blank" class="btn btn-default">View Benefits Summary Detail</a>
+        </div>
+        <div class='col-xs-3'>
+            <a href="${hrsUrls['Update TSA Deductions']}" target="_blank" class="btn btn-default">Update TSA Deductions</a>
+        </div>
       </div>
     </div>
     <div id="${n}dl-benefit-statements" class="dl-benefit-statements ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
@@ -145,10 +149,14 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
         <div class="${n}-dl-benefit-statement-links dl-benefit-statement-links">
-	        <div class="center">
-	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
-	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
-	        </div>
+            <div class="container-fluid row">
+                <div class='col-xs-6'>
+                    <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
+                </div>
+                <div class='col-xs-6'>
+                    <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -177,9 +185,13 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
       </div>
-      <div class="center">
-        <a href="${hrsUrls['Dependent Information']}" target="_blank" class="btn btn-default">View Dependent Details</a>
-        <a href="${hrsUrls['Dependent Coverage']}" target="_blank" class="btn btn-default">View Dependent Coverage</a>
+      <div class="container-fluid row">
+        <div class='col-xs-3 col-xs-offset-2'>
+            <a href="${hrsUrls['Dependent Information']}" target="_blank" class="btn btn-default">View Dependent Details</a>
+        </div>
+        <div class='col-xs-3 col-xs-offset-1'>
+            <a href="${hrsUrls['Dependent Coverage']}" target="_blank" class="btn btn-default">View Dependent Coverage</a>
+        </div>
       </div>
     </div>
   </div>
