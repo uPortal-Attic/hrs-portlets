@@ -39,7 +39,7 @@
   }
   .my-uw .hrs-notification-wrapper {
     padding:10px;
-    margin-bottom:50px;
+    margin: 1em;
     text-align:center;
   }
   @media (max-width:768px) {
@@ -59,10 +59,35 @@
   .up .fl-pager .fl-pager-ui .flc-pager-previous {
     position:relative;
   }
+  
+  .dl-help-link {
+    margin: .5em 1em;
+  }
 </style>
 
 <div id="${n}dl-benefit-summary" class="fl-widget portlet dl-benefit-summary">
+  <div class="dl-banner-links">
+    <c:choose>
+    <c:when test="${enrollmentFlag == 'O'}">
+      <div class="dl-banner-link">
+        <spring:message code="benefit.summary.enrollment.O.message" text="You have a benefit enrollment opportunity. Please enroll online by clicking the following link: "/>
+        <a target="_blank" href="${hrsUrls['Open Enrollment/Hire Event']}"><spring:message code="open.enrollment" text="Open Enrollment" /></a>
+      </div>
+    </c:when>
+    <c:when test="${enrollmentFlag == 'H'}">
+      <div class="dl-banner-link">
+        You have a benefit enrollment opportunity. Please enroll online by clicking the following link.
+        <a target="_blank" href="${hrsUrls['Open Enrollment/Hire Event']}">Benefits Enrollment</a>. A Benefit Enrollment
+        Deadlines worksheet is available in the Statements tab which details your enrollment deadlines by plan.
+      </div>
+    </c:when>
+    </c:choose>
+    <div class="dl-help-link">
+      <a href="${helpUrl}" target="_blank">Help</a>
+    </div>
+  </div>
   
+  <hrs:notification/>
   
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
@@ -94,9 +119,13 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
       </div>
-      <div class="center">
-        <a href="${hrsUrls['Benefits Summary']}" target="_blank" class="btn btn-default">View Benefits Summary Detail</a>
-        <a href="${hrsUrls['Update TSA Deductions']}" target="_blank" class="btn btn-default">Update TSA Deductions</a>
+      <div class="container-fluid row">
+        <div class='col-xs-4 col-xs-offset-2'>
+            <a href="${hrsUrls['Benefits Summary']}" target="_blank" class="btn btn-default">View Benefits Summary Detail</a>
+        </div>
+        <div class='col-xs-3'>
+            <a href="${hrsUrls['Update TSA Deductions']}" target="_blank" class="btn btn-default">Update TSA Deductions</a>
+        </div>
       </div>
     </div>
     <div id="${n}dl-benefit-statements" class="dl-benefit-statements ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
@@ -120,10 +149,14 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
         <div class="${n}-dl-benefit-statement-links dl-benefit-statement-links">
-	        <div class="center">
-	          <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
-	          <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
-	        </div>
+            <div class="container-fluid row">
+                <div class='col-xs-6'>
+                    <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
+                </div>
+                <div class='col-xs-6'>
+                    <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -152,34 +185,16 @@
         </div>
         <hrs:pagerNavBar position="bottom" />
       </div>
-      <div class="center">
-        <a href="${hrsUrls['Dependent Information']}" target="_blank" class="btn btn-default">View Dependent Details</a>
-        <a href="${hrsUrls['Dependent Coverage']}" target="_blank" class="btn btn-default">View Dependent Coverage</a>
+      <div class="container-fluid row">
+        <div class='col-xs-3 col-xs-offset-2'>
+            <a href="${hrsUrls['Dependent Information']}" target="_blank" class="btn btn-default">View Dependent Details</a>
+        </div>
+        <div class='col-xs-3 col-xs-offset-1'>
+            <a href="${hrsUrls['Dependent Coverage']}" target="_blank" class="btn btn-default">View Dependent Coverage</a>
+        </div>
       </div>
     </div>
   </div>
-  <div>
-    <c:choose>
-      <c:when test="${enrollmentFlag == 'O'}">
-        <div class="center">
-          <spring:message code="benefit.summary.enrollment.O.message" text="You have a benefit enrollment opportunity. Please enroll online at "/>
-          <a target="_blank" href="${hrsUrls['Open Enrollment/Hire Event']}"><spring:message code="open.enrollment" text="Open Enrollment" /></a>
-        </div>
-      </c:when>
-      <c:when test="${enrollmentFlag == 'H'}">
-        <div class="center">
-          <p>You have a benefit enrollment opportunity. Please enroll online at
-          <a target="_blank" href="${hrsUrls['Open Enrollment/Hire Event']}">Benefits Enrollment</a>. <br />A Benefit Enrollment
-          Deadlines worksheet is available in the Statements tab which details your enrollment deadlines by plan.</p>
-        </div>
-      </c:when>
-    </c:choose>
-    <hrs:notification/>
-    <ul class="dl-banner-links inline-link-list">
-      <li><a href="${helpUrl}" target="_blank">Help</a></li>
-    </ul>
-  </div>
-  
 </div>
 
 <portlet:resourceURL var="benefitSummaryUrl" id="benefitSummary" escapeXml="false"/>
