@@ -22,50 +22,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-<style>
-  .my-uw .dl-pager-navbar {
-    height:auto;
-    text-align:center;
-    margin-bottom:20px;
-  }
-  .my-uw .dl-table {
-    margin-bottom:30px;
-  }
-  .my-uw table.dl-table {
-    border:1px solid #eee !important;
-  }
-  .my-uw table.dl-table tr:nth-child(even) {
-    background-color:#eee;
-  }
-  .my-uw .hrs-notification-wrapper {
-    padding:10px;
-    margin: 1em;
-    text-align:center;
-  }
-  @media (max-width:768px) {
-    .my-uw .dl-pager-links {
-      display:none;
-    }
-  }
-  .flc-pager-top {
-    margin-top:15px;
-  }
-  .portlet .fl-pager ul.fl-pager-ui.dl-pager-bar {
-    text-align:center;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-next {
-    position:relative;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-previous {
-    position:relative;
-  }
-  
-  .dl-help-link {
-    margin: .5em 1em;
-  }
-</style>
-
-<div id="${n}dl-benefit-summary" class="fl-widget portlet dl-benefit-summary">
+<div id="${n}dl-benefit-summary" class="fl-widget portlet dl-benefit-summary hrs">
   <div class="dl-banner-links">
     <c:choose>
     <c:when test="${enrollmentFlag == 'O'}">

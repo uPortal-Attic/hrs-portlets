@@ -22,48 +22,16 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-<style>
-  .my-uw .dl-pager-navbar {
-    height:auto;
-    text-align:center;
-    margin-bottom:20px;
-  }
-  .my-uw .dl-table {
-    margin-bottom:30px;
-  }
-  .my-uw table.dl-table {
-    border:1px solid #eee !important;
-  }
-  .my-uw table.dl-table tr:nth-child(even) {
-    background-color:#eee;
-  }
-  .my-uw .hrs-notification-wrapper {
-    padding:10px;
-    margin-bottom:50px;
-    text-align:center;
-  }
-  @media (max-width:768px) {
-    .my-uw .dl-pager-links {
-      display:none;
-    }
-  }
-  .flc-pager-top {
-    margin-top:15px;
-  }
-  .portlet .fl-pager ul.fl-pager-ui.dl-pager-bar {
-    text-align:center;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-next {
-    position:relative;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-previous {
-    position:relative;
-  }
-
-</style>
-
-<div id="${n}dl-payroll-information" class="fl-widget portlet dl-payroll-information">
-  
+<div id="${n}dl-payroll-information" class="fl-widget portlet dl-payroll-information hrs">
+  <div style='margin: 0 10px;'>
+      <div class="dl-banner-links">
+        <div class="dl-help-link">
+          <a href="${helpUrl}" target="_blank">Help</a>
+        </div>
+      </div>
+    
+      <hrs:notification/>
+  </div>
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
       <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#${n}dl-earning-statements">Earning Statements</a></li>
@@ -136,21 +104,27 @@
     </div>
   </div>
   
-  <div>
-    <hrs:notification/>
-    <ul class="dl-payroll-links inline-link-list">
-      <li><a href="https://uwservice.wisc.edu/docs/forms/pay-employee-withholding.pdf" target="_blank">Update your W4</a></li>
-      <li><a href="https://uwservice.wisc.edu/docs/forms/pay-direct-deposit.pdf" target="_blank">Update your Direct Deposit</a></li>
-      <li><a href="https://uwservice.wisc.edu/docs/publications/tax-w2-explanation.pdf" target="_blank">W-2 Explanation</a></li>
-      <li><a href="https://uwservice.wisc.edu/docs/publications/itx-1042s-explanation.pdf" target="_blank">1042-S Explanation</a></li>
-      <c:if test="${personalDataError or personalData.onVisa}">
-          <li><a href="http://www.online-tax.net/" target="_blank">Glacier International Tax</a></li>
-        <c:if test="${personalDataError or personalData.madisonEmpl}">
-            <li><a href="https://www.cintax.us/gateway.asp?iid=P2642KCJ" target="_blank">CINTAX Nonresident Tax Preparation</a></li>
-        </c:if>
+  <div class="dl-payroll-links">
+    <div class="dl-link">
+      <a href="https://uwservice.wisc.edu/docs/forms/pay-employee-withholding.pdf" target="_blank" class="btn btn-default">Update your W4</a>
+      <span class='hidden-xs visible-xs'>|</span>
+      <a href="https://uwservice.wisc.edu/docs/forms/pay-direct-deposit.pdf" target="_blank" class="btn btn-default">Update your Direct Deposit</a>
+    </div>
+    <div class="dl-link">
+      <a href="https://uwservice.wisc.edu/docs/publications/tax-w2-explanation.pdf" target="_blank" class="btn btn-default">W-2 Explanation</a>
+      <span class='hidden-xs visible-xs'>|</span>
+      <a href="https://uwservice.wisc.edu/docs/publications/itx-1042s-explanation.pdf" target="_blank" class="btn btn-default">1042-S Explanation</a>
+    </div>
+    <c:if test="${personalDataError or personalData.onVisa}">
+      <div class="dl-link">
+        <a href="http://www.online-tax.net/" target="_blank" class="btn btn-default">Glacier International Tax</a>
+      </div>
+      <c:if test="${personalDataError or personalData.madisonEmpl}">
+        <div class="dl-link">
+          <a href="https://www.cintax.us/gateway.asp?iid=P2642KCJ" target="_blank" class="btn btn-default">CINTAX Nonresident Tax Preparation</a>
+        </div>
       </c:if>
-      <li><a href="${helpUrl}" target="_blank">Help</a></li>
-    </ul>
+    </c:if>
   </div>
 </div>
 

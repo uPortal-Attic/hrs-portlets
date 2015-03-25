@@ -24,49 +24,7 @@
 
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
-<style>
-  .my-uw .dl-pager-navbar {
-    height:auto;
-    text-align:center;
-    margin-bottom:20px;
-  }
-  .my-uw .dl-table {
-    margin-bottom:30px;
-  }
-  .my-uw table.dl-table {
-    border:1px solid #eee !important;
-  }
-  .my-uw table.dl-table tr:nth-child(even) {
-    background-color:#eee;
-  }
-  .my-uw .hrs-notification-wrapper {
-    padding:10px;
-    margin-bottom:50px;
-    text-align:center;
-  }
-  @media (max-width:768px) {
-    .my-uw .dl-pager-links {
-      display:none;
-    }
-  }
-  .flc-pager-top {
-    margin-top:15px;
-  }
-  .portlet .fl-pager ul.fl-pager-ui.dl-pager-bar {
-    text-align:center;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-next {
-    position:relative;
-  }
-  .up .fl-pager .fl-pager-ui .flc-pager-previous {
-    position:relative;
-  }
-
-  
-</style>
-
-<div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence">
-  
+<div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence hrs">
   
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
