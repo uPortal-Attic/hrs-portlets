@@ -25,6 +25,45 @@
 <c:set var="showJobTitle" value="${fn:length(personalData.jobs) > 1}"/>
 
 <div id="${n}dl-time-absence" class="fl-widget portlet dl-time-absence hrs">
+  <div>
+  <div class="dl-banner-links">
+    <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
+      <div class="dl-banner-link">
+        You have a benefit enrollment opportunity. Please enroll online by clicking the
+        following link. <a target="_blank" href="${hrsUrls['Benefits Enrollment']}">Benefits Enrollment</a> 
+      </div>
+    </c:if>
+    <div class="dl-help-link">
+      <a href="${helpUrl}" target="_blank">Help</a>
+    </div>
+  </div>
+    
+      <hrs:notification/>
+  </div>
+  
+  <div>
+    <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
+        <div class="dl-link">
+            <a href="${hrsUrls['Year End Leave Balances']}"
+               target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a><br/>
+        </div>
+    </c:if>
+    <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
+      <div class="dl-link">
+        <a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a><br/>
+      </div>
+    </sec:authorize>
+    <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
+      <div class="dl-link">
+        <a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a><br/>
+      </div>
+    </sec:authorize>
+    <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
+      <div class="dl-link">
+        <a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a><br/>
+      </div>
+    </sec:authorize>
+  </div>
   
   <div id="${n}dl-tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
@@ -213,32 +252,17 @@
     </div>
   </div>
   <div>
-    <hrs:notification/>
-    <ul class="dl-link inline-link-list">
-      <c:if test="${not empty hrsUrls['Benefits Enrollment']}">
-        <p>You have a benefit enrollment opportunity. Please enroll online at <a target="_blank" href="${hrsUrls['Benefits Enrollment']}">Benefits Enrollment</a></p>
-      </c:if>
-      <%-- <li><a href="${prefs['UnclassifiedFurloughTimeReport_NonInstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Non-Instructional Staff</a></li>
-      <li><a href="${prefs['UnclassifiedFurloughTimeReport_InstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Instructional Staff</a></li> --%>
-      <li><a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a></li>
-      <c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">
-        <li><a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></li>
-      </c:if>
-      <c:if test="${not empty hrsUrls['Year End Leave Balances']}">
-        <li><a href="${hrsUrls['Year End Leave Balances']}"
-          target="_blank">12/28/14 to 12/31/14 Classified Leave Balance</a></li>
-        </c:if>
-        <sec:authorize ifAnyGranted="ROLE_VIEW_ABSENCE_HISTORIES">
-          <li><a href="${hrsUrls['Request Absence']}" target="_blank">Enter Absence</a></li>
-        </sec:authorize>
-        <sec:authorize ifAnyGranted="ROLE_VIEW_TIME_SHEET,ROLE_VIEW_WEB_CLOCK,ROLE_VIEW_TIME_CLOCK">
-          <li><a href="${hrsUrls['Timesheet']}" target="_blank">Timesheet</a></li>
-        </sec:authorize>
-        <sec:authorize ifAnyGranted="ROLE_VIEW_WEB_CLOCK">
-          <li><a href="${hrsUrls['Web Clock']}" target="_blank">Web Clock</a></li>
-        </sec:authorize>
-        <li><a href="${helpUrl}" target="_blank">Help</a></li>
-    </ul>
+    <%--
+    <div class="dl-link">
+      <a href="${prefs['UnclassifiedFurloughTimeReport_NonInstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Non-Instructional Staff</a><br/>
+    </div>
+    <div class="dl-link">
+      <a href="${prefs['UnclassifiedFurloughTimeReport_InstructionalStaffUrl'][0]}" target="_blank">Unclassified Furlough Time Report - Instructional Staff</a>
+    </div>
+     --%>
+    <div class="dl-link">
+      <a href="${prefs['UnclassifiedLeaveReportUrl'][0]}" target="_blank">Unclassified Leave Report</a><c:if test="${not empty prefs['UnclassifiedLeaveReportForSummerUrl'][0]}">&nbsp;|&nbsp;<a href="${prefs['UnclassifiedLeaveReportForSummerUrl'][0]}" target="_blank">Unclassified Summer Session/Service Leave Report</a></c:if>
+    </div>
   </div>
 </div>
 
