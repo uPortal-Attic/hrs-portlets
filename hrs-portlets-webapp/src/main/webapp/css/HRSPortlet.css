@@ -17,57 +17,57 @@
  * under the License.
  */
  
- p.padded-paragraph 
+ .hrs p.padded-paragraph 
  {
  	padding-top: 1em; 
  	padding-bottom: 1em;
  }
  
- .pref-name-edit-error
+ .hrs .pref-name-edit-error
  {
  	padding : 1em;
  }
  
- .dl-contact-info p.pref-notice {
+ .hrs .dl-contact-info p.pref-notice {
  	font-style: italic;
  	font-size: x-small;
  }
  
-.dl-contact-info .fancy-button {
+.hrs.dl-contact-info .fancy-button {
 	background: #990000;
 	color: white !important;
 	font-weight : normal;
 }
 
-.dl-contact-info .fancy-button:hover {
+.hrs.dl-contact-info .fancy-button:hover {
 	font-weight : bold;
 }
 
-.dl-contact-info .fancy-cancel {
+.hrs.dl-contact-info .fancy-cancel {
 	background: lightgray;
 	color: black !important;
 }
 
- .dl-contact-info .pref-name-edit-error
+ .hrs.dl-contact-info .pref-name-edit-error
  {
  	padding : 1em;
  }
  
- .sdl-contact-info .dl-contact-info p {
+ .hrs.dl-contact-info .dl-contact-info p {
  	font-style: italic;
  	font-size: x-small;
  	margin: .5em;
  }
  
- .dl-contact-info .edit-name {
+ .hrs.dl-contact-info .edit-name {
 	float : left; 
  }
  
- .dl-contact-info .edit-notice {
+ .hrs.dl-contact-info .edit-notice {
  	clear : left;
  }
  
- .dl-contact-info .edit-buttons {
+ .hrs.dl-contact-info .edit-buttons {
  	clear: left;
 	min-width: 12em;
 	padding-top: .75em;
@@ -77,23 +77,74 @@
 	text-align: right;
  }
  
- .dl-contact-info .pn-label {
+ .hrs.dl-contact-info .pn-label {
  	font-style: italic;
 	font-size : x-small;
  }
  
- .dl-benefit-summary .dl-banner-links .dl-banner-link {
+ .hrs.dl-benefit-summary .dl-banner-links .dl-banner-link {
     font-size:1.15em;
  }
  
- .dl-benefit-summary .dl-banner-links .dl-banner-link a {
+ .hrs.dl-benefit-summary .dl-banner-links .dl-banner-link a {
     font-weight:bold;
  }
 
- .dl-benefit-statement-links {
+ .hrs.dl-benefit-statement-links {
      margin-top: 1em;
  }
 
-.federal-reporting-statuses {
+.hrs .federal-reporting-statuses {
     margin-top: 1em;
 }
+
+.hrs .dl-help-link {
+  margin: .5em 1em;
+}
+
+.hrs .hrs-notification-wrapper {
+  padding:10px;
+  margin: 1em;
+  text-align:center;
+}
+
+.hrs .dl-pager-navbar {
+    height:auto;
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .hrs .dl-table {
+    margin-bottom:30px;
+  }
+  .hrs table.dl-table {
+    border:1px solid #eee !important;
+  }
+  .hrs table.dl-table tr:nth-child(even) {
+    background-color:#eee;
+  }
+  .hrs .hrs-notification-wrapper {
+    padding:10px;
+    margin: 1em;
+    text-align:center;
+  }
+  @media (max-width:768px) {
+    .hrs .dl-pager-links {
+      display:none;
+    }
+  }
+  .hrs .flc-pager-top {
+    margin-top:15px;
+  }
+  .hrs .fl-pager ul.fl-pager-ui.dl-pager-bar {
+    text-align:center;
+  }
+  .hrs .fl-pager .fl-pager-ui .flc-pager-next {
+    position:relative;
+  }
+  .hrs .fl-pager .fl-pager-ui .flc-pager-previous {
+    position:relative;
+  }
+  
+  .hrs .dl-payroll-links {
+    padding-left : 15px;
+  }

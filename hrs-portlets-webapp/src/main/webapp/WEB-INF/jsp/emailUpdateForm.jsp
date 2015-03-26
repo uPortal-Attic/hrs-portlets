@@ -22,7 +22,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-<div id="${n}dl-email-admin" class="dl-email-admin">
+<div id="${n}dl-email-admin" class="dl-email-admin hrs">
     <portlet:renderURL var="newSearchUrl" />
 
     <c:choose>

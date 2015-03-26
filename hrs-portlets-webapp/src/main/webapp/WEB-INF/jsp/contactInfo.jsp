@@ -32,7 +32,7 @@
 
 <spring:message code="savePreferredName" var="savePreferredName" text="Save"/>
 
-<div id="${n}dl-contact-info" class="dl-contact-info">
+<div id="${n}dl-contact-info" class="dl-contact-info hrs">
   <div class="dl-banner-links">
     <div class="dl-help-link">
       <a href="${helpUrl}" target="_blank">Help</a>
