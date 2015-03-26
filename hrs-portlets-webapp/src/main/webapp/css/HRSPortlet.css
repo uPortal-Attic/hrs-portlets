@@ -62,25 +62,47 @@
  .hrs.dl-contact-info .edit-name {
 	float : left; 
  }
- 
+ .hrs.dl-contact-info input {
+   margin : 5px;
+ }
  .hrs.dl-contact-info .edit-notice {
  	clear : left;
  }
  
  .hrs.dl-contact-info .edit-buttons {
- 	clear: left;
-	min-width: 12em;
-	padding-top: .75em;
-	padding-bottom: .75em;
-	max-width: 24.5em;
-	width: 100%;
-	text-align: right;
+  text-align: inherit; 
+
  }
  
  .hrs.dl-contact-info .pn-label {
- 	font-style: italic;
 	font-size : x-small;
  }
+ 
+  .hrs.dl-contact-info .pref-name-edit {
+     margin-left: 1em;
+     background-color: #F3F3F3;
+     width: 66%;
+     border-radius: 4px;
+     padding: 5px;
+ }
+ 
+ .hrs.dl-contact-info .pref-name-edit .names {
+   display: inline-block;
+ }
+ 
+ .hrs.dl-contact-info .label {
+    color: black;
+ }
+ 
+ .hrs.dl-contact-info .error {
+    color : red;
+ }
+ 
+ .hrs.dl-contact-info .info-text {
+   font-size: 12px;
+   padding-left: 5px;
+ }
+ 
  
  .hrs.dl-benefit-summary .dl-banner-links .dl-banner-link {
     font-size:1.15em;

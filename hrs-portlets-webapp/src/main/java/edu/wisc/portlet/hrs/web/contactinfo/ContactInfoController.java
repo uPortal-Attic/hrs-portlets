@@ -49,6 +49,7 @@ import edu.wisc.hr.dao.person.ContactInfoDao;
 import edu.wisc.hr.dm.bnsemail.PreferredEmail;
 import edu.wisc.hr.dm.person.PersonInformation;
 import edu.wisc.hr.dm.prefname.PreferredName;
+import edu.wisc.hr.dm.prefname.PreferredNameExtended;
 import edu.wisc.hr.dm.prefname.PreferredNameValidator;
 import edu.wisc.hr.service.PreferredNameService;
 
@@ -119,13 +120,15 @@ public class ContactInfoController extends HrsControllerBase {
 		
 		String currentFirstName = userInfo.get("wiscedupreferredfirstname");
 		String currentMiddleName = userInfo.get("wiscedupreferredmiddlename");
+		String currentLastName = userInfo.get("wiscedupreferredlastname");
 		
 		if(preferredName != null) {
 			modelMap.addAttribute("firstName", preferredName.getFirstName());
 			modelMap.addAttribute("middleName", preferredName.getMiddleName());
+			modelMap.addAttribute("lastName", preferredName.getLastName());
 		}
 		
-		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,getPvi(request)),preferredNameService.getPreferredName(getPvi(request))));
+		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,currentLastName,getPvi(request)),preferredNameService.getPreferredName(getPvi(request))));
 		modelMap.addAttribute("sirName",userInfo.get("sn"));
 		modelMap.addAttribute("displayName",userInfo.get("displayName"));
 		
@@ -191,8 +194,13 @@ public class ContactInfoController extends HrsControllerBase {
     
     @ActionMapping(params="action=savePreferredName")
 	public void submitEdit(ActionRequest request, ActionResponse response, PreferredName preferredName, BindingResult bindingResult) throws PortletModeException {
+      
+        @SuppressWarnings("unchecked")
+        Map<String, String> userInfo = (Map <String, String>) request.getAttribute(PortletRequest.USER_INFO);
+      
+        PreferredNameExtended pne = new PreferredNameExtended(preferredName, userInfo.get("sn"));
 		//validation
-		ValidationUtils.invokeValidator(new PreferredNameValidator(), preferredName, bindingResult);
+		ValidationUtils.invokeValidator(new PreferredNameValidator(), pne, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			//submit changes to DAO
 			preferredName.setPvi(getPvi(request));
