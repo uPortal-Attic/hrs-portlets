@@ -9,6 +9,8 @@ public class PreferredName implements Serializable {
     
     private String middleName;
     
+    private String lastName;
+    
     private String pvi;
     
 	public String getFirstName() {
@@ -34,6 +36,13 @@ public class PreferredName implements Serializable {
 	public String getPvi() {
 		return this.pvi;
 	}
+	public String getLastName() {
+	  return lastName;
+	}
+
+	public void setLastName(String lastName) {
+	  this.lastName = lastName;
+	}
 
 
 
@@ -46,9 +55,16 @@ public class PreferredName implements Serializable {
 		this.middleName = middle;
 	}
 	
-	public PreferredName(String first, String middle, String pvi) {
+	public PreferredName(String first, String middle, String last) {
+      this.firstName = first;
+      this.middleName = middle;
+      this.lastName = last;
+	}
+	
+	public PreferredName(String first, String middle, String last, String pvi) {
 		this.firstName = first;
 		this.middleName = middle;
+		this.lastName = last;
 		this.pvi = pvi;
 	}
 
@@ -60,6 +76,8 @@ public class PreferredName implements Serializable {
 				+ ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result
 				+ ((middleName == null) ? 0 : middleName.hashCode());
+		result = prime * result
+            + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
 	}
 
@@ -82,8 +100,11 @@ public class PreferredName implements Serializable {
 				return false;
 		} else if (!middleName.equalsIgnoreCase(other.middleName))
 			return false;
+		if (lastName == null) {
+            if (other.lastName != null)
+                return false;
+        } else if (!lastName.equalsIgnoreCase(other.lastName))
+            return false;
 		return true;
 	}
-	
-	
 }

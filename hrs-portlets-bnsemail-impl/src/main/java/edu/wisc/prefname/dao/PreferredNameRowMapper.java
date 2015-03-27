@@ -16,6 +16,7 @@ public class PreferredNameRowMapper  implements RowMapper<PreferredName> {
         
         preferredName.setFirstName(rs.getString("first_name"));
         preferredName.setMiddleName(rs.getString("middle_name"));
+        preferredName.setLastName(rs.getString("last_name"));
         preferredName.setPvi(rs.getString("pvi"));
         
         return preferredName;
