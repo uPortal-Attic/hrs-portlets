@@ -108,7 +108,7 @@
         <div class="${n}-dl-benefit-statement-links dl-benefit-statement-links">
             <div class="container-fluid row">
                 <div class='col-xs-6'>
-                    <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">WRS Explanation of Statement of Benefits</a>
+                    <a href="https://uwservice.wisc.edu/help/wrs-benefits-statement.php" target="_blank" class="btn btn-default">ETF Annual Statement of Benefits: Enclosures and Explanation</a>
                 </div>
                 <div class='col-xs-6'>
                     <a href="https://uwservice.wisc.edu/help/benefits-statement.php" target="_blank" class="btn btn-default">Explanation of Staff Benefits Statement</a>
