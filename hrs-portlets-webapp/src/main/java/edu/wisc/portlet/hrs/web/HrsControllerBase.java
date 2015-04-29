@@ -19,7 +19,13 @@
 
 package edu.wisc.portlet.hrs.web;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
@@ -42,6 +48,9 @@ public class HrsControllerBase {
     
     private String notificationPreferences = "notification";
     protected static final String helpUrlPreferences = "helpUrl";
+    private static final String GENERIC_ERROR_MESSAGE_PREFERENCE_NAME = "genericErrorMessage";
+    private static final String MESSAGE_PROPERTIES_FILE_NAME = "messages.properties";
+    private static final String GENERIC_ERROR_MESSAGE_PROPERTY_NAME = "genericError";
     private HrsUrlDao hrsUrlDao;
 
 
@@ -61,6 +70,24 @@ public class HrsControllerBase {
     public final String getNavLinks(PortletRequest request) {
         final PortletPreferences preferences = request.getPreferences();
         return preferences.getValue(helpUrlPreferences, "#");
+    }
+    
+    /**
+     * The generic Message if you want to override the default in 
+     * messages.properties
+     */
+    @ModelAttribute("genericErrorMessage")
+    public final String getGenericErrorMessage(PortletRequest request){
+        final PortletPreferences preferences = request.getPreferences();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Properties props = new Properties();
+        InputStream resourceStream = loader.getResourceAsStream(MESSAGE_PROPERTIES_FILE_NAME);
+        try {
+            props.load(resourceStream);
+        } catch (IOException e) {
+            logger.warn("Could not load the expected properties file: {}.", MESSAGE_PROPERTIES_FILE_NAME, e);
+        }
+        return preferences.getValue(GENERIC_ERROR_MESSAGE_PREFERENCE_NAME, props.getProperty(GENERIC_ERROR_MESSAGE_PROPERTY_NAME));
     }
     
     /**

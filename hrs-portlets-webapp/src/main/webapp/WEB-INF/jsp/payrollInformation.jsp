@@ -214,7 +214,7 @@
           dataList: {
               url: "${earningStatementsUrl}",
               dataKey: "report",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+              dataLoadErrorMsg: "${genericErrorMessage}"
           }
         });
         
@@ -238,7 +238,7 @@
           dataList: {
               url: "${taxStatementsUrl}",
               dataKey: "report",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+              dataLoadErrorMsg: "${genericErrorMessage}"
           }
         });
         

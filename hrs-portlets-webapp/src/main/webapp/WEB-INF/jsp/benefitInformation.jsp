@@ -176,7 +176,7 @@
           dataList: {
               url: "${benefitSummaryUrl}",
               dataKey: "benefits",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+              dataLoadErrorMsg: "${genericErrorMessage}"
           }
         });
         
@@ -188,7 +188,7 @@
           dataList: {
               url: "${benefitSummaryUrl}",
               dataKey: "dependents",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+              dataLoadErrorMsg: "${genericErrorMessage}"
           }
         });
         
@@ -205,7 +205,7 @@
           dataList: {
               url: "${benefitStatementsUrl}",
               dataKey: "report",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+              dataLoadErrorMsg: "${genericErrorMessage}",
               dataLoadCallback: function (data) {
                   if (data == undefined || data.length == 0) {
                       //Hide the ${n}-dl-benefit-statement-links
