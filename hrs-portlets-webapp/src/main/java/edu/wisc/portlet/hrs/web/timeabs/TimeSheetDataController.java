@@ -19,6 +19,8 @@
 
 package edu.wisc.portlet.hrs.web.timeabs;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import edu.wisc.hr.dao.tlpayable.TimeSheetDao;
 import edu.wisc.hr.dm.tlpayable.TimeSheet;
+
 import org.jasig.springframework.security.portlet.authentication.PrimaryAttributeUtils;
 
 /**
@@ -48,15 +51,32 @@ public class TimeSheetDataController {
     }
 
     
+    /**
+     * Gets Time sheets - limited to most recent 80 results for the requesting user
+     * @param modelMap
+     * @return the most recent timesheets, limited to 80
+     */
     @Secured({"ROLE_VIEW_WEB_CLOCK", "ROLE_VIEW_TIME_CLOCK", "ROLE_VIEW_TIME_SHEET"})
     @ResourceMapping("timeSheets")
     public String getTimeSheets(ModelMap modelMap) {
         final String emplid = PrimaryAttributeUtils.getPrimaryId();
 
         final List<TimeSheet> timeSheets = this.timeSheetDao.getTimeSheets(emplid);
-
-        modelMap.addAttribute("report", timeSheets);
         
+        //sorts the list from most recent time sheets to oldest time sheets
+        Collections.sort(timeSheets, new Comparator<TimeSheet>(){
+            @Override
+            public int compare(TimeSheet o1, TimeSheet o2) {
+                if(o1 == null || o1.getDate() == null){
+                    return -1;
+                }else if(o2 == null || o2.getDate() == null){
+                    return 1;
+                }
+                return(o1.getDate().compareTo(o2.getDate())*-1);
+            }
+        });
+        //Limit to 80 is due to shortcomings in the datalist.js library used in portlet
+        modelMap.addAttribute("report", timeSheets.subList(0, timeSheets.size()>80 ? 80:timeSheets.size()));
         return "reportAttrJsonView";
     }
 
