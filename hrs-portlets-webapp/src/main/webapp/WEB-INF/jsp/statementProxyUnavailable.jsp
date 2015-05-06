@@ -27,7 +27,7 @@
 <body>
   <div>
       <div>
-        <spring:message code="genericStatementError" htmlEscape="false" javaScriptEscape="false" />
+        ${genericErrorMessage}
       </div>
   </div>
 </body>

@@ -335,7 +335,7 @@
             ],
             dataList: {
               url: "${absenceHistoriesUrl}",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+              dataLoadErrorMsg: "${genericErrorMessage}",
               dataExtractor: function (dataKey, data) {
                   data = data.report;
                   $.each(data, function(index, absence) {
@@ -368,7 +368,7 @@
             ],
             dataList: {
               url: "${absenceBalancesUrl}",
-              dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+              dataLoadErrorMsg: "${genericErrorMessage}",
               dataExtractor: function (dataKey, data) {
                   data = data.report;
                   $.each(data, function(index, absence) {
@@ -407,7 +407,7 @@
             ],
             dataList: {
                 url: "${timeSheetsUrl}",
-                dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+                dataLoadErrorMsg: "${genericErrorMessage}",
                 dataExtractor: function (dataKey, data) {
                     data = data.report;
                     $.each(data, function(index, timesheet) {
@@ -469,7 +469,7 @@
                     $("#${n}dl-leave-statements").show();
                 }
             },
-            dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />",
+            dataLoadErrorMsg: "${genericErrorMessage}",
             dataExtractor: function (dataKey, data) {
                 data = data.report;
                 $.each(data, function(index, leaveStatement) {
@@ -548,7 +548,7 @@
             		$("#${n}dl-sabbatical-reports").show();
             	}
             },	
-            dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+            dataLoadErrorMsg: "${genericErrorMessage}"
           }
         });
         

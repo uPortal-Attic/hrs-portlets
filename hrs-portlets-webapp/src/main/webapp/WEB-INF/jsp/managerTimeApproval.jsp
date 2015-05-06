@@ -137,7 +137,7 @@
             dataList: {
                 url: "${managedAbsencesUrl}",
                 dataKey: "report",
-                dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+                dataLoadErrorMsg: "${genericErrorMessage}"
             }
           });
         </sec:authorize>
@@ -151,7 +151,7 @@
             dataList: {
                 url: "${managedTimesUrl}",
                 dataKey: "report",
-                dataLoadErrorMsg: "<spring:message code="genericError" arguments="javascript:;" htmlEscape="false" javaScriptEscape="true" />"
+                dataLoadErrorMsg: "${genericErrorMessage}"
             }
           });
         </sec:authorize>
