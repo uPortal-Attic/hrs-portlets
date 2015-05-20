@@ -27,11 +27,6 @@ import javax.portlet.PortletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import edu.wisc.hr.dao.url.HrsUrlDao;
@@ -42,23 +37,14 @@ import edu.wisc.hr.dao.url.HrsUrlDao;
  * @author Eric Dalquist
  * @version $Revision: 1.2 $
  */
-@PropertySource("classpath:messages.properties")
-@Configuration
 public class HrsControllerBase {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     
     private String notificationPreferences = "notification";
     protected static final String helpUrlPreferences = "helpUrl";
     private static final String GENERIC_ERROR_MESSAGE_PREFERENCE_NAME = "genericErrorMessage";
+    private static final String DEFAULT_ERROR_MESSAGE = "Sorry! MyUW was unable to load your information. Please try again later or <a href=\\\"https://kb.wisc.edu/myuw/page.php?id=50338\\\" target=\\\"_blank\\\">get help</a>.";
     private HrsUrlDao hrsUrlDao;
-    
-    private String defaultErrorMessage;
-    
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
 
     public void setNotificationPreferences(String notificationPreferences) {
         this.notificationPreferences = notificationPreferences;
@@ -85,12 +71,7 @@ public class HrsControllerBase {
     @ModelAttribute("genericErrorMessage")
     public final String getGenericErrorMessage(PortletRequest request){
         final PortletPreferences preferences = request.getPreferences();
-        return preferences.getValue(GENERIC_ERROR_MESSAGE_PREFERENCE_NAME, this.defaultErrorMessage);
-    }
-    
-    @Value("${genericError}")
-    public void setDefaultErrorMessage(final String defaultErrorMessage){
-        this.defaultErrorMessage = defaultErrorMessage;
+        return preferences.getValue(GENERIC_ERROR_MESSAGE_PREFERENCE_NAME, DEFAULT_ERROR_MESSAGE);
     }
     
     /**
