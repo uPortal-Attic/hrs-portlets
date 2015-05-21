@@ -42,7 +42,7 @@
      +-->
     <cache name="cypressUnknownExceptionCache" eternal="false"
         maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"
-        timeToIdleSeconds="0" timeToLiveSeconds="30"
+        timeToIdleSeconds="0" timeToLiveSeconds="5"
         memoryStoreEvictionPolicy="LRU" statistics="true" />
         
     <!-- 
@@ -78,7 +78,7 @@
      +-->
     <cache name="hrsUnknownExceptionCache" eternal="false"
         maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"
-        timeToIdleSeconds="0" timeToLiveSeconds="30"
+        timeToIdleSeconds="0" timeToLiveSeconds="5"
         memoryStoreEvictionPolicy="LRU" statistics="true" />
 
     <!-- 
