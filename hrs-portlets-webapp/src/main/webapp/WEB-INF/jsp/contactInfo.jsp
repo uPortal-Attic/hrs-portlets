@@ -47,7 +47,6 @@
   	<c:if test="${showBusinessEmail}">
 	  	<div class="contact-info-pref-name-view ${n}view">
               <span class="uportal-channel-strong"><spring:message code="label.preferred.name"/>:</span>
-              <span>${firstName}
                 <c:if test="${!empty firstName }">
                   <c:set var="preferredName" value="${firstName}"/>
                   <c:if test="${!empty middleName }">
