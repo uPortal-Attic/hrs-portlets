@@ -48,19 +48,21 @@
 	  	<div class="contact-info-pref-name-view ${n}view">
               <span class="uportal-channel-strong"><spring:message code="label.preferred.name"/>:</span>
               <span>${firstName}
-                      <c:if test="${!empty middleName }">
-                          &nbsp;${middleName}
-                      </c:if>
-                      <c:if test="${!empty firstName }">
-                        <c:choose>
-                            <c:when test="${!empty lastName}">
-                                &nbsp;${lastName}
-                            </c:when>
-                            <c:otherwise>
-                                &nbsp;${sirName}
-                            </c:otherwise>
-                        </c:choose>
-                      </c:if>
+                <c:if test="${!empty firstName }">
+                  <c:set var="preferredName" value="${firstName}"/>
+                  <c:if test="${!empty middleName }">
+                    <c:set var="preferredName" value="${preferredName} ${middleName}"/>
+                  </c:if>
+                  <c:choose>
+                    <c:when test="${!empty lastName}">
+                      <c:set var="preferredName" value="${preferredName} ${lastName}"/>
+                    </c:when>
+                    <c:otherwise>
+                      <c:set var="preferredName" value="${preferredName} ${sirName}"/>
+                    </c:otherwise>
+                  </c:choose>
+                  <span>${preferredName}</span>
+                </c:if>
                       &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
                       &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
                       &nbsp;<a href="${deletePreferredNameURL}" onclick="return confirm('Are you sure you want to delete your preferred name?');"><spring:message code="delete"/></a>
