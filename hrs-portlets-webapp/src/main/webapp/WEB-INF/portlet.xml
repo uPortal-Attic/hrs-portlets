@@ -167,10 +167,6 @@
               <value>legacywisceduhrpersonid</value>
             </preference>
             <preference>
-              <name>displayName</name>
-              <value>displayName</value>
-            </preference>
-            <preference>
             	<name>pviUserAttributes</name>
             	<value>wiscedupvi</value>
             </preference>
@@ -221,7 +217,7 @@
         <name>legacywisceduhrpersonid</name>
     </user-attribute>
     <user-attribute>
-        <name>displayName</name>
+        <name>wiscEduSORName</name>
     </user-attribute>
     <user-attribute>
     	<name>sn</name>

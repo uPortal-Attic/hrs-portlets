@@ -42,7 +42,7 @@
   <div class="c-info-name">
   	<div class="contact-info-official-name">
   		<span class="uportal-channel-strong"><spring:message code="label.official.name"/>:</span>
-  		<span>${displayName}</span>
+  		<span>${legalName}</span>
   	  </div>
   	<c:if test="${showBusinessEmail}">
 	  	<div class="contact-info-pref-name-view ${n}view">

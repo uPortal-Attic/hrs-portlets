@@ -130,7 +130,7 @@ public class ContactInfoController extends HrsControllerBase {
 		
 		modelMap.addAttribute("pendingStatus",preferredNameService.getStatus(new PreferredName(currentFirstName, currentMiddleName,currentLastName,getPvi(request)),preferredNameService.getPreferredName(getPvi(request))));
 		modelMap.addAttribute("sirName",userInfo.get("sn"));
-		modelMap.addAttribute("displayName",userInfo.get("displayName"));
+		modelMap.addAttribute("legalName",userInfo.get("wiscEduSORName"));
 		
 		//edit setup
 		if(!modelMap.containsKey("preferredName")) {
