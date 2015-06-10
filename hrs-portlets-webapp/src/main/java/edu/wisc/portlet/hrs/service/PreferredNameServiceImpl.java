@@ -35,26 +35,33 @@ public class PreferredNameServiceImpl implements PreferredNameService {
 		return dao.getPreferredName(pvi);
 	}
 
-	@Override
-	public String getStatus(PreferredName ldapPn, PreferredName jdbcPn) {
-		if(StringUtils.isEmpty(ldapPn.getFirstName()) 
-				&& StringUtils.isEmpty(ldapPn.getMiddleName()) 
-				&& (jdbcPn == null 
-					|| (StringUtils.isEmpty(jdbcPn.getFirstName()) && StringUtils.isEmpty(jdbcPn.getMiddleName()))
-				   )
-		) {
-			return "(not set)";
-		} else {
-			
-			if(ldapPn.equals(jdbcPn)) {
-				return "";
-			} else if (jdbcPn == null && !StringUtils.isEmpty(ldapPn.getFirstName())) { 
-				return "(deletion pending)";
-			} else {
-				return "(change pending)";
-			}
-		}
-	}
+    @Override
+    public String getStatus(PreferredName ldapPn, PreferredName jdbcPn) {
+        if (StringUtils.isEmpty(ldapPn.getFirstName())
+            && StringUtils.isEmpty(ldapPn.getMiddleName())
+            && StringUtils.isEmpty(ldapPn.getLastName())
+            && (jdbcPn == null
+              || (StringUtils.isEmpty(jdbcPn.getFirstName()) && StringUtils
+              .isEmpty(jdbcPn.getMiddleName()) && StringUtils.isEmpty(jdbcPn.getLastName()))
+            )){
+            return "(not set)";
+        }else if(jdbcPn == null || 
+                 (StringUtils.isEmpty(jdbcPn.getFirstName()) && 
+                  StringUtils.isEmpty(jdbcPn.getMiddleName()) && 
+                  StringUtils.isEmpty(jdbcPn.getLastName()))){ 
+                      return "(deletion pending)";
+        }else{
+           //Logic does not detect a last name change only.
+            String ldapPreferredName = new StringBuilder().append(ldapPn.getFirstName()).append(ldapPn.getMiddleName()).toString();
+            String jdbcPreferredName = new StringBuilder().append(jdbcPn.getFirstName()).append(jdbcPn.getMiddleName()).toString();
+            if(ldapPreferredName.equals(jdbcPreferredName)){ 
+                return "";
+            }
+            else {
+                return "(change pending)";
+            }
+        }
+    }
 
 	@Override
 	@TriggersRemove(cacheName="prefnameCache",
