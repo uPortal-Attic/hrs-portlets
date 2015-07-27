@@ -41,12 +41,12 @@
   <hrs:notification/>
   <div class="c-info-name">
   	<div class="contact-info-official-name">
-  		<span class="uportal-channel-strong"><spring:message code="label.official.name"/>:</span>
+  		<span aria-label="Primary or legal name"  tabindex="0" class="uportal-channel-strong" class="uportal-channel-strong"><spring:message code="label.official.name"/>:</span>
   		<span>${legalName}</span>
   	  </div>
   	<c:if test="${showBusinessEmail}">
 	  	<div class="contact-info-pref-name-view ${n}view">
-              <span class="uportal-channel-strong"><spring:message code="label.preferred.name"/>:</span>
+              <span aria-label="preferred name" tabindex="0" class="uportal-channel-strong"><spring:message code="label.preferred.name"/>:</span>
                 <c:if test="${!empty firstName }">
                   <c:set var="preferredName" value="${firstName}"/>
                   <c:if test="${!empty middleName }">
@@ -63,15 +63,15 @@
                   <span>${preferredName}</span>
                 </c:if>
                       &nbsp;<span class="uportal-channel-table-caption">${pendingStatus }</span>
-                      &nbsp;<a href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
-                      &nbsp;<a href="${deletePreferredNameURL}" onclick="return confirm('Are you sure you want to delete your preferred name?');"><spring:message code="delete"/></a>
+                      &nbsp;<a aria-label="change preferred name" href="#" onclick="dl_v1.displayEdit(true);"><spring:message code="edit"/></a>
+                      &nbsp;<a aria-label="delete preferred name" href="${deletePreferredNameURL}" onclick="return confirm('Are you sure you want to delete your preferred name?');"><spring:message code="delete"/></a>
               </span>
           </div>
           <div class='edit-area'>
           <form action="${savePreferredNameURL}" method="post">
             <spring:nestedPath path="preferredName">
                   <div class="contact-info-pref-name-edit ${n}edit" style="display: none;">
-                      <span class="uportal-channel-strong">
+                      <span aria-label="preferred name update form" tabindex="0" class="uportal-channel-strong">
                           <spring:message code="label.preferred.name"/>:
                       </span>
                       <div class='${n}edit-error pref-name-edit-error' style="display: none; padding: .5em;">
@@ -86,21 +86,21 @@
                               <span class='label'>First</span>
                               <br/>
                               <span>
-                                  <form:input path="firstName" class="uportal-input-text ${n}first-name" maxlength="30" />
+                                  <form:input aria-label="edit first name box" path="firstName" class="uportal-input-text ${n}first-name" maxlength="30" />
                               </span>
                               </div>
                               <div class="edit-name">
                               <span class='label'>Middle</span>
                               <br/>
                               <span>
-                                  <form:input path="middleName" class="uportal-input-text ${n}middle-name" maxlength="30" />
+                                  <form:input aria-label="edit middle name box" path="middleName" class="uportal-input-text ${n}middle-name" maxlength="30" />
                               </span>
                               </div>
                             <div class="edit-name">
                             <span class='label'>Last*</span>
                             <br/>
                             <span>
-                                <form:input path="lastName" class="uportal-input-text ${n}last-name" maxlength="30" />
+                              a  <form:input aria-label="edit last name box" path="lastName" class="uportal-input-text ${n}last-name" maxlength="30" />
                             </span>
                             </div>
                           </div>
@@ -131,14 +131,14 @@
 		</div>
 	</c:if>
   </div>
-  
+
   <div class="contact-info-job">
     <div class="contact-info-dept">
-      <span><strong><spring:message code="departmentLabel"/></strong></span>
+      <span aria-label="Department Name"><strong><spring:message code="departmentLabel"/></strong></span>
       <span> ${fn:escapeXml(contactInformation.primaryJob.departmentName)}</span>
     </div>
     <div class="contact-info-title">
-      <span><strong><spring:message code="titleLabel"/></strong></span>
+      <span aria-label="Job title"><strong><spring:message code="titleLabel"/></strong></span>
       <span> ${fn:escapeXml(contactInformation.primaryJob.title)}</span>
     </div>
   </div>
@@ -146,11 +146,11 @@
     <c:if test="${contactInformation.primaryJob != otherJob}">
 	    <div class="contact-info-other-job">
 	      <div class="contact-info-dept">
-	        <span><strong><spring:message code="otherDepartmentLabel"/></strong></span>
+	        <span aria-label="other department name" tabindex="0"><strong><spring:message code="otherDepartmentLabel"/></strong></span>
 	        <span> ${fn:escapeXml(otherJob.departmentName)}</span>
 	      </div>
 	      <div class="contact-info-title">
-	        <span><strong><spring:message code="titleLabel"/></strong></span>
+	        <span aria-label="Job title" tabindex="0"><strong><spring:message code="titleLabel"/></strong></span>
 	        <span> ${fn:escapeXml(otherJob.title)}</span>
 	      </div>
 	    </div>
@@ -164,15 +164,15 @@
     </div>
   </c:if>
   <div class="business-email-details">
-    <span><strong>Campus Business Email:</strong> </span>
+    <span aria-label="Campus Business Email" tabindex="0"><strong>Campus Business Email:</strong> </span>
     <!-- TODO switch to spring-sec role check? -->
     <span class="email-address">${fn:escapeXml(contactInformation.email)}</span>
     <c:if test="${showBusinessEmail and not empty preferredEmail.name}">
-      <a href="javascript:;" class="change-business-email"> Change</a>
+      <a aria-label="Link to change Campus Business Email" href="javascript:;" class="change-business-email"> Change</a>
       <span class="email-error"></span>
     </c:if>
   </div>
-  <%-- 
+  <%--
     showBusinessEmail=${showBusinessEmail}
     not empty preferredEmail.name=${not empty preferredEmail.name}
     not ut:equalsIgnoreCase(preferredEmail.email, contactInformation.email)=${not ut:equalsIgnoreCase(preferredEmail.email, contactInformation.email)}
@@ -187,7 +187,7 @@
   </div>
   <hrs:addressOut messagePrefix="home" address="${contactInformation.homeAddress}" />
   <div class="home-addr-release">
-    <span><strong><spring:message code="releaseHomeAddress"/></strong></span>
+    <span aria-label="Release home address" tabindex="0"><strong><spring:message code="releaseHomeAddress"/></strong></span>
     <c:choose>
       <c:when test="${contactInformation.homeAddress.releaseHomeAddress}">
         <span> <spring:message code="yes"/></span>
@@ -202,7 +202,7 @@
       <c:if test="${not empty hrsUrls['Disability Status']}">
       <div>
           <span><strong><spring:message code="label.disability.status" text="Disability Status"/></strong></span>
-          <span>( <a href="${hrsUrls['Disability Status']}" target="_blank">
+          <span>( <a aria-label="view or update Disability Status" href="${hrsUrls['Disability Status']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
@@ -211,7 +211,7 @@
       <c:if test="${not empty hrsUrls['Veteran Status']}">
       <div>
           <span><strong><spring:message code="label.veteran.status" text="Veteran Status"/></strong></span>
-          <span>( <a href="${hrsUrls['Veteran Status']}" target="_blank">
+          <span>( <a aria-label="view or update Veteran Status" href="${hrsUrls['Veteran Status']}" target="_blank">
               <spring:message  code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
@@ -220,7 +220,7 @@
       <c:if test="${not empty hrsUrls['Ethnic Groups']}">
       <div>
           <span><strong><spring:message code="label.ethnic.groups" text="Ethnic Groups"/></strong></span>
-          <span>( <a href="${hrsUrls['Ethnic Groups']}" target="_blank">
+          <span>( <a aria-label="view or update Ethnic Groups" href="${hrsUrls['Ethnic Groups']}" target="_blank">
               <spring:message code="label.status.link" text="view/update"/>
                  </a> )</span>
       </div>
@@ -259,11 +259,11 @@
             </tr>
             <tr>
               <th class="dl-email-update-label"><label class="label" for="email1">New Campus Business Email:</label></th>
-              <td><input type="email" name="email1" required="required" /></td>
+              <td><input aria-label="update your new campus business email address text edit box" type="email" name="email1" required="required" /></td>
             </tr>
             <tr>
               <th class="dl-email-update-label"><label class="label" for="email2">Confirm Campus Business Email:</label></th>
-              <td><input type="email" name="email2" required="required" /></td>
+              <td><input aria-label="confirm by entering your new campus business email address again" type="email" name="email2" required="required" /></td>
             </tr>
           </tbody>
         </table>
