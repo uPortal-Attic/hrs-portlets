@@ -118,10 +118,10 @@
       </div>
     </div>
     <div id="${n}dl-dependents" class="dl-dependents ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-      <div class="coverage-header">
+      <%-- <div class="coverage-header">
         <span>Coverage as of </span>
         <span><fmt:formatDate value="${coverageDate}" pattern="MM/dd/yyyy" type="date"/></span>
-      </div>
+      </div> --%>
       <div class="fl-pager">
         <hrs:pagerNavBar position="top" showSummary="${true}" />
         <div class="fl-container-flex dl-pager-table-data fl-pager-data">
